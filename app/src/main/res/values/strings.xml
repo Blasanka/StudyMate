@@ -1,0 +1,72 @@
+<resources>
+    <string name="app_name">StudyMate</string>
+
+    <!--splash, login, signup screens strings-->
+    <string name="login_nameLabel">Username</string>
+    <string name="login_passLabel">Password</string>
+    <string name="login_buttonText">Log In</string>
+    <string name="signup_text">Or Sign Up</string>
+    <string name="email_text">Email</string>
+    <string name="signup_button">Sign Up</string>
+    <string name="login_text">Or Log In</string>
+
+
+    <!--for drawer-->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="openDrawer">open_drawer</string>
+    <string name="closeDrawer">close_drawer</string>
+
+    <!-- Navigation Drawer menu labels -->
+    <string name="nav_home">Home</string>
+    <string name="nav_quizes">Quizes</string>
+    <string name="nav_notes">Notes</string>
+    <string name="nav_tasks">Tasks</string>
+
+    <string name="activity_title_about_us">About Us</string>
+    <string name="activity_title_privacy_policy">Privacy Policy</string>
+    <string name="action_clear_all">Clear All</string>
+    <string name="action_logout">Logout</string>
+    <string name="action_mark_all_read">Mark All as Read</string>
+    <string name="privacy_policy">Privacy Policy</string>
+
+
+    <!-- Toolbar titles when navigation menu item is selected -->
+    <string-array name="nav_item_activity_titles">
+        <item>Home</item>
+        <item>Quizes</item>
+        <item>Notes</item>
+        <item>Tasks</item>
+    </string-array>
+    <!--Note list avtivity/screen-->
+    <string name="groupTitle">Group</string>
+    <string name="ask_join">Ask to Join</string>
+
+    <!--card-->
+    <string name="quizes_text">Quizes</string>
+    <string name="members_text">Members</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--user card-->
+    <string name="user_text">Scores</string>
+    <string name="group_text">Groups</string>
+
+    <!--home screen-->
+    <string name="all_scores">All Scores</string>
+    <string name="all_notes">Notes</string>
+    <string name="all_quiz">Quizes</string>
+    <string name="tasks">Tasks for today</string>
+    <string name="special_tasks">Special Tasks for today</string>
+
+    <!--note card strings-->
+    <string name="paragraph_text">Paragraph</string>
+
+    <!--quiz card strings-->
+    <string name="question_text">Question</string>
+    <string name="quiz_tag">Tag:</string>
+    <string name="quiz_type">Type:</string>
+    <string name="quiz_time_taken">Taken</string>
+    <string name="quiz_score">Score</string>
+</resources>

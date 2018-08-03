@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--bottom nav bar color-->
+    <color name="bgBottomNavigation">#0288d1</color>
+
+    <!--card image button color-->
+    <color name="addBtIconTint">#00e676</color>
+    <color name="addBtIconTintRequested">#757575</color>
+    <color name="addBtIconTintRejected">#d50000</color>
+    <color name="colorAddBt">#e8f5e9</color>
+
+    <color name="cardview_light_background">#FFFFFF</color>
+</resources>
+
+    <!--<?xml version="1.0" encoding="utf-8"?>--><!--<resources>--><!--<color name="colorPrimary">#3F51B5</color>--><!--<color name="colorPrimaryDark">#303F9F</color>--><!--<color name="colorAccent">#FF4081</color>--><!--</resources>-->
