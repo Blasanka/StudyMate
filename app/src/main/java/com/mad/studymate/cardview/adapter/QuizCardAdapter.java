@@ -1,12 +1,14 @@
 package com.mad.studymate.cardview.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mad.studymate.R;
 import com.mad.studymate.cardview.model.Quiz;
@@ -48,7 +50,14 @@ public class QuizCardAdapter extends RecyclerView.Adapter<QuizCardAdapter.QuizVi
         return quizItemList.size();
     }
 
-    public class QuizViewHolder extends RecyclerView.ViewHolder {
+
+    //when quiz card clicked
+    public interface OnItemClickListener {
+        void onItemClick(View view, int position);
+    }
+
+
+    public class QuizViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView txtTitle;
         TextView txtquestionCount;
         TextView txtTag;
@@ -59,8 +68,12 @@ public class QuizCardAdapter extends RecyclerView.Adapter<QuizCardAdapter.QuizVi
         //to different color for each card set color
         LinearLayout layout;
 
+        //card view clickable
+        private OnItemClickListener mListener;
+
         public QuizViewHolder(View view) {
             super(view);
+            itemView.setOnClickListener(this);
             txtTitle=view.findViewById(R.id.idTxtTitle);
             txtquestionCount = view.findViewById(R.id.idQuestionCount);
             txtTag = view.findViewById(R.id.idTxtTag);
@@ -70,6 +83,20 @@ public class QuizCardAdapter extends RecyclerView.Adapter<QuizCardAdapter.QuizVi
             //to different color for each card set color
             layout = view.findViewById(R.id.idFirstPortionLayout);
             layout.setBackgroundColor(random.nextInt());
+        }
+
+
+
+        public QuizViewHolder(View view, OnItemClickListener listener) {
+            this(view);
+            mListener = listener;
+        }
+
+        @Override
+        public void onClick(View view) {
+            if (mListener != null) {
+                mListener.onItemClick(view, getPosition());
+            }
         }
     }
 }

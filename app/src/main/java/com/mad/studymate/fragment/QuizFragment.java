@@ -76,11 +76,10 @@ public class QuizFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_notes, container, false);
+        View view = inflater.inflate(R.layout.fragment_quiz, container, false);
 
         //getting the recyclerview from xml
-        mRecyclerView = view.findViewById(R.id.idNotesRecyclerView);
+        mRecyclerView = view.findViewById(R.id.idQuizRecyclerView);
         //mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 

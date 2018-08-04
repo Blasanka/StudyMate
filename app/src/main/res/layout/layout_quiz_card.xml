@@ -4,17 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingBottom="10dp"
-    android:paddingTop="10dp">
+    android:paddingBottom="@dimen/parent_layout_padding"
+    android:paddingTop="@dimen/parent_layout_padding">
 
     <android.support.v7.widget.CardView
         android:id="@+id/idQuizCardView"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="@dimen/cardview_layout_height"
         android:layout_gravity="center"
-        android:layout_marginHorizontal="6dp"
-        android:layout_marginVertical="2dp"
-        android:elevation="8dp">
+        android:layout_marginTop="@dimen/cardview_layout_marginTop"
+        android:layout_marginHorizontal="@dimen/cardview_layout_marginHorizontal"
+        android:elevation="@dimen/cardview_elevation">
 
         <RelativeLayout
             android:id="@+id/idRelativeLayoutQuizeCount"
@@ -25,7 +25,7 @@
 
             <LinearLayout
                 android:id="@+id/idFirstPortionLayout"
-                android:layout_width="70dp"
+                android:layout_width="@dimen/idFirstPortionLayout_width"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
                 android:background="@color/colorAccent"
@@ -37,7 +37,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|center_horizontal"
-                    android:textSize="30sp" />
+                    android:textSize="@dimen/first_portion_count_type" />
 
                 <TextView
                     android:id="@+id/idQuizesText"
@@ -45,18 +45,18 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@id/idQuestionCount"
                     android:text="@string/question_text"
-                    android:textSize="10sp" />
+                    android:textSize="@dimen/first_portion_text_type" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/idSecondPortionLayout"
-                android:layout_width="220dp"
+                android:layout_width="@dimen/quiz_card_second_portion_width"
                 android:layout_height="fill_parent"
                 android:layout_toRightOf="@id/idFirstPortionLayout"
                 android:background="@color/cardview_light_background"
                 android:gravity="center_vertical"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="@dimen/second_portion_padding">
 
                 <LinearLayout
                     android:id="@+id/titleLayout"
@@ -69,7 +69,7 @@
                         android:id="@+id/idTxtTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="18dp"
+                        android:textSize="@dimen/title_text_size"
                         tools:text="@string/quizes_text"
                         tools:textColor="@android:color/black" />
                     <!--android:gravity="center_horizontal"-->
@@ -87,14 +87,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/quiz_tag"
-                        android:textSize="12sp" />
+                        android:textSize="@dimen/tag_n_type_text_size" />
 
                     <TextView
                         android:id="@+id/idTxtTag"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/idTxtTagText"
-                        android:textSize="12sp" />
+                        android:textSize="@dimen/tag_n_type_text_size" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -109,14 +109,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/quiz_type"
-                        android:textSize="12sp" />
+                        android:textSize="@dimen/tag_n_type_text_size" />
 
                     <TextView
                         android:id="@+id/idTxtType"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/idTxtTypeText"
-                        android:textSize="12sp" />
+                        android:textSize="@dimen/tag_n_type_text_size" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -140,7 +140,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         tools:text="11"
-                        android:textSize="20sp"  />
+                        android:textSize="@dimen/count_text_size"  />
 
                     <TextView
                         android:id="@+id/idTxtTakenCountText"
@@ -148,7 +148,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignBottom="@id/idTxtTakenCountText"
                         android:text="@string/quiz_time_taken"
-                        android:textSize="10sp" />
+                        android:textSize="@dimen/count_num_text_size" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -165,7 +165,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         tools:text="4"
-                        android:textSize="20sp" />
+                        android:textSize="@dimen/count_text_size" />
 
                     <TextView
                         android:id="@+id/idTxtScoreCountText"
@@ -173,7 +173,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignBottom="@id/idTxtTypeText"
                         android:text="@string/quiz_score"
-                        android:textSize="10sp" />
+                        android:textSize="@dimen/count_num_text_size" />
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>

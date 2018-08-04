@@ -7,11 +7,10 @@
 
     <LinearLayout
         android:id="@+id/homeDetailsLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_alignParentLeft="true"
-        android:gravity="center_vertical|center_horizontal">
+        android:layout_gravity="center">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,14 +21,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/all_scores"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"/>
 
             <TextView
                 android:id="@+id/allScoresCountText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+                android:text=" 2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"/>
         </LinearLayout>
 
         <LinearLayout
@@ -40,7 +39,7 @@
                 android:id="@+id/notesText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="32"
+                android:text="32 "
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 
             <TextView
@@ -59,7 +58,7 @@
             android:id="@+id/quizText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="56"
+            android:text="56 "
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 
         <TextView
@@ -78,7 +77,7 @@
                 android:id="@+id/taskText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="20"
+                android:text="20 "
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 
             <TextView
@@ -97,7 +96,7 @@
                 android:id="@+id/specialTaskText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="6"
+                android:text="6 "
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 
             <TextView

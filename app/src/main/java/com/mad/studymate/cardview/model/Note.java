@@ -1,37 +1,37 @@
 package com.mad.studymate.cardview.model;
 
 public class Note {
-    private String groupName;
-    private int noOfQuizes;
-    private int noOfMembers;
+    private String noteTitle;
+    private String noteTag;
+    private int paragraphCount;
 
-    public Note(String groupName, int noOfQuizes, int noOfMembers) {
-        this.groupName = groupName;
-        this.noOfQuizes = noOfQuizes;
-        this.noOfMembers = noOfMembers;
+    public Note(String noteTitle, String noteTag, int paragraphCount) {
+        this.noteTitle = noteTitle;
+        this.noteTag = noteTag;
+        this.paragraphCount = paragraphCount;
     }
 
-    public String getGroupName() {
-        return groupName;
+    public String getNoteTitle() {
+        return noteTitle;
     }
 
-    public void setGroupName(String groupName) {
-        this.groupName = groupName;
+    public void setNoteTitle(String noteTitle) {
+        this.noteTitle = noteTitle;
     }
 
-    public int getNoOfQuizes() {
-        return noOfQuizes;
+    public String getNoteTag() {
+        return noteTag;
     }
 
-    public void setNoOfQuizes(int noOfQuizes) {
-        this.noOfQuizes = noOfQuizes;
+    public void setNoteTag(String noteTag) {
+        this.noteTag = noteTag;
     }
 
-    public int getNoOfMembers() {
-        return noOfMembers;
+    public int getParagraphCount() {
+        return paragraphCount;
     }
 
-    public void setNoOfMembers(int noOfMembers) {
-        this.noOfMembers = noOfMembers;
+    public void setParagraphCount(int paragraphCount) {
+        this.paragraphCount = paragraphCount;
     }
 }

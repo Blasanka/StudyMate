@@ -65,8 +65,12 @@
 
     <!--quiz card strings-->
     <string name="question_text">Question</string>
-    <string name="quiz_tag">Tag:</string>
-    <string name="quiz_type">Type:</string>
+    <string name="quiz_tag">Tag: </string>
+    <string name="quiz_type">Type: </string>
     <string name="quiz_time_taken">Taken</string>
     <string name="quiz_score">Score</string>
+
+    <!--note card strings-->
+    <string name="note_tag">Tag: </string>
+    <string name="notes_text">Dummy  Data.</string>
 </resources>

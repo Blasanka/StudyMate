@@ -7,10 +7,34 @@
     <!--nav header padding-->
     <dimen name="header_pad_all">16dp</dimen>
 
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
-    <dimen name="profile_width">75dp</dimen>
-    <dimen name="profile_height">75dp</dimen>
+    <!--card dimensions-->
+    <!--parent layout-->
+    <dimen name="parent_layout_padding">10dp</dimen>
+
+    <!--cardview-->
+    <dimen name="cardview_layout_height">100dp</dimen>
+    <dimen name="cardview_layout_marginTop">2dp</dimen>
+    <dimen name="cardview_layout_marginHorizontal">6dp</dimen>
+    <dimen name="cardview_elevation">8dp</dimen>
+
+    <!--first portion of card-->
+    <dimen name="idFirstPortionLayout_width">70dp</dimen>
+
+    <!--second portion of card-->
+    <dimen name="second_portion_padding">5dp</dimen>
+
+    <!--text sizes-->
+    <dimen name="first_portion_count_type">30sp</dimen>
+    <dimen name="first_portion_text_type">10sp</dimen>
+    <dimen name="title_text_size">18sp</dimen>
+    <dimen name="tag_n_type_text_size">12sp</dimen>
+    <dimen name="count_text_size">20sp</dimen>
+    <dimen name="count_num_text_size">10sp</dimen>
+
+    <!--note card-->
+    <dimen name="quiz_card_second_portion_width">220dp</dimen>
+
+    <!--quiz card-->
+
+    <!--task card-->
 </resources>
