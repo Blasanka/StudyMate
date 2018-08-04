@@ -1,9 +1,12 @@
 package com.mad.studymate.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.mad.studymate.R;
+import com.mad.studymate.activity.AddNoteActivity;
+import com.mad.studymate.activity.AddQuizActivity;
+import com.mad.studymate.activity.AnswerQuizActivity;
 import com.mad.studymate.cardview.adapter.QuizCardAdapter;
 import com.mad.studymate.cardview.model.Quiz;
 
@@ -30,6 +36,9 @@ public class QuizFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    //add notes fab
+    FloatingActionButton fab;
 
     private RecyclerView mRecyclerView;
     private QuizCardAdapter mAdapter;
@@ -93,6 +102,27 @@ public class QuizFragment extends Fragment {
         mAdapter = new QuizCardAdapter(quizList, getActivity());
         mRecyclerView.setAdapter(mAdapter);
 
+        //card clicked event with sending necessary data to the answering activity.
+        mAdapter.setOnItemClickListener(new QuizCardAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Quiz quiz = quizList.get(position);
+                Intent intent = new Intent(getActivity(), AnswerQuizActivity.class);
+                intent.putExtra("title", quiz.getTitle());
+                startActivity(intent);
+            }
+        });
+
+
+        //fab click listner to open add quiz activity
+        fab = view.findViewById(R.id.idQuizAddFab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AddQuizActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // Inflate the layout for this fragment
         return view;

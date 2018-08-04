@@ -16,6 +16,19 @@ import java.util.Random;
 
 public class NoteCardAdapter extends RecyclerView.Adapter<NoteCardAdapter.NoteViewHolder>{
     Context context;
+
+    //card view clickable
+    private OnItemClickListener mListener;
+
+    //when note card clicked
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listner) {
+        mListener = listner;
+    }
+
     //to different color for each card set color
     Random random = new Random(20);
     private List<Note> noteItemList;
@@ -29,7 +42,7 @@ public class NoteCardAdapter extends RecyclerView.Adapter<NoteCardAdapter.NoteVi
     public NoteCardAdapter.NoteViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //inflate the layout file
         View quizView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_note_card, parent, false);
-        NoteCardAdapter.NoteViewHolder gvh = new NoteCardAdapter.NoteViewHolder(quizView);
+        NoteCardAdapter.NoteViewHolder gvh = new NoteCardAdapter.NoteViewHolder(quizView, mListener);
         return gvh;
     }
 
@@ -46,13 +59,7 @@ public class NoteCardAdapter extends RecyclerView.Adapter<NoteCardAdapter.NoteVi
     }
 
 
-    //when quiz card clicked
-    public interface OnItemClickListener {
-        void onItemClick(View view, int position);
-    }
-
-
-    public class NoteViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class NoteViewHolder extends RecyclerView.ViewHolder {
         TextView txtTitle;
         TextView txtParaCount;
         TextView txtTag;
@@ -63,29 +70,27 @@ public class NoteCardAdapter extends RecyclerView.Adapter<NoteCardAdapter.NoteVi
         //card view clickable
         private NoteCardAdapter.OnItemClickListener mListener;
 
-        public NoteViewHolder(View view) {
+        public NoteViewHolder(View view, final NoteCardAdapter.OnItemClickListener listener) {
             super(view);
-            itemView.setOnClickListener(this);
+
             txtTitle=view.findViewById(R.id.idNoteTitle);
             txtParaCount = view.findViewById(R.id.idParagraphCount);
             txtTag = view.findViewById(R.id.idNoteTag);
             //to different color for each card set color
             layout = view.findViewById(R.id.idNoteFirstPortionLayout);
             layout.setBackgroundColor(random.nextInt());
-        }
 
-
-
-        public NoteViewHolder(View view, NoteCardAdapter.OnItemClickListener listener) {
-            this(view);
-            mListener = listener;
-        }
-
-        @Override
-        public void onClick(View view) {
-            if (mListener != null) {
-                mListener.onItemClick(view, getPosition());
-            }
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION) {
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 }

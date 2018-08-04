@@ -31,6 +31,9 @@
     <dimen name="count_text_size">20sp</dimen>
     <dimen name="count_num_text_size">10sp</dimen>
 
+    <!--fab-->
+    <dimen name="fab_margin">14dp</dimen>
+
     <!--note card-->
     <dimen name="quiz_card_second_portion_width">220dp</dimen>
 

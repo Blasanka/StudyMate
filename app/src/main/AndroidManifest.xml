@@ -9,13 +9,18 @@
         android:roundIcon="@mipmap/studymate_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
-        <activity android:name="com.mad.studymate.activity.MainActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.AddQuizActivity" />
+        <activity android:name=".activity.AnswerQuizActivity" />
+        <activity android:name=".activity.ViewNoteActivity" />
+        <activity android:name=".activity.AddNoteActivity" />
+        <activity android:name=".activity.AddTaskActivity"></activity>
     </application>
 
 </manifest>

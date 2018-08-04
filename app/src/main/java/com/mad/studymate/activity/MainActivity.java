@@ -84,6 +84,8 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnFr
                         return true;
                     }
                 });
+
+        //TODO: close the drawer when opened if nav menu button is clicked(toggle)
     }
 
     @Override

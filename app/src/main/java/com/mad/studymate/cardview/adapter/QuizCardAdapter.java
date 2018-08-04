@@ -1,14 +1,12 @@
 package com.mad.studymate.cardview.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.mad.studymate.R;
 import com.mad.studymate.cardview.model.Quiz;
@@ -18,6 +16,19 @@ import java.util.Random;
 
 public class QuizCardAdapter extends RecyclerView.Adapter<QuizCardAdapter.QuizViewHolder>{
     Context context;
+
+    //card view clickable
+    private OnItemClickListener mListener;
+
+    //when quiz card clicked
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listner) {
+        mListener = listner;
+    }
+
     //to different color for each card set color
     Random random = new Random(20);
     private List<Quiz> quizItemList;
@@ -31,7 +42,7 @@ public class QuizCardAdapter extends RecyclerView.Adapter<QuizCardAdapter.QuizVi
     public QuizCardAdapter.QuizViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //inflate the layout file
         View quizView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_quiz_card, parent, false);
-        QuizCardAdapter.QuizViewHolder gvh = new QuizCardAdapter.QuizViewHolder(quizView);
+        QuizCardAdapter.QuizViewHolder gvh = new QuizCardAdapter.QuizViewHolder(quizView, mListener);
         return gvh;
     }
 
@@ -51,13 +62,7 @@ public class QuizCardAdapter extends RecyclerView.Adapter<QuizCardAdapter.QuizVi
     }
 
 
-    //when quiz card clicked
-    public interface OnItemClickListener {
-        void onItemClick(View view, int position);
-    }
-
-
-    public class QuizViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class QuizViewHolder extends RecyclerView.ViewHolder {
         TextView txtTitle;
         TextView txtquestionCount;
         TextView txtTag;
@@ -68,12 +73,9 @@ public class QuizCardAdapter extends RecyclerView.Adapter<QuizCardAdapter.QuizVi
         //to different color for each card set color
         LinearLayout layout;
 
-        //card view clickable
-        private OnItemClickListener mListener;
-
-        public QuizViewHolder(View view) {
+        public QuizViewHolder(View view, final OnItemClickListener listener) {
             super(view);
-            itemView.setOnClickListener(this);
+
             txtTitle=view.findViewById(R.id.idTxtTitle);
             txtquestionCount = view.findViewById(R.id.idQuestionCount);
             txtTag = view.findViewById(R.id.idTxtTag);
@@ -83,20 +85,18 @@ public class QuizCardAdapter extends RecyclerView.Adapter<QuizCardAdapter.QuizVi
             //to different color for each card set color
             layout = view.findViewById(R.id.idFirstPortionLayout);
             layout.setBackgroundColor(random.nextInt());
-        }
 
-
-
-        public QuizViewHolder(View view, OnItemClickListener listener) {
-            this(view);
-            mListener = listener;
-        }
-
-        @Override
-        public void onClick(View view) {
-            if (mListener != null) {
-                mListener.onItemClick(view, getPosition());
-            }
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION) {
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 }
