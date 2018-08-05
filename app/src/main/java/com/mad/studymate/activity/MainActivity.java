@@ -6,8 +6,11 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.mad.studymate.R;
@@ -96,6 +99,19 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnFr
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    //search icon functioning
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_search, menu);
+
+        // Associate searchable configuration with the SearchView
+        // SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.action_search));
+        // searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+//        searchView.setOnQueryTextListener(this);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override

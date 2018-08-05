@@ -1,15 +1,12 @@
 package com.mad.studymate.fragment;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,19 +17,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.mad.studymate.R;
-import com.mad.studymate.ViewPagerAdapter;
 import com.mad.studymate.activity.AddTaskActivity;
-import com.mad.studymate.activity.ViewNoteActivity;
 import com.mad.studymate.activity.ViewTaskActivity;
-import com.mad.studymate.cardview.adapter.NoteCardAdapter;
 import com.mad.studymate.cardview.adapter.TaskCardAdapter;
-import com.mad.studymate.cardview.model.Note;
 import com.mad.studymate.cardview.model.Task;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TasksFragment extends Fragment {
+// Instances of this class are fragments representing a single
+// object in our collection.
+public class CompletedTaskFragment extends Fragment {
 
     ActionBar actionBar;
 
@@ -41,27 +36,24 @@ public class TasksFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
     private TaskCardAdapter mAdapter;
-    private List<Task> taskList;
-
-    private OnFragmentInteractionListener mListener;
-
-    public TasksFragment() {
-        // Required empty public constructor
-    }
+    private List<Task> doneTaskList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
-        actionBar.setTitle("Not Completed Tasks");
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_tasks, container, false);
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+
+        // The last two arguments ensure LayoutParams are inflated
+        // properly.
+        View view = inflater.inflate(
+                R.layout.fragment_task_completed, container, false);// Inflate the layout for this fragment
+
 
         //getting the recyclerview from xml
         mRecyclerView = view.findViewById(R.id.idTasksRecyclerView);
@@ -69,19 +61,20 @@ public class TasksFragment extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         //Populate the groups
-        taskList = new ArrayList<>();
-        taskList.add(new Task("Read JS book", 1, "4:30 to 5:30"));
-        taskList.add(new Task("Write a letter", 2, "5:30 to 6:00"));
+        doneTaskList = new ArrayList<>();
+
+        //for now to show layout I'm adding isDone to true
+        doneTaskList.add(new Task("Attend to MAD lecture", 3, "8:30 to 10:30", true));
 
         //set adapter to recyclerview
-        mAdapter = new TaskCardAdapter(taskList, getActivity());
+        mAdapter = new TaskCardAdapter(doneTaskList, getActivity());
         mRecyclerView.setAdapter(mAdapter);
 
         //card clicked event with sending necessary data to the answering activity.
         mAdapter.setOnItemClickListener(new TaskCardAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Task task = taskList.get(position);
+                Task task = doneTaskList.get(position);
                 Intent intent = new Intent(getActivity(), ViewTaskActivity.class);
                 intent.putExtra("title", task.getTaskTitle());
                 startActivity(intent);
@@ -101,6 +94,7 @@ public class TasksFragment extends Fragment {
         //bottom navigation
         BottomNavigationView navigation = view.findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
 
         return view;
     }
@@ -131,38 +125,7 @@ public class TasksFragment extends Fragment {
         // load fragment
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.content_frame, fragment);
+        transaction.addToBackStack(null);
         transaction.commit();
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
     }
 }

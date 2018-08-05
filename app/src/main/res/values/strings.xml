@@ -49,16 +49,16 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <!--user card-->
-    <string name="user_text">Scores</string>
-    <string name="group_text">Groups</string>
-
     <!--home screen-->
     <string name="all_scores">All Scores</string>
     <string name="all_notes">Notes</string>
     <string name="all_quiz">Quizes</string>
     <string name="tasks">Tasks for today</string>
     <string name="special_tasks">Special Tasks for today</string>
+
+    <!--menu items-->
+    <string name="menu_not_completed">Not Completed</string>
+    <string name="menu_completed">Completed</string>
 
     <!--note card strings-->
     <string name="paragraph_text">Paragraph</string>
@@ -72,5 +72,30 @@
 
     <!--note card strings-->
     <string name="note_tag">Tag: </string>
-    <string name="notes_text">Dummy  Data.</string>
+    <string name="notes_text">Dummy Data.</string>
+
+    <!--task card strings-->
+    <string name="priority_text">Priority</string>
+    <string name="time_text">Time: </string>
+    <!--for ide preview tool-->
+    <string name="task_title_text">Read JS book</string>
+
+    <!--add note activity-->
+    <string name="new_note_bt">Create Note</string>
+    <string name="note_title_text">Title</string>
+    <string name="note_para_text">Paragraph 1</string>
+    <string name="add_new_text">Add one more paragraph</string>
+
+    <!--add task activity-->
+    <string name="descr_text">Description</string>
+    <string name="task_text">Title</string>
+    <string name="priority_no_text">Priority Number</string>
+
+    <!--add quiz-->
+    <string name="quiz_title_text">Title</string>
+    <string name="quiz_add_type">Quiz Type</string>
+    <string name="no_questions">No. Of Questions</string>
+    <string name="new_quiz_bt">Next</string>
+    <string name="clear_quiz_bt">Clear</string>
+    <string name="add_quiz_text">Add Quiz</string>
 </resources>

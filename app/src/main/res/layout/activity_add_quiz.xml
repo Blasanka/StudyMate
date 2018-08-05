@@ -3,7 +3,80 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activity.AddQuizActivity">
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    tools:context=".activity.AddQuizActivity"
+    android:layout_margin="@dimen/layout_margin">
 
+    <EditText
+        android:id="@+id/quizTitleET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_end"
+        android:layout_marginStart="@dimen/margin_end"
+        android:layout_marginTop="@dimen/margin_top"
+        android:ems="10"
+        android:hint="@string/quiz_title_text"
+        android:inputType="textMultiLine"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/idQuizTypeET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_end"
+        android:layout_marginStart="@dimen/margin_end"
+        android:layout_marginTop="@dimen/margin_top"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="@string/quiz_add_type"
+        app:layout_constraintTop_toBottomOf="@id/quizTitleET" />
+
+    <EditText
+        android:id="@+id/idNoOfquestionsET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_end"
+        android:layout_marginStart="@dimen/margin_end"
+        android:layout_marginTop="@dimen/margin_top"
+        android:ems="10"
+        android:hint="@string/no_questions"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/idQuizTypeET" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_end"
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toBottomOf="@id/idNoOfquestionsET"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/idClearButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_end"
+            android:layout_marginStart="@dimen/margin_end"
+            android:text="@string/clear_quiz_bt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/idNextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_end"
+            android:layout_marginStart="@dimen/margin_end"
+            android:text="@string/new_quiz_bt"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/idClearButton"
+            app:layout_constraintVertical_bias="0.0" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

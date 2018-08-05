@@ -1,39 +1,30 @@
 package com.mad.studymate.activity;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 import com.mad.studymate.R;
 
-public class AddQuizActivity extends AppCompatActivity {
+public class ViewTaskActivity extends AppCompatActivity {
 
     ActionBar actionBar;
-    Button nextButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_quiz);
+        setContentView(R.layout.activity_view_task);
 
         actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setTitle("New Quiz");
 
-
-
-        nextButton = findViewById(R.id.idNextButton);
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AddQuizActivity.this, QnCAsActivity.class);
-                startActivity(intent);
-            }
-        });
+        Bundle extras = getIntent().getExtras();
+        String taskTitle = "";
+        if (extras != null) {
+            taskTitle = extras.getString("title");
+            actionBar.setTitle(taskTitle);
+        }
     }
 
     public boolean onOptionsItemSelected(MenuItem item){

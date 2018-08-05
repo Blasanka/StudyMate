@@ -4,6 +4,94 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.AddTaskActivity">
+    tools:context=".activity.AddTaskActivity"
+    android:layout_margin="@dimen/layout_margin">
+
+    <LinearLayout
+        android:id="@+id/idPriorityLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_end"
+        android:layout_marginStart="@dimen/margin_end"
+        android:layout_marginTop="@dimen/margin_end"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/priorityTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="@dimen/margin_end"
+            android:text="@string/priority_no_text"
+            android:textSize="@dimen/title_text_size" />
+
+        <EditText
+            android:id="@+id/idPriorityET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_end"
+            android:ems="10"
+            android:hint="@string/priority_text"
+            android:inputType="numberDecimal"
+            app:layout_constraintStart_toStartOf="@id/priorityTV"/>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/noteTitleET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_end"
+        android:layout_marginStart="@dimen/margin_end"
+        android:layout_marginTop="@dimen/margin_top"
+        android:ems="10"
+        android:hint="@string/task_text"
+        android:inputType="textMultiLine"
+        app:layout_constraintTop_toBottomOf="@id/idPriorityLayout" />
+
+    <EditText
+        android:id="@+id/timePeriodET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_end"
+        android:layout_marginStart="@dimen/margin_end"
+        android:layout_marginTop="@dimen/margin_top"
+        android:ems="10"
+        android:inputType="time"
+        android:hint="@string/time_text"
+        app:layout_constraintTop_toBottomOf="@id/noteTitleET" />
+
+    <EditText
+        android:id="@+id/noteParagraphOneET"
+        android:layout_width="match_parent"
+        android:minHeight="@dimen/minHeight_desc"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_end"
+        android:layout_marginStart="@dimen/margin_end"
+        android:layout_marginTop="@dimen/margin_top"
+        android:ems="10"
+        android:hint="@string/descr_text"
+        android:inputType="textMultiLine"
+        android:isScrollContainer="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/timePeriodET" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_end"
+        android:layout_marginStart="@dimen/margin_end"
+        android:layout_marginTop="@dimen/margin_top"
+        android:text="@string/new_note_bt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/noteParagraphOneET"
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>

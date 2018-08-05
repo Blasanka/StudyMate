@@ -1,8 +1,11 @@
 package com.mad.studymate.cardview.adapter;
 
 import android.content.Context;
+import android.support.design.widget.Snackbar;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -91,6 +94,46 @@ public class NoteCardAdapter extends RecyclerView.Adapter<NoteCardAdapter.NoteVi
                     }
                 }
             });
+
+            view.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            openOptionMenu(view, position);
+                        }
+                    }
+                    return true;
+                }
+            });
+
         }
+    }
+
+
+    public void openOptionMenu(final View view, final int position){
+        PopupMenu popup = new PopupMenu(view.getContext(), view);
+        popup.getMenuInflater().inflate(R.menu.menu_popup_items, popup.getMenu());
+
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.update_item_option:
+                        Snackbar.make(view, "update pressed", Snackbar.LENGTH_SHORT).show();
+                        break;
+                    case R.id.delete_item_option:
+                        Snackbar.make(view, "delete pressed", Snackbar.LENGTH_SHORT).show();
+                        break;
+                    default:
+                        Snackbar.make(view, "nothing pressed", Snackbar.LENGTH_SHORT).show();
+                        break;
+                }
+                return true;
+            }
+        });
+
+        popup.show();
     }
 }

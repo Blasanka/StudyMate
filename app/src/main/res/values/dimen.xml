@@ -33,6 +33,8 @@
 
     <!--fab-->
     <dimen name="fab_margin">14dp</dimen>
+    <dimen name="fab_margin_bottom">40dp</dimen>
+    <dimen name="fab_margin_right">14dp</dimen>
 
     <!--note card-->
     <dimen name="quiz_card_second_portion_width">220dp</dimen>
@@ -40,4 +42,13 @@
     <!--quiz card-->
 
     <!--task card-->
+
+    <!--add task-->
+    <dimen name="margin_end">8dp</dimen>
+    <dimen name="margin_top">28dp</dimen>
+    <dimen name="minHeight_desc">140dp</dimen>
+    <dimen name="layout_margin">20dp</dimen>
+
+    <!--add quiz-->
+    <dimen name="margin_top_bt">10dp</dimen>
 </resources>

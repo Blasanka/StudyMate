@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_groups"
+        android:title="@string/menu_not_completed"
+        android:icon="@drawable/ic_event_note_black_24dp" />
+
+    <item android:id="@+id/action_users"
+        android:title="@string/menu_completed"
+        android:icon="@drawable/ic_event_available_black_24dp" />
+</menu>

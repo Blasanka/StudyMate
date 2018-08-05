@@ -20,7 +20,10 @@
         <activity android:name=".activity.AnswerQuizActivity" />
         <activity android:name=".activity.ViewNoteActivity" />
         <activity android:name=".activity.AddNoteActivity" />
-        <activity android:name=".activity.AddTaskActivity"></activity>
+        <activity android:name=".activity.AddTaskActivity" />
+        <activity android:name=".activity.ViewTaskActivity" />
+        <activity android:name=".activity.QnCAsActivity" />
+        <activity android:name=".activity.ScoreBoardActivity"></activity>
     </application>
 
 </manifest>

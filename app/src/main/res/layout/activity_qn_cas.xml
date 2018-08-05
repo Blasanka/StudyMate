@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.AnswerQuizActivity"
     android:layout_margin="@dimen/margin_end"
+    tools:context=".activity.QnCAsActivity"
     tools:layout_editor_absoluteX="8dp"
     tools:layout_editor_absoluteY="89dp">
 
@@ -17,12 +17,39 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Q1. Android is a Framework"
+        android:text="Question 1:"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/questionTV"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:hint="Question"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idQuestionET" />
+
+    <TextView
+        android:id="@+id/idCanswerTV"
+        android:layout_width="0dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Correct Answers"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionTV" />
 
     <RadioGroup
         android:id="@+id/idTrueFalseGroup"
@@ -36,7 +63,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.066"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idQuestionET">
+        app:layout_constraintTop_toBottomOf="@+id/idCanswerTV">
 
         <RadioButton
             android:id="@+id/idTrueRadio"
@@ -53,17 +80,41 @@
 
     <TextView
         android:id="@+id/idQuestionET2"
-        android:layout_width="0dp"
-        android:layout_height="66dp"
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:layout_marginTop="8dp"
+        android:text="Question 2:"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/idTrueFalseGroup"
+        tools:layout_editor_absoluteX="8dp" />
+
+    <EditText
+        android:id="@+id/questionTV2"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Q1. Android is a programming language."
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:hint="Question"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idTrueFalseGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/idQuestionET2" />
+
+    <TextView
+        android:id="@+id/idCanswerTV2"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Correct Answers"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionTV2" />
 
     <RadioGroup
         android:id="@+id/idTrueFalseGroup2"
@@ -73,11 +124,11 @@
         android:layout_centerHorizontal="true"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.066"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idQuestionET2">
+        app:layout_constraintTop_toBottomOf="@+id/idCanswerTV2">
 
         <RadioButton
             android:id="@+id/idTrueRadio2"
@@ -93,12 +144,12 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/idFinishQuizButton"
+        android:id="@+id/idAddQuizButton"
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="Finish"
+        android:text="@string/add_quiz_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

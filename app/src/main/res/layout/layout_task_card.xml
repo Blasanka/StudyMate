@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/parent_layout_padding"
+    android:paddingTop="@dimen/parent_layout_padding">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/idTaskCardView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/cardview_layout_height"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/cardview_layout_marginTop"
+        android:layout_marginHorizontal="@dimen/cardview_layout_marginHorizontal"
+        android:elevation="@dimen/cardview_elevation">
+
+        <RelativeLayout
+            android:id="@+id/idRelativeLayoutTask"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/cardview_light_background"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/idTaskFirstPortionLayout"
+                android:layout_width="@dimen/idFirstPortionLayout_width"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:background="@color/colorAccent"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/idPriorityNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textSize="@dimen/first_portion_count_type" />
+
+                <TextView
+                    android:id="@+id/idPriorityText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/idPriorityNo"
+                    android:text="@string/priority_text"
+                    android:textSize="@dimen/first_portion_text_type" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/idTaskSecondPortionLayout"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_toRightOf="@id/idTaskFirstPortionLayout"
+                android:background="@color/cardview_light_background"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="@dimen/second_portion_padding">
+
+                <LinearLayout
+                    android:id="@+id/taskTitleLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true">
+
+                    <!--android:layout_toRightOf="@id/idRelativeLayoutQuizeCount"-->
+                    <TextView
+                        android:id="@+id/idTaskTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/title_text_size"
+                        tools:text="@string/task_title_text"
+                        tools:textColor="@android:color/black" />
+                    <!--android:gravity="center_horizontal"-->
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/idTimeBottomLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/taskTitleLayout"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/idTimePeriodText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/time_text"
+                        android:textSize="@dimen/tag_n_type_text_size" />
+
+                    <TextView
+                        android:id="@+id/idTimePeriod"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/idTimePeriodText"
+                        android:textSize="@dimen/tag_n_type_text_size" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:gravity="center_vertical|center_horizontal">
+
+                <ImageButton
+                    android:id="@+id/idMarkDoneCheck"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:src="@drawable/ic_done_green_24dp"
+                    android:background="@drawable/rounded_corners"/>
+                <!--android:tint="@color/addBtIconTint"-->
+            </LinearLayout>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

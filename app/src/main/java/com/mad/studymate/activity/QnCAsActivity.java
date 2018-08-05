@@ -10,27 +10,26 @@ import android.widget.Button;
 
 import com.mad.studymate.R;
 
-public class AddQuizActivity extends AppCompatActivity {
+public class QnCAsActivity extends AppCompatActivity {
 
     ActionBar actionBar;
-    Button nextButton;
+    Button addQuizButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_quiz);
+        setContentView(R.layout.activity_qn_cas);
 
         actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setTitle("New Quiz");
+        actionBar.setTitle("Add Questions and Correct Answers");
 
 
-
-        nextButton = findViewById(R.id.idNextButton);
-        nextButton.setOnClickListener(new View.OnClickListener() {
+        addQuizButton = findViewById(R.id.idAddQuizButton);
+        addQuizButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AddQuizActivity.this, QnCAsActivity.class);
+                Intent intent = new Intent(QnCAsActivity.this, QnCAsActivity.class);
                 startActivity(intent);
             }
         });

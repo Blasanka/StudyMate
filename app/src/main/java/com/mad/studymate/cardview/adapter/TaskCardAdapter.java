@@ -1,6 +1,7 @@
 package com.mad.studymate.cardview.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
@@ -8,85 +9,88 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mad.studymate.R;
-import com.mad.studymate.cardview.model.Quiz;
+import com.mad.studymate.cardview.model.Task;
 
 import java.util.List;
 import java.util.Random;
 
-public class QuizCardAdapter extends RecyclerView.Adapter<QuizCardAdapter.QuizViewHolder>{
+public class TaskCardAdapter extends RecyclerView.Adapter<TaskCardAdapter.TaskViewHolder>{
     Context context;
 
     //card view clickable
-    private OnItemClickListener mListener;
+    private TaskCardAdapter.OnItemClickListener mListener;
 
     //when quiz card clicked
     public interface OnItemClickListener {
         void onItemClick(int position);
     }
 
-    public void setOnItemClickListener(OnItemClickListener listner) {
+    public void setOnItemClickListener(TaskCardAdapter.OnItemClickListener listner) {
         mListener = listner;
     }
 
     //to different color for each card set color
     Random random = new Random(20);
-    private List<Quiz> quizItemList;
+    private List<Task> taskItemList;
 
-    public QuizCardAdapter(List<Quiz> quizItemList, Context context) {
-        this.quizItemList = quizItemList;
+    public TaskCardAdapter(List<Task> taskItemList, Context context) {
+        this.taskItemList = taskItemList;
         this.context = context;
     }
 
     @Override
-    public QuizCardAdapter.QuizViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public TaskCardAdapter.TaskViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //inflate the layout file
-        View quizView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_quiz_card, parent, false);
-        QuizCardAdapter.QuizViewHolder gvh = new QuizCardAdapter.QuizViewHolder(quizView, mListener);
+        View taskView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_task_card, parent, false);
+        TaskCardAdapter.TaskViewHolder gvh = new TaskCardAdapter.TaskViewHolder(taskView, mListener);
         return gvh;
     }
 
     @Override
-    public void onBindViewHolder(QuizCardAdapter.QuizViewHolder holder, final int position) {
-        holder.txtquestionCount.setText(quizItemList.get(position).getQuestionCount()+"");
-        holder.txtTitle.setText(quizItemList.get(position).getTitle()+"");
-        holder.txtTag.setText(quizItemList.get(position).getQuizTag()+"");
-        holder.txtType.setText(quizItemList.get(position).getQuizType()+"");
-        holder.txtTakenCount.setText(quizItemList.get(position).getTimesTaken()+"");
-        holder.txtScoreCount.setText(quizItemList.get(position).getScoresOfQuiz()+"");
+    public void onBindViewHolder(TaskCardAdapter.TaskViewHolder holder, final int position) {
+        holder.txtTaskTitle.setText(taskItemList.get(position).getTaskTitle()+"");
+        holder.txtPriorityNum.setText(taskItemList.get(position).getPriorityNo()+"");
+        holder.txtTimePeriod.setText(taskItemList.get(position).getTimePeriod()+"");
+
+        //If task is done, it can be deleted using delete image button
+        int doneRes = R.drawable.ic_done_green_24dp;
+        int unDoneRes = R.drawable.ic_delete_red_24dp;
+        holder.btDoneCheck.setImageResource(taskItemList.get(position).isDone() ? unDoneRes : doneRes);
     }
 
     @Override
     public int getItemCount() {
-        return quizItemList.size();
+        return taskItemList.size();
     }
 
 
-    public class QuizViewHolder extends RecyclerView.ViewHolder {
-        TextView txtTitle;
-        TextView txtquestionCount;
-        TextView txtTag;
-        TextView txtType;
-        TextView txtTakenCount;
-        TextView txtScoreCount;
+    public class TaskViewHolder extends RecyclerView.ViewHolder {
+        TextView txtTaskTitle;
+        TextView txtPriorityNum;
+        TextView txtTimePeriod;
+        ImageButton btDoneCheck;
 
         //to different color for each card set color
         LinearLayout layout;
 
-        public QuizViewHolder(View view, final OnItemClickListener listener) {
+        public TaskViewHolder(View view, final TaskCardAdapter.OnItemClickListener listener) {
             super(view);
 
-            txtTitle=view.findViewById(R.id.idTxtTitle);
-            txtquestionCount = view.findViewById(R.id.idQuestionCount);
-            txtTag = view.findViewById(R.id.idTxtTag);
-            txtType = view.findViewById(R.id.idTxtType);
-            txtTakenCount = view.findViewById(R.id.idTxtTakenCount);
-            txtScoreCount = view.findViewById(R.id.idTxtScoreCount);
+            txtTaskTitle=view.findViewById(R.id.idTaskTitle);
+            txtPriorityNum = view.findViewById(R.id.idPriorityNo);
+            txtTimePeriod = view.findViewById(R.id.idTimePeriod);
+            btDoneCheck = view.findViewById(R.id.idMarkDoneCheck);
+
             //to different color for each card set color
-            layout = view.findViewById(R.id.idFirstPortionLayout);
+            layout = view.findViewById(R.id.idTaskFirstPortionLayout);
             layout.setBackgroundColor(random.nextInt());
 
             view.setOnClickListener(new View.OnClickListener() {
@@ -114,6 +118,15 @@ public class QuizCardAdapter extends RecyclerView.Adapter<QuizCardAdapter.QuizVi
                 }
             });
 
+            boolean isDone = false;
+            btDoneCheck.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (listener != null) {
+                        boolean isDone = true;
+                    }
+                }
+            });
         }
     }
 

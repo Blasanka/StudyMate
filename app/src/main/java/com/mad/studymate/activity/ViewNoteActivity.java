@@ -20,10 +20,10 @@ public class ViewNoteActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         Bundle extras = getIntent().getExtras();
-        String quizTitle = "";
+        String noteTitle = "";
         if (extras != null) {
-            quizTitle = extras.getString("title");
-            actionBar.setTitle(quizTitle);
+            noteTitle = extras.getString("title");
+            actionBar.setTitle(noteTitle);
         }
     }
 
