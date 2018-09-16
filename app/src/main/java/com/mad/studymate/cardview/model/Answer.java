@@ -1,5 +1,8 @@
 package com.mad.studymate.cardview.model;
 
-public class Answer {
+import java.util.List;
 
+public class Answer {
+    private long qId;
+    private List<String> answers;
 }

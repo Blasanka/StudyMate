@@ -4,11 +4,19 @@ public class Note {
     private String noteTitle;
     private String noteTag;
     private int paragraphCount;
+    private String paragraphOne;
 
     public Note(String noteTitle, String noteTag, int paragraphCount) {
         this.noteTitle = noteTitle;
         this.noteTag = noteTag;
         this.paragraphCount = paragraphCount;
+    }
+
+    public Note(String noteTitle, String noteTag, int paragraphCount, String paragraphOne) {
+        this.noteTitle = noteTitle;
+        this.noteTag = noteTag;
+        this.paragraphCount = paragraphCount;
+        this.paragraphOne = paragraphOne;
     }
 
     public String getNoteTitle() {
@@ -33,5 +41,13 @@ public class Note {
 
     public void setParagraphCount(int paragraphCount) {
         this.paragraphCount = paragraphCount;
+    }
+
+    public String getParagraphOne() {
+        return paragraphOne;
+    }
+
+    public void setParagraphOne(String paragraphOne) {
+        this.paragraphOne = paragraphOne;
     }
 }

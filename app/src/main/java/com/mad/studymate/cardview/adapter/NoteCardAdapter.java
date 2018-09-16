@@ -1,6 +1,8 @@
 package com.mad.studymate.cardview.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
@@ -10,15 +12,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mad.studymate.R;
+import com.mad.studymate.activity.UpdateNoteActivity;
 import com.mad.studymate.cardview.model.Note;
+import com.mad.studymate.db.StudyMateContractor;
+import com.mad.studymate.db.StudyMateDbHelper;
 
 import java.util.List;
 import java.util.Random;
 
 public class NoteCardAdapter extends RecyclerView.Adapter<NoteCardAdapter.NoteViewHolder>{
     Context context;
+
+    //database helper to get every notes
+    StudyMateDbHelper mDbHelper;
 
     //card view clickable
     private OnItemClickListener mListener;
@@ -43,6 +52,9 @@ public class NoteCardAdapter extends RecyclerView.Adapter<NoteCardAdapter.NoteVi
 
     @Override
     public NoteCardAdapter.NoteViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        //get notes from database
+        mDbHelper = new StudyMateDbHelper(parent.getContext());
+
         //inflate the layout file
         View quizView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_note_card, parent, false);
         NoteCardAdapter.NoteViewHolder gvh = new NoteCardAdapter.NoteViewHolder(quizView, mListener);
@@ -115,19 +127,44 @@ public class NoteCardAdapter extends RecyclerView.Adapter<NoteCardAdapter.NoteVi
     public void openOptionMenu(final View view, final int position){
         PopupMenu popup = new PopupMenu(view.getContext(), view);
         popup.getMenuInflater().inflate(R.menu.menu_popup_items, popup.getMenu());
-
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
+                Note note = noteItemList.get(position);
                 switch (item.getItemId()){
                     case R.id.update_item_option:
-                        Snackbar.make(view, "update pressed", Snackbar.LENGTH_SHORT).show();
+                        Intent intent = new Intent(context, UpdateNoteActivity.class);
+                        intent.putExtra("noteTitle", note.getNoteTitle());
+                        intent.putExtra("noteTag", note.getNoteTag());
+                        intent.putExtra("noteParaCount", note.getParagraphCount());
+                        intent.putExtra("noteParaOne", note.getParagraphOne());
+                        context.startActivity(intent);
                         break;
                     case R.id.delete_item_option:
-                        Snackbar.make(view, "delete pressed", Snackbar.LENGTH_SHORT).show();
+                        SQLiteDatabase db = mDbHelper.getReadableDatabase();
+                        // Define 'where' part of query.
+                        String selection = StudyMateContractor.NoteEntry.COLUMN_NAME_TITLE + " = ?";
+                        // Specify arguments in placeholder order.
+                        String[] selectionArgs = { note.getNoteTitle() };
+                        // Issue SQL statement.
+                        int deletedRow = db.delete(StudyMateContractor.NoteEntry.TABLE_NAME, selection, selectionArgs);
+                        //delete item from list
+                        noteItemList.remove(position);
+                        //update recycleview
+                        notifyItemRemoved(position);
+
+                        //delete from db
+                        if(deletedRow != 0) {
+//                            Snackbar.make(view, "Successfully deleted!", Snackbar.LENGTH_SHORT).show();
+                            Toast.makeText(view.getContext(), "Successfully deleted!", Toast.LENGTH_SHORT).show();
+                        } else  {
+//                            Snackbar.make(view, "failed to delete!", Snackbar.LENGTH_SHORT).show();
+                            Toast.makeText(view.getContext(), "failed to delete!", Toast.LENGTH_SHORT).show();
+                        }
                         break;
                     default:
-                        Snackbar.make(view, "nothing pressed", Snackbar.LENGTH_SHORT).show();
+//                      Snackbar.make(view, "nothing pressed", Snackbar.LENGTH_SHORT).show();
+                        Toast.makeText(view.getContext(), "nothing pressed", Toast.LENGTH_SHORT).show();
                         break;
                 }
                 return true;
