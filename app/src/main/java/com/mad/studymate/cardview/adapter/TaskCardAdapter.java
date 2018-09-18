@@ -1,29 +1,37 @@
 package com.mad.studymate.cardview.adapter;
 
+import android.content.ContentValues;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.support.design.widget.Snackbar;
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mad.studymate.R;
+import com.mad.studymate.activity.UpdateTaskActivity;
 import com.mad.studymate.cardview.model.Task;
+import com.mad.studymate.db.StudyMateContractor;
+import com.mad.studymate.db.TaskDbHelper;
 
 import java.util.List;
 import java.util.Random;
 
 public class TaskCardAdapter extends RecyclerView.Adapter<TaskCardAdapter.TaskViewHolder>{
     Context context;
+
+    //database helper to get every notes
+    TaskDbHelper mDbHelper;
+    //to check task is done or not
+    boolean isDone = false;
 
     //card view clickable
     private TaskCardAdapter.OnItemClickListener mListener;
@@ -48,6 +56,9 @@ public class TaskCardAdapter extends RecyclerView.Adapter<TaskCardAdapter.TaskVi
 
     @Override
     public TaskCardAdapter.TaskViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        //get notes from database
+        mDbHelper = new TaskDbHelper(parent.getContext());
+
         //inflate the layout file
         View taskView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_task_card, parent, false);
         TaskCardAdapter.TaskViewHolder gvh = new TaskCardAdapter.TaskViewHolder(taskView, mListener);
@@ -71,6 +82,77 @@ public class TaskCardAdapter extends RecyclerView.Adapter<TaskCardAdapter.TaskVi
         return taskItemList.size();
     }
 
+    public void openOptionMenu(final View view, final int position) {
+        PopupMenu popup = new PopupMenu(view.getContext(), view);
+        popup.getMenuInflater().inflate(R.menu.menu_popup_items, popup.getMenu());
+
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Task task = taskItemList.get(position);
+                switch (item.getItemId()) {
+                    case R.id.update_item_option:
+                        Intent intent = new Intent(context, UpdateTaskActivity.class);
+                        intent.putExtra("taskTitle", task.getTaskTitle());
+                        intent.putExtra("priorityNo", task.getPriorityNo());
+                        intent.putExtra("timePeriod", task.getTimePeriod());
+                        intent.putExtra("description", task.getDescription());
+                        intent.putExtra("isDone", task.isDone());
+                        context.startActivity(intent);
+                        break;
+                    case R.id.delete_item_option:
+                        deleteTask(task.getTaskTitle(), view);
+                        taskItemList.remove(position);
+                        notifyItemRemoved(position);
+                        break;
+                    default:
+                        break;
+                }
+                return true;
+            }
+        });
+
+        popup.show();
+    }
+
+    //update task status in db when done button pressed
+    public int updateTask(String title) {
+        SQLiteDatabase db = mDbHelper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(StudyMateContractor.TaskEntry.COLUMN_NAME_IS_DONE, isDone);
+
+        // Which row to update, based on the title
+        String selection = StudyMateContractor.TaskEntry.COLUMN_NAME_TITLE + " = ?";
+        String[] selectionArgs = {title};
+
+        int count = db.update(
+                StudyMateContractor.TaskEntry.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+
+        return count;
+    }
+
+    private void deleteTask(String taskTitle, View view) {
+        SQLiteDatabase db = mDbHelper.getReadableDatabase();
+        // Define 'where' part of query.
+        String selection = StudyMateContractor.TaskEntry.COLUMN_NAME_TITLE + " = ?";
+        // Specify arguments in placeholder order.
+        String[] selectionArgs = {taskTitle};
+        // Issue SQL statement.
+        int deletedRow = db.delete(StudyMateContractor.TaskEntry.TABLE_NAME, selection, selectionArgs);
+
+        //delete from db
+        if (deletedRow != 0) {
+//                            Snackbar.make(view, "Successfully deleted!", Snackbar.LENGTH_SHORT).show();
+            Toast.makeText(view.getContext(), "Successfully deleted!", Toast.LENGTH_SHORT).show();
+        } else {
+//                            Snackbar.make(view, "failed to delete!", Snackbar.LENGTH_SHORT).show();
+            Toast.makeText(view.getContext(), "failed to delete!", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     public class TaskViewHolder extends RecyclerView.ViewHolder {
         TextView txtTaskTitle;
@@ -118,40 +200,28 @@ public class TaskCardAdapter extends RecyclerView.Adapter<TaskCardAdapter.TaskVi
                 }
             });
 
-            boolean isDone = false;
             btDoneCheck.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if (listener != null) {
-                        boolean isDone = true;
+                        int position = getAdapterPosition();
+                        if (!taskItemList.get(position).isDone()) {
+                            isDone = true;
+                            taskItemList.get(position).setDone(isDone);
+                            updateTask(taskItemList.get(position).getTaskTitle());
+//                        notifyItemChanged(position);
+                            taskItemList.remove(position);
+                            notifyItemRemoved(position);
+                        } else {
+                            deleteTask(taskItemList.get(position).getTaskTitle(), view);
+                            Log.d("Missing", taskItemList.get(position).getTaskTitle());
+//                        notifyItemChanged(position);
+                            taskItemList.remove(position);
+                            notifyItemRemoved(position);
+                        }
                     }
                 }
             });
         }
-    }
-
-    public void openOptionMenu(final View view, final int position){
-        PopupMenu popup = new PopupMenu(view.getContext(), view);
-        popup.getMenuInflater().inflate(R.menu.menu_popup_items, popup.getMenu());
-
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.update_item_option:
-                        Snackbar.make(view, "update pressed", Snackbar.LENGTH_SHORT).show();
-                        break;
-                    case R.id.delete_item_option:
-                        Snackbar.make(view, "delete pressed", Snackbar.LENGTH_SHORT).show();
-                        break;
-                    default:
-                        Snackbar.make(view, "nothing pressed", Snackbar.LENGTH_SHORT).show();
-                        break;
-                }
-                return true;
-            }
-        });
-
-        popup.show();
     }
 }

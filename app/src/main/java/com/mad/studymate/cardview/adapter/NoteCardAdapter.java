@@ -3,7 +3,6 @@ package com.mad.studymate.cardview.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,8 +16,8 @@ import android.widget.Toast;
 import com.mad.studymate.R;
 import com.mad.studymate.activity.UpdateNoteActivity;
 import com.mad.studymate.cardview.model.Note;
+import com.mad.studymate.db.NoteDbHelper;
 import com.mad.studymate.db.StudyMateContractor;
-import com.mad.studymate.db.StudyMateDbHelper;
 
 import java.util.List;
 import java.util.Random;
@@ -27,7 +26,7 @@ public class NoteCardAdapter extends RecyclerView.Adapter<NoteCardAdapter.NoteVi
     Context context;
 
     //database helper to get every notes
-    StudyMateDbHelper mDbHelper;
+    NoteDbHelper mDbHelper;
 
     //card view clickable
     private OnItemClickListener mListener;
@@ -53,7 +52,7 @@ public class NoteCardAdapter extends RecyclerView.Adapter<NoteCardAdapter.NoteVi
     @Override
     public NoteCardAdapter.NoteViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //get notes from database
-        mDbHelper = new StudyMateDbHelper(parent.getContext());
+        mDbHelper = new NoteDbHelper(parent.getContext());
 
         //inflate the layout file
         View quizView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_note_card, parent, false);

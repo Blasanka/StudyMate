@@ -4,6 +4,7 @@ public class Task {
     private String taskTitle;
     private int priorityNo;
     private String timePeriod;
+    private String description;
     private boolean isDone = false;
 
     public Task(String taskTitle, int priorityNo, String timePeriod) {
@@ -16,6 +17,14 @@ public class Task {
     public Task(String taskTitle, int priorityNo, String timePeriod, boolean isDone) {
         this(taskTitle, priorityNo, timePeriod);
         this.isDone= isDone;
+    }
+
+    public Task(String taskTitle, int priorityNo, String timePeriod, String description, boolean isDone) {
+        this.taskTitle = taskTitle;
+        this.priorityNo = priorityNo;
+        this.timePeriod = timePeriod;
+        this.description = description;
+        this.isDone = isDone;
     }
 
     public String getTaskTitle() {
@@ -48,5 +57,13 @@ public class Task {
 
     public void setDone(boolean done) {
         isDone = done;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

@@ -2,10 +2,9 @@ package com.mad.studymate.activity;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v4.app.FragmentManager;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -14,9 +13,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.mad.studymate.R;
+import com.mad.studymate.db.NoteDbHelper;
 import com.mad.studymate.db.StudyMateContractor;
-import com.mad.studymate.db.StudyMateDbHelper;
-import com.mad.studymate.fragment.NotesFragment;
 
 public class AddNoteActivity extends AppCompatActivity {
 
@@ -29,14 +27,14 @@ public class AddNoteActivity extends AppCompatActivity {
     int paraCount;
 
     //db helper
-    StudyMateDbHelper mDbHelper;
+    NoteDbHelper mDbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_note);
 
-        mDbHelper = new StudyMateDbHelper(this);
+        mDbHelper = new NoteDbHelper(this);
 
         actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -110,10 +108,7 @@ public class AddNoteActivity extends AppCompatActivity {
 
         long newRowId = db.insert(StudyMateContractor.NoteEntry.TABLE_NAME, null, values);
 
-        if (newRowId == -1) {
-            return false;
-        }
-        return true;
+        return newRowId != -1;
     }
 
     public boolean onOptionsItemSelected(MenuItem item){

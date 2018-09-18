@@ -8,27 +8,20 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.LoaderManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.mad.studymate.R;
 import com.mad.studymate.activity.AddNoteActivity;
-import com.mad.studymate.activity.AnswerQuizActivity;
-import com.mad.studymate.activity.UpdateNoteActivity;
 import com.mad.studymate.activity.ViewNoteActivity;
 import com.mad.studymate.cardview.adapter.NoteCardAdapter;
-import com.mad.studymate.cardview.adapter.QuizCardAdapter;
 import com.mad.studymate.cardview.model.Note;
-import com.mad.studymate.cardview.model.Quiz;
+import com.mad.studymate.db.NoteDbHelper;
 import com.mad.studymate.db.StudyMateContractor;
-import com.mad.studymate.db.StudyMateDbHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +38,7 @@ public class NotesFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     //database helper to get every notes
-    StudyMateDbHelper mDbHelper;
+    NoteDbHelper mDbHelper;
 
     public NotesFragment() {
         // Required empty public constructor
@@ -78,9 +71,9 @@ public class NotesFragment extends Fragment {
         //set adapter to recyclerview
         mAdapter = new NoteCardAdapter(noteList, getActivity());
         mRecyclerView.setAdapter(mAdapter);
-        mAdapter.notifyDataSetChanged();
+//        mAdapter.notifyDataSetChanged();
 
-        //card clicked event with sending necessary data to the answering activity.
+        //card clicked event with sending necessary data to the view activity.
         mAdapter.setOnItemClickListener(new NoteCardAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
@@ -110,7 +103,7 @@ public class NotesFragment extends Fragment {
 
     private Cursor retrieveAllNotes() {
         //get notes from database
-        mDbHelper = new StudyMateDbHelper(getContext());
+        mDbHelper = new NoteDbHelper(getContext());
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
         // Define a projection that specifies which columns from the database

@@ -87,10 +87,15 @@
     <string name="note_para_text">Paragraph 1</string>
     <string name="add_new_text">Add one more paragraph</string>
 
+    <!--update note activity-->
+    <string name="update_task_bt">Update Task</string>
+
     <!--add task activity-->
     <string name="descr_text">Description</string>
     <string name="task_text">Title</string>
     <string name="priority_no_text">Priority Number</string>
+    <string name="start_time">Start Time</string>
+    <string name="end_time">End Time</string>
 
     <!--add quiz-->
     <string name="quiz_title_text">Title</string>
@@ -107,4 +112,8 @@
     <string name="view_note_tag">Tag</string>
     <string name="paragraph_one">Paragraph One</string>
     <string name="paragraph_one_view">Paragraph One</string>
+    <string name="priority_no">Priority No</string>
+    <string name="time_period">Time Period</string>
+    <string name="no_description_added">No description added</string>
+    <string name="descripton_view">Descripton</string>
 </resources>

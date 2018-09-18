@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--TODO: get dimensions of screen and substract it from bottom nav-->
+    <dimen name="not_completed_task_dimension">465dp</dimen>
+</resources>

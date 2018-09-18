@@ -5,6 +5,7 @@ import android.provider.BaseColumns;
 public class StudyMateContractor {
     private StudyMateContractor() {}
 
+    //note
     public static class NoteEntry implements BaseColumns {
         public static final String TABLE_NAME = "notes";
         public static final String COLUMN_NAME_TITLE = "title";
@@ -17,18 +18,23 @@ public class StudyMateContractor {
         public static final String COLUMN_NAME_PARAGRAPH_5 = "paragraph_5";
     }
 
-    protected static final String SQL_CREATE_ENTRIES =
-            "CREATE TABLE " + StudyMateContractor.NoteEntry.TABLE_NAME + " (" +
-                    NoteEntry._ID + " INTEGER PRIMARY KEY," +
-                    NoteEntry.COLUMN_NAME_TITLE + " TEXT," +
-                    NoteEntry.COLUMN_NAME_TAG + " TEXT," +
-                    NoteEntry.COLUMN_NAME_PARAGRAPH_COUNT + " INTEGER," +
-                    NoteEntry.COLUMN_NAME_PARAGRAPH_1 + " TEXT," +
-                    NoteEntry.COLUMN_NAME_PARAGRAPH_2 + " TEXT," +
-                    NoteEntry.COLUMN_NAME_PARAGRAPH_3 + " TEXT," +
-                    NoteEntry.COLUMN_NAME_PARAGRAPH_4 + " TEXT," +
-                    NoteEntry.COLUMN_NAME_PARAGRAPH_5 + " TEXT)";
+    public static class TaskEntry implements BaseColumns {
+        public static final String TABLE_NAME = "tasks";
+        public static final String COLUMN_NAME_TITLE = "title";
+        public static final String COLUMN_NAME_TIME_PERIOD = "time_period";
+        public static final String COLUMN_NAME_PRIORITY_NO = "priority_no";
+        public static final String COLUMN_NAME_DESCRIPTION = "description";
+        public static final String COLUMN_NAME_IS_DONE = "is_done";
+    }
 
-    protected static final String SQL_DELETE_ENTRIES =
-            "DROP TABLE IF EXISTS " + StudyMateContractor.NoteEntry.TABLE_NAME;
+    //TODO: QuizEntry not completed
+    public static class QuizEntry implements BaseColumns {
+        public static final String TABLE_NAME = "quizes";
+        public static final String COLUMN_NAME_TITLE = "title";
+        public static final String COLUMN_NAME_TAG = "tag";
+        public static final String COLUMN_NAME_TYPE = "type";
+        public static final String COLUMN_NAME_QUESTIONS_COUNT = "questions_count";
+        public static final String COLUMN_NAME_ATTEMPT_COUNT = "attempt_count";
+        public static final String COLUMN_NAME_QUIZ_SCORES = "quiz_scores";
+    }
 }

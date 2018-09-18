@@ -24,7 +24,8 @@
         <activity android:name=".activity.ViewTaskActivity" />
         <activity android:name=".activity.QnCAsActivity" />
         <activity android:name=".activity.ScoreBoardActivity" />
-        <activity android:name=".activity.UpdateNoteActivity"></activity>
+        <activity android:name=".activity.UpdateNoteActivity" />
+        <activity android:name=".activity.UpdateTaskActivity"></activity>
     </application>
 
 </manifest>

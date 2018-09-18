@@ -2,14 +2,16 @@ package com.mad.studymate.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.BaseColumns;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,14 +22,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.mad.studymate.R;
-import com.mad.studymate.ViewPagerAdapter;
 import com.mad.studymate.activity.AddTaskActivity;
-import com.mad.studymate.activity.ViewNoteActivity;
 import com.mad.studymate.activity.ViewTaskActivity;
-import com.mad.studymate.cardview.adapter.NoteCardAdapter;
 import com.mad.studymate.cardview.adapter.TaskCardAdapter;
-import com.mad.studymate.cardview.model.Note;
 import com.mad.studymate.cardview.model.Task;
+import com.mad.studymate.db.StudyMateContractor;
+import com.mad.studymate.db.TaskDbHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,8 +42,13 @@ public class TasksFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private TaskCardAdapter mAdapter;
     private List<Task> taskList;
+    boolean isDone = false;
 
     private OnFragmentInteractionListener mListener;
+
+
+    //database helper to get every task
+    TaskDbHelper mDbHelper;
 
     public TasksFragment() {
         // Required empty public constructor
@@ -73,17 +78,30 @@ public class TasksFragment extends Fragment {
         taskList.add(new Task("Read JS book", 1, "4:30 to 5:30"));
         taskList.add(new Task("Write a letter", 2, "5:30 to 6:00"));
 
+        //get notes from database
+        Cursor cursor = retrieveAllTasks();
+        while (cursor.moveToNext()) {
+            isDone = cursor.getInt(5) == 1;
+            if (!isDone)
+                taskList.add(new Task(cursor.getString(1), cursor.getInt(2), cursor.getString(3), cursor.getString(4), isDone));
+        }
+        cursor.close();
+
         //set adapter to recyclerview
         mAdapter = new TaskCardAdapter(taskList, getActivity());
         mRecyclerView.setAdapter(mAdapter);
 
-        //card clicked event with sending necessary data to the answering activity.
+        //card clicked event with sending necessary data to the task view activity.
         mAdapter.setOnItemClickListener(new TaskCardAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
                 Task task = taskList.get(position);
                 Intent intent = new Intent(getActivity(), ViewTaskActivity.class);
                 intent.putExtra("title", task.getTaskTitle());
+                intent.putExtra("priorityNo", task.getPriorityNo());
+                intent.putExtra("timePeriod", task.getTimePeriod());
+                intent.putExtra("description", task.getDescription());
+                intent.putExtra("isDone", task.isDone());
                 startActivity(intent);
             }
         });
@@ -103,6 +121,35 @@ public class TasksFragment extends Fragment {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         return view;
+    }
+
+    private Cursor retrieveAllTasks() {
+        mDbHelper = new TaskDbHelper(getContext());
+        SQLiteDatabase db = mDbHelper.getReadableDatabase();
+
+        String[] projection = {
+                BaseColumns._ID,
+                StudyMateContractor.TaskEntry.COLUMN_NAME_TITLE,
+                StudyMateContractor.TaskEntry.COLUMN_NAME_PRIORITY_NO,
+                StudyMateContractor.TaskEntry.COLUMN_NAME_TIME_PERIOD,
+                StudyMateContractor.TaskEntry.COLUMN_NAME_DESCRIPTION,
+                StudyMateContractor.TaskEntry.COLUMN_NAME_IS_DONE
+        };
+
+        String sortOrder =
+                StudyMateContractor.TaskEntry._ID + " DESC";
+
+        Cursor cursor = db.query(
+                StudyMateContractor.TaskEntry.TABLE_NAME,
+                projection,
+                null,
+                null,
+                null,
+                null,
+                sortOrder
+        );
+
+        return cursor;
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -151,16 +198,6 @@ public class TasksFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);

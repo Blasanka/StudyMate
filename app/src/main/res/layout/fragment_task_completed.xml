@@ -15,7 +15,7 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/idTasksRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="@dimen/not_completed_task_dimension"
             android:clipToPadding="false"
             android:scrollbars="vertical" />
 

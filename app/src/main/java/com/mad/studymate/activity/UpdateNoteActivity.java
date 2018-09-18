@@ -1,7 +1,6 @@
 package com.mad.studymate.activity;
 
 import android.content.ContentValues;
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -13,8 +12,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.mad.studymate.R;
+import com.mad.studymate.db.NoteDbHelper;
 import com.mad.studymate.db.StudyMateContractor;
-import com.mad.studymate.db.StudyMateDbHelper;
 
 public class UpdateNoteActivity extends AppCompatActivity {
     ActionBar actionBar;
@@ -26,7 +25,7 @@ public class UpdateNoteActivity extends AppCompatActivity {
     int paraCount;
 
     //db helper
-    StudyMateDbHelper mDbHelper;
+    NoteDbHelper mDbHelper;
 
     //to update the row in database
     String oldTitle;
@@ -36,7 +35,7 @@ public class UpdateNoteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_note);
 
-        mDbHelper = new StudyMateDbHelper(this);
+        mDbHelper = new NoteDbHelper(this);
 
         Bundle extras = getIntent().getExtras();
 
