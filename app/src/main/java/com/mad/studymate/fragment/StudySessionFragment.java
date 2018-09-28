@@ -1,6 +1,7 @@
 package com.mad.studymate.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,14 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.mad.studymate.R;
+import com.mad.studymate.activity.FridaySessionActivity;
+import com.mad.studymate.activity.MainActivity;
+import com.mad.studymate.activity.MondaySessionActivity;
+import com.mad.studymate.activity.SaturdaySessionActivity;
+import com.mad.studymate.activity.SundaySessionActivity;
+import com.mad.studymate.activity.ThursdaySessionActivity;
+import com.mad.studymate.activity.TuesdaySessionActivity;
+import com.mad.studymate.activity.WendsdaySessionActivity;
 
 public class StudySessionFragment extends Fragment {
     //List view for days of week
@@ -40,9 +49,37 @@ public class StudySessionFragment extends Fragment {
         lv.setAdapter(new ArrayAdapter<String>(getActivity(), R.layout.days_textview_listview, daysOfWeek));
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
-                // When clicked, show a toast with the TextView text
-                Toast.makeText(view.getContext(), "clicked",
-                        Toast.LENGTH_SHORT).show();
+                Intent sessionActivity;
+                switch (position) {
+                    case 0:
+                        sessionActivity = new Intent(getActivity(), MondaySessionActivity.class);
+                        startActivity(sessionActivity);
+                        break;
+                    case 1:
+                        sessionActivity = new Intent(getActivity(), TuesdaySessionActivity.class);
+                        startActivity(sessionActivity);
+                        break;
+                    case 2:
+                        sessionActivity = new Intent(getActivity(), WendsdaySessionActivity.class);
+                        startActivity(sessionActivity);
+                        break;
+                    case 3:
+                        sessionActivity = new Intent(getActivity(), ThursdaySessionActivity.class);
+                        startActivity(sessionActivity);
+                        break;
+                    case 4:
+                        sessionActivity = new Intent(getActivity(), FridaySessionActivity.class);
+                        startActivity(sessionActivity);
+                        break;
+                    case 5:
+                        sessionActivity = new Intent(getActivity(), SaturdaySessionActivity.class);
+                        startActivity(sessionActivity);
+                        break;
+                    case 6:
+                        sessionActivity = new Intent(getActivity(), SundaySessionActivity.class);
+                        startActivity(sessionActivity);
+                        break;
+                }
 
             }
 

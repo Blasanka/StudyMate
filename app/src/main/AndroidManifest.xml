@@ -25,7 +25,14 @@
         <activity android:name=".activity.QnCAsActivity" />
         <activity android:name=".activity.ScoreBoardActivity" />
         <activity android:name=".activity.UpdateNoteActivity" />
-        <activity android:name=".activity.UpdateTaskActivity"></activity>
+        <activity android:name=".activity.UpdateTaskActivity" />
+        <activity android:name=".activity.MondaySessionActivity" />
+        <activity android:name=".activity.TuesdaySessionActivity" />
+        <activity android:name=".activity.WendsdaySessionActivity" />
+        <activity android:name=".activity.ThursdaySessionActivity" />
+        <activity android:name=".activity.FridaySessionActivity" />
+        <activity android:name=".activity.SaturdaySessionActivity" />
+        <activity android:name=".activity.SundaySessionActivity"></activity>
     </application>
 
 </manifest>
