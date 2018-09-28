@@ -14,19 +14,25 @@ import android.widget.Toast;
 import com.mad.studymate.R;
 import com.mad.studymate.db.NoteDbHelper;
 import com.mad.studymate.db.StudyMateContractor;
+import com.mad.studymate.validation.TaskValidation;
 
 public class AddTaskActivity extends AppCompatActivity {
 
     ActionBar actionBar;
+
+    //layout views
     Button addTaskBt;
     EditText titleET, priorityET, startTimeET, endTimeET, descriptionET;
 
+    //variables for editTexts values
     String title, timePeriod, description;
     int priorityNo;
 
     //db helper
     NoteDbHelper mDbHelper;
 
+    //to validate tasks
+    TaskValidation taskValidate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +43,13 @@ public class AddTaskActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle("New Task");
 
+        //initialize database helper
         mDbHelper = new NoteDbHelper(this);
 
+        //initialize validate class
+        taskValidate = new TaskValidation(this);
+
+        //get layout components
         titleET = findViewById(R.id.noteTitleET);
         priorityET = findViewById(R.id.idPriorityET);
         startTimeET = findViewById(R.id.startTimeET);
@@ -47,13 +58,32 @@ public class AddTaskActivity extends AppCompatActivity {
 
         addTaskBt = findViewById(R.id.addTaskBt);
 
+        //when button clicked
         addTaskBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (insertTask() == true) {
-                    Toast.makeText(getApplicationContext(), "Task Inserted!", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), "Insert failed!", Toast.LENGTH_SHORT).show();
+
+                //assign EditTexts values to variables
+                title = titleET.getText().toString();
+                timePeriod = startTimeET.getText().toString();
+                timePeriod += " to " + endTimeET.getText().toString();
+                description = descriptionET.getText().toString();
+
+                //validate fields before insert to db
+                if (taskValidate.validateFieldsEmpty(title,
+                        priorityET.getText().toString(),
+                        startTimeET.getText().toString(),
+                        description)) {
+
+                    //to prevent number format exception if value not typed in edit text
+                    priorityNo = Integer.parseInt(priorityET.getText().toString());
+
+                    //insert to database
+                    if (insertTask() == true) {
+                        Toast.makeText(getApplicationContext(), "Task Inserted!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Insert failed!", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
@@ -61,12 +91,6 @@ public class AddTaskActivity extends AppCompatActivity {
     }
 
     private boolean insertTask() {
-
-        title = titleET.getText().toString();
-        priorityNo = Integer.parseInt(priorityET.getText().toString());
-        timePeriod = startTimeET.getText().toString();
-        timePeriod += " to " + endTimeET.getText().toString();
-        description = descriptionET.getText().toString();
 
         //database
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
