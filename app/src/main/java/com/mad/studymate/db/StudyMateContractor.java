@@ -37,4 +37,14 @@ public class StudyMateContractor {
         public static final String COLUMN_NAME_ATTEMPT_COUNT = "attempt_count";
         public static final String COLUMN_NAME_QUIZ_SCORES = "quiz_scores";
     }
+
+    public static class AttemtedQuizEntry implements BaseColumns {
+        public static final String TABLE_NAME = "attempted_quizes";
+        public static final String COLUMN_NAME_TITLE = "title";
+        public static final String COLUMN_NAME_TAG = "tag";
+        public static final String COLUMN_NAME_TYPE = "type";
+        public static final String COLUMN_NAME_QUESTIONS_COUNT = "questions_count";
+        public static final String COLUMN_NAME_ATTEMPT_COUNT = "attempt_count";
+        public static final String COLUMN_NAME_QUIZ_SCORES = "quiz_scores";
+    }
 }

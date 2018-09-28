@@ -154,15 +154,12 @@ public class NoteCardAdapter extends RecyclerView.Adapter<NoteCardAdapter.NoteVi
 
                         //delete from db
                         if(deletedRow != 0) {
-//                            Snackbar.make(view, "Successfully deleted!", Snackbar.LENGTH_SHORT).show();
                             Toast.makeText(view.getContext(), "Successfully deleted!", Toast.LENGTH_SHORT).show();
                         } else  {
-//                            Snackbar.make(view, "failed to delete!", Snackbar.LENGTH_SHORT).show();
                             Toast.makeText(view.getContext(), "failed to delete!", Toast.LENGTH_SHORT).show();
                         }
                         break;
                     default:
-//                      Snackbar.make(view, "nothing pressed", Snackbar.LENGTH_SHORT).show();
                         Toast.makeText(view.getContext(), "nothing pressed", Toast.LENGTH_SHORT).show();
                         break;
                 }

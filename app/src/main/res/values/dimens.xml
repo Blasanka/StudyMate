@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--TODO: get dimensions of screen and substract it from bottom nav-->
     <dimen name="not_completed_task_dimension">465dp</dimen>
+    <dimen name="days_tv_height">73dp</dimen>
+    <dimen name="days_tv_text_size">20sp</dimen>
 </resources>

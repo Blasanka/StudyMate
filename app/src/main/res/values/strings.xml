@@ -20,6 +20,8 @@
     <!-- Navigation Drawer menu labels -->
     <string name="nav_home">Home</string>
     <string name="nav_quizes">Quizes</string>
+    <string name="nav_attempted">Attemted Quizes</string>
+    <string name="nav_study">Study Sessions</string>
     <string name="nav_notes">Notes</string>
     <string name="nav_tasks">Tasks</string>
 
@@ -100,6 +102,7 @@
     <!--add quiz-->
     <string name="quiz_title_text">Title</string>
     <string name="quiz_add_type">Quiz Type</string>
+    <string name="quiz_add_tag">Quiz Tag</string>
     <string name="no_questions">No. Of Questions</string>
     <string name="new_quiz_bt">Next</string>
     <string name="clear_quiz_bt">Clear</string>
@@ -116,4 +119,21 @@
     <string name="time_period">Time Period</string>
     <string name="no_description_added">No description added</string>
     <string name="descripton_view">Descripton</string>
+    <string-array name="quiz_type_spinner_items">
+        <item>Single Answer</item>
+        <item>Multiple Answer</item>
+        <item>True or False</item>
+    </string-array>
+
+
+    <!--study session function strings-->
+    <string-array name="study_session_list_items">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
 </resources>

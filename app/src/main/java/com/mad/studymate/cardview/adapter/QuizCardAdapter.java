@@ -1,6 +1,7 @@
 package com.mad.studymate.cardview.adapter;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
@@ -13,12 +14,17 @@ import android.widget.TextView;
 
 import com.mad.studymate.R;
 import com.mad.studymate.cardview.model.Quiz;
+import com.mad.studymate.db.QuizDbHelper;
+import com.mad.studymate.db.StudyMateContractor;
 
 import java.util.List;
 import java.util.Random;
 
 public class QuizCardAdapter extends RecyclerView.Adapter<QuizCardAdapter.QuizViewHolder>{
     Context context;
+
+    //database helper to get every notes
+    QuizDbHelper mDbHelper;
 
     //card view clickable
     private OnItemClickListener mListener;
@@ -43,6 +49,9 @@ public class QuizCardAdapter extends RecyclerView.Adapter<QuizCardAdapter.QuizVi
 
     @Override
     public QuizCardAdapter.QuizViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        //get notes from database
+        mDbHelper = new QuizDbHelper(parent.getContext());
+
         //inflate the layout file
         View quizView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_quiz_card, parent, false);
         QuizCardAdapter.QuizViewHolder gvh = new QuizCardAdapter.QuizViewHolder(quizView, mListener);
@@ -124,12 +133,15 @@ public class QuizCardAdapter extends RecyclerView.Adapter<QuizCardAdapter.QuizVi
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
+                Quiz quiz = quizItemList.get(position);
                 switch (item.getItemId()){
                     case R.id.update_item_option:
                         Snackbar.make(view, "update pressed", Snackbar.LENGTH_SHORT).show();
                         break;
                     case R.id.delete_item_option:
-                        Snackbar.make(view, "delete pressed", Snackbar.LENGTH_SHORT).show();
+                        deleteTask(quiz.getTitle(), view);
+                        quizItemList.remove(position);
+                        notifyItemRemoved(position);
                         break;
                     default:
                         Snackbar.make(view, "nothing pressed", Snackbar.LENGTH_SHORT).show();
@@ -140,5 +152,22 @@ public class QuizCardAdapter extends RecyclerView.Adapter<QuizCardAdapter.QuizVi
         });
 
         popup.show();
+    }
+
+    private void deleteTask(String quizTitle, View view) {
+        SQLiteDatabase db = mDbHelper.getReadableDatabase();
+        // Define 'where' part of query.
+        String selection = StudyMateContractor.QuizEntry.COLUMN_NAME_TITLE + " = ?";
+        // Specify arguments in placeholder order.
+        String[] selectionArgs = {quizTitle};
+        // Issue SQL statement.
+        int deletedRow = db.delete(StudyMateContractor.QuizEntry.TABLE_NAME, selection, selectionArgs);
+
+        //delete from db
+        if (deletedRow != 0) {
+            Snackbar.make(view, "Successfully deleted!", Snackbar.LENGTH_SHORT).show();
+        } else {
+            Snackbar.make(view, "failed to delete!", Snackbar.LENGTH_SHORT).show();
+        }
     }
 }

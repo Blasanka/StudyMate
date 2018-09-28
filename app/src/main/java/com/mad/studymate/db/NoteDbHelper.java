@@ -6,11 +6,11 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class NoteDbHelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 2;
+    public static final int DATABASE_VERSION = 7;
     public static final String DATABASE_NAME = "StudyMate.db";
 
     protected static final String SQL_CREATE_ENTRIES =
-            "CREATE TABLE " + StudyMateContractor.NoteEntry.TABLE_NAME + " (" +
+            "CREATE TABLE IF NOT EXISTS " + StudyMateContractor.NoteEntry.TABLE_NAME + " (" +
                     StudyMateContractor.NoteEntry._ID + " INTEGER PRIMARY KEY," +
                     StudyMateContractor.NoteEntry.COLUMN_NAME_TITLE + " TEXT," +
                     StudyMateContractor.NoteEntry.COLUMN_NAME_TAG + " TEXT," +

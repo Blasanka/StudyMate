@@ -16,6 +16,16 @@
             android:title="@string/nav_quizes" />
 
         <item
+            android:id="@+id/action_attempted"
+            android:icon="@drawable/ic_question_answer_black_24dp"
+            android:title="@string/nav_attempted" />
+
+        <item
+            android:id="@+id/action_study_sessions"
+            android:icon="@drawable/ic_timer_black_24dp"
+            android:title="@string/nav_study" />
+
+        <item
             android:id="@+id/action_tasks"
             android:icon="@drawable/ic_today_black_24dp"
             android:title="@string/nav_tasks" />

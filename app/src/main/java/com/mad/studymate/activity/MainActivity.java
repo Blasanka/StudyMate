@@ -10,20 +10,21 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.mad.studymate.R;
+import com.mad.studymate.fragment.AttemptedQuizesFragment;
 import com.mad.studymate.fragment.HomeFragment;
 import com.mad.studymate.fragment.NotesFragment;
 import com.mad.studymate.fragment.QuizFragment;
+import com.mad.studymate.fragment.StudySessionFragment;
 import com.mad.studymate.fragment.TasksFragment;
 
 public class MainActivity extends AppCompatActivity implements HomeFragment.OnFragmentInteractionListener,
         NotesFragment.OnFragmentInteractionListener, QuizFragment.OnFragmentInteractionListener,
-        TasksFragment.OnFragmentInteractionListener {
+        TasksFragment.OnFragmentInteractionListener, AttemptedQuizesFragment.OnFragmentInteractionListener,
+        StudySessionFragment.OnFragmentInteractionListener {
 
     private android.support.v7.app.ActionBar actionbar;
     private DrawerLayout mDrawerLayout;
@@ -72,6 +73,14 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnFr
                             case R.id.action_quizes:
                                 fragmentTransaction.replace(R.id.content_frame, new QuizFragment()).commit();
                                 actionbar.setTitle(R.string.nav_quizes);
+                                break;
+                            case R.id.action_attempted:
+                                fragmentTransaction.replace(R.id.content_frame, new AttemptedQuizesFragment()).commit();
+                                actionbar.setTitle(R.string.nav_attempted);
+                                break;
+                            case R.id.action_study_sessions:
+                                fragmentTransaction.replace(R.id.content_frame, new StudySessionFragment()).commit();
+                                actionbar.setTitle(R.string.nav_study);
                                 break;
                             case R.id.action_notes:
                                 fragmentTransaction.replace(R.id.content_frame, new NotesFragment()).commit();

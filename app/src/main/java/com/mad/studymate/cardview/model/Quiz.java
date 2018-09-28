@@ -6,9 +6,9 @@ public class Quiz {
     private String quizType;
     private int questionCount;
     private int timesTaken;
-    private int scoresOfQuiz;
+    private double scoresOfQuiz;
 
-    public Quiz(String title, String quizTag, String quizType, int questionCount, int timesTaken, int scoresOfQuiz) {
+    public Quiz(String title, String quizTag, String quizType, int questionCount, int timesTaken, double scoresOfQuiz) {
         this.title = title;
         this.quizTag = quizTag;
         this.quizType = quizType;
@@ -57,11 +57,11 @@ public class Quiz {
         this.timesTaken = timesTaken;
     }
 
-    public int getScoresOfQuiz() {
+    public double getScoresOfQuiz() {
         return scoresOfQuiz;
     }
 
-    public void setScoresOfQuiz(int scoresOfQuiz) {
+    public void setScoresOfQuiz(double scoresOfQuiz) {
         this.scoresOfQuiz = scoresOfQuiz;
     }
 }

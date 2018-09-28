@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/parent_layout_padding"
+    android:paddingTop="@dimen/parent_layout_padding">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/idAttemptedQuizCardView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/cardview_layout_height"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="@dimen/cardview_layout_marginHorizontal"
+        android:layout_marginTop="@dimen/cardview_layout_marginTop"
+        android:elevation="@dimen/cardview_elevation">
+
+        <RelativeLayout
+            android:id="@+id/idAttemptedRelativeLayoutQuizeCount"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/cardview_light_background"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/idAttemptedFirstPortionLayout"
+                android:layout_width="@dimen/idFirstPortionLayout_width"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:background="@color/colorAccent"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/idAttemptedQuestionCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textSize="@dimen/first_portion_count_type" />
+
+                <TextView
+                    android:id="@+id/idAttemptedQuizesText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/idAttemptedQuestionCount"
+                    android:text="@string/question_text"
+                    android:textSize="@dimen/first_portion_text_type" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/idAttemptedSecondPortionLayout"
+                android:layout_width="@dimen/quiz_card_second_portion_width"
+                android:layout_height="fill_parent"
+                android:layout_toRightOf="@id/idAttemptedFirstPortionLayout"
+                android:background="@color/cardview_light_background"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="@dimen/second_portion_padding">
+
+                <LinearLayout
+                    android:id="@+id/idAttemptedtitleLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true">
+
+                    <!--android:layout_toRightOf="@id/idRelativeLayoutQuizeCount"-->
+                    <TextView
+                        android:id="@+id/idAttemptedTxtTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/title_text_size"
+                        tools:text="@string/quizes_text"
+                        tools:textColor="@android:color/black" />
+                    <!--android:gravity="center_horizontal"-->
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/idAttemptedTagBottomLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/idAttemptedtitleLayout"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/idAttemptedTxtTagText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/quiz_tag"
+                        android:textSize="@dimen/tag_n_type_text_size" />
+
+                    <TextView
+                        android:id="@+id/idAttemptedTxtTag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/idAttemptedTxtTagText"
+                        android:textSize="@dimen/tag_n_type_text_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/idAttemptedTypeBottomLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/idAttemptedTagBottomLayout"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/idAttemptedTxtTypeText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/quiz_type"
+                        android:textSize="@dimen/tag_n_type_text_size" />
+
+                    <TextView
+                        android:id="@+id/idAttemptedTxtType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/idAttemptedTxtTypeText"
+                        android:textSize="@dimen/tag_n_type_text_size" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/idAttemptedThirdPortionLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@id/idAttemptedSecondPortionLayout"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/idAttemptedTakenTimesLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/idAttemptedTxtTakenCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/count_text_size"
+                        tools:text="11" />
+
+                    <TextView
+                        android:id="@+id/idAttemptedTxtTakenCountText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/idAttemptedTxtTakenCountText"
+                        android:text="@string/quiz_time_taken"
+                        android:textSize="@dimen/count_num_text_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/idAttemptedQuizScoreLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/idAttemptedTakenTimesLayout"
+                    android:layout_weight="0.5"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/idAttemptedTxtScoreCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/count_text_size"
+                        tools:text="4" />
+
+                    <TextView
+                        android:id="@+id/idAttemptedTxtScoreCountText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/idAttemptedTxtTypeText"
+                        android:text="@string/quiz_score"
+                        android:textSize="@dimen/count_num_text_size" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

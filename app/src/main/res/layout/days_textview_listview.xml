@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/idDaysOfWeekTV"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/days_tv_height"
+    android:gravity="center_vertical|center_horizontal"
+    android:textSize="@dimen/days_tv_text_size" />

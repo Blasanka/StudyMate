@@ -13,7 +13,7 @@
     <color name="addBtIconTintRejected">#d50000</color>
     <color name="colorAddBt">#e8f5e9</color>
 
-    <color name="cardview_light_background">#FFFFFF</color>
+    <color name="cardview_light_background">#ffffff</color>
 </resources>
 
     <!--<?xml version="1.0" encoding="utf-8"?>--><!--<resources>--><!--<color name="colorPrimary">#3F51B5</color>--><!--<color name="colorPrimaryDark">#303F9F</color>--><!--<color name="colorAccent">#FF4081</color>--><!--</resources>-->
