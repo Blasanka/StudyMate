@@ -83,7 +83,8 @@ public class TasksFragment extends Fragment {
         while (cursor.moveToNext()) {
             isDone = cursor.getInt(5) == 1;
             if (!isDone)
-                taskList.add(new Task(cursor.getString(1), cursor.getInt(2), cursor.getString(3), cursor.getString(4), isDone));
+                taskList.add(new Task(cursor.getString(1), cursor.getInt(2), cursor.getString(3),
+                        cursor.getString(4), isDone));
         }
         cursor.close();
 
@@ -124,9 +125,12 @@ public class TasksFragment extends Fragment {
     }
 
     private Cursor retrieveAllTasks() {
+        //access to the database
         mDbHelper = new TaskDbHelper(getContext());
+        //to get values from database
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
+        //columns I want to fetch values
         String[] projection = {
                 BaseColumns._ID,
                 StudyMateContractor.TaskEntry.COLUMN_NAME_TITLE,

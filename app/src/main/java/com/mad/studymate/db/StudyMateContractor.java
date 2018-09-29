@@ -5,6 +5,10 @@ import android.provider.BaseColumns;
 public class StudyMateContractor {
     private StudyMateContractor() {}
 
+    //database config
+    public static final int DATABASE_VERSION = 8;
+    public static final String DATABASE_NAME = "StudyMate.db";
+
     //note
     public static class NoteEntry implements BaseColumns {
         public static final String TABLE_NAME = "notes";

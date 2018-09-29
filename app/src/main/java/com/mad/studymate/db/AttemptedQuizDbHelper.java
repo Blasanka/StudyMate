@@ -6,11 +6,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class AttemptedQuizDbHelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 7;
-    public static final String DATABASE_NAME = "StudyMate.db";
-
     protected static final String SQL_CREATE_ENTRIES =
-            "CREATE TABLE " + StudyMateContractor.AttemtedQuizEntry.TABLE_NAME + " (" +
+            "CREATE TABLE IF NOT EXISTS " + StudyMateContractor.AttemtedQuizEntry.TABLE_NAME + " (" +
                     StudyMateContractor.AttemtedQuizEntry._ID + " INTEGER PRIMARY KEY," +
                     StudyMateContractor.AttemtedQuizEntry.COLUMN_NAME_TITLE + " TEXT," +
                     StudyMateContractor.AttemtedQuizEntry.COLUMN_NAME_TAG + " TEXT," +
@@ -23,7 +20,12 @@ public class AttemptedQuizDbHelper extends SQLiteOpenHelper {
             "DROP TABLE IF EXISTS " + StudyMateContractor.AttemtedQuizEntry.TABLE_NAME;
 
     public AttemptedQuizDbHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, StudyMateContractor.DATABASE_NAME, null, StudyMateContractor.DATABASE_VERSION);
+    }
+
+    @Override
+    public void onOpen(SQLiteDatabase db) {
+        onCreate(db);
     }
 
     public void onCreate(SQLiteDatabase db) {

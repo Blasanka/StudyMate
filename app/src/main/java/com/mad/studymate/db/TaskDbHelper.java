@@ -6,9 +6,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class TaskDbHelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 7;
-    public static final String DATABASE_NAME = "StudyMate.db";
-
     protected static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE IF NOT EXISTS " + StudyMateContractor.TaskEntry.TABLE_NAME + " (" +
                     StudyMateContractor.TaskEntry._ID + " INTEGER PRIMARY KEY," +
@@ -22,7 +19,12 @@ public class TaskDbHelper extends SQLiteOpenHelper {
             "DROP TABLE IF EXISTS " + StudyMateContractor.TaskEntry.TABLE_NAME;
 
     public TaskDbHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, StudyMateContractor.DATABASE_NAME, null, StudyMateContractor.DATABASE_VERSION);
+    }
+
+    @Override
+    public void onOpen(SQLiteDatabase db) {
+        onCreate(db);
     }
 
     public void onCreate(SQLiteDatabase db) {
