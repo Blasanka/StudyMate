@@ -6,36 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".activity.ScoreBoardActivity">
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="169dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:text="Related Quiz"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
-
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="257dp"
-        android:layout_height="103dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:text="All Scores: 23"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/idQuizScoresTV"
         android:layout_width="257dp"
         android:layout_height="57dp"
         android:layout_marginEnd="8dp"
@@ -49,8 +21,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/idAllQuizScoresTV"
+        android:layout_width="257dp"
+        android:layout_height="103dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:text="All Scores: 23"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/idQuizScoresTV" />
+
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/idCheckAnswersBt"
         android:layout_width="169dp"
         android:layout_height="48dp"
         android:layout_marginEnd="8dp"
@@ -60,10 +47,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@id/idAllQuizScoresTV" />
 
     <Button
-        android:id="@+id/homeButton"
+        android:id="@+id/idRelatedQuizBt"
+        android:layout_width="169dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:text="Related Quiz"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/idCheckAnswersBt" />
+
+    <Button
+        android:id="@+id/idHomeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -72,6 +72,6 @@
         android:text="Home"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@id/idRelatedQuizBt" />
 
 </android.support.constraint.ConstraintLayout>

@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.mad.jsons.JsonHandler;
 import com.mad.studymate.R;
 import com.mad.studymate.cardview.model.Quiz;
 import com.mad.studymate.db.QuizDbHelper;
@@ -139,7 +140,11 @@ public class QuizCardAdapter extends RecyclerView.Adapter<QuizCardAdapter.QuizVi
                         Snackbar.make(view, "update pressed", Snackbar.LENGTH_SHORT).show();
                         break;
                     case R.id.delete_item_option:
-                        deleteTask(quiz.getTitle(), view);
+
+                        JsonHandler deleteFile = new JsonHandler(context.getApplicationContext());
+                        deleteFile.deleteFile();
+
+                        deleteQuiz(quiz.getTitle(), view);
                         quizItemList.remove(position);
                         notifyItemRemoved(position);
                         break;
@@ -154,7 +159,7 @@ public class QuizCardAdapter extends RecyclerView.Adapter<QuizCardAdapter.QuizVi
         popup.show();
     }
 
-    private void deleteTask(String quizTitle, View view) {
+    private void deleteQuiz(String quizTitle, View view) {
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
         // Define 'where' part of query.
         String selection = StudyMateContractor.QuizEntry.COLUMN_NAME_TITLE + " = ?";

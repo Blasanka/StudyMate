@@ -31,7 +31,6 @@ public class StudyMateContractor {
         public static final String COLUMN_NAME_IS_DONE = "is_done";
     }
 
-    //TODO: QuizEntry not completed
     public static class QuizEntry implements BaseColumns {
         public static final String TABLE_NAME = "quizes";
         public static final String COLUMN_NAME_TITLE = "title";

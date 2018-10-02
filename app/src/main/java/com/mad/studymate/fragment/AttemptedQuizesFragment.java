@@ -15,10 +15,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.mad.studymate.R;
-import com.mad.studymate.activity.AnswerQuizActivity;
+import com.mad.studymate.activity.AttemptsActivity;
 import com.mad.studymate.cardview.adapter.QuizCardAdapter;
 import com.mad.studymate.cardview.model.Quiz;
-import com.mad.studymate.db.AttemptedQuizDbHelper;
+import com.mad.studymate.db.QuizDbHelper;
 import com.mad.studymate.db.StudyMateContractor;
 
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ import java.util.List;
 
 public class AttemptedQuizesFragment extends Fragment {
     //database helper to get each and every quiz
-    AttemptedQuizDbHelper mDbHelper;
+    QuizDbHelper mDbHelper;
     int attemptedCount;
     private RecyclerView mRecyclerView;
     private QuizCardAdapter mAdapter;
@@ -64,9 +64,7 @@ public class AttemptedQuizesFragment extends Fragment {
         //get notes from database
         Cursor cursor = retrieveAllQuizes();
         while (cursor.moveToNext()) {
-            if (cursor.getInt(5) >= 1) {
-                quizList.add(new Quiz(cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getInt(4), cursor.getInt(5), cursor.getDouble(6)));
-            }
+            quizList.add(new Quiz(cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getInt(4), cursor.getInt(5), cursor.getDouble(6)));
         }
         cursor.close();
 
@@ -80,7 +78,7 @@ public class AttemptedQuizesFragment extends Fragment {
             public void onItemClick(int position) {
                 Quiz quiz = quizList.get(position);
                 attemptedCount = quiz.getTimesTaken();
-                Intent intent = new Intent(getActivity(), AnswerQuizActivity.class);
+                Intent intent = new Intent(getActivity(), AttemptsActivity.class);
                 intent.putExtra("title", quiz.getTitle());
                 intent.putExtra("quizTag", quiz.getQuizTag());
                 intent.putExtra("quizType", quiz.getQuizType());
@@ -119,31 +117,31 @@ public class AttemptedQuizesFragment extends Fragment {
 
     private Cursor retrieveAllQuizes() {
         //get quiz from database
-        mDbHelper = new AttemptedQuizDbHelper(getContext());
+        mDbHelper = new QuizDbHelper(getContext());
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
         // Define a projection that specifies which columns from the database
         // you will actually use after this query.
         String[] projection = {
                 BaseColumns._ID,
-                StudyMateContractor.AttemtedQuizEntry.COLUMN_NAME_TITLE,
-                StudyMateContractor.AttemtedQuizEntry.COLUMN_NAME_TAG,
-                StudyMateContractor.AttemtedQuizEntry.COLUMN_NAME_TYPE,
-                StudyMateContractor.AttemtedQuizEntry.COLUMN_NAME_QUESTIONS_COUNT,
-                StudyMateContractor.AttemtedQuizEntry.COLUMN_NAME_ATTEMPT_COUNT,
-                StudyMateContractor.AttemtedQuizEntry.COLUMN_NAME_QUIZ_SCORES
+                StudyMateContractor.QuizEntry.COLUMN_NAME_TITLE,
+                StudyMateContractor.QuizEntry.COLUMN_NAME_TAG,
+                StudyMateContractor.QuizEntry.COLUMN_NAME_TYPE,
+                StudyMateContractor.QuizEntry.COLUMN_NAME_QUESTIONS_COUNT,
+                StudyMateContractor.QuizEntry.COLUMN_NAME_ATTEMPT_COUNT,
+                StudyMateContractor.QuizEntry.COLUMN_NAME_QUIZ_SCORES
         };
 
         // Filter results WHERE "title" = 'My Title'
-        String selection = StudyMateContractor.AttemtedQuizEntry.COLUMN_NAME_TITLE + " = ?";
-        String[] selectionArgs = {attemptedCount + ""};
+        String selection = StudyMateContractor.QuizEntry.COLUMN_NAME_ATTEMPT_COUNT + " >= ?";
+        String[] selectionArgs = {1 + ""};
 
         // How you want the results sorted in the resulting Cursor
         String sortOrder =
-                StudyMateContractor.AttemtedQuizEntry._ID + " DESC";
+                StudyMateContractor.QuizEntry._ID + " DESC";
 
         Cursor cursor = db.query(
-                StudyMateContractor.AttemtedQuizEntry.TABLE_NAME,   // The table to query
+                StudyMateContractor.QuizEntry.TABLE_NAME,   // The table to query
                 projection,             // The array of columns to return (pass null to get all)
                 selection,              // The columns for the WHERE clause
                 selectionArgs,          // The values for the WHERE clause

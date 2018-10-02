@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import com.mad.studymate.R;
 import com.mad.studymate.db.QuizDbHelper;
 import com.mad.studymate.db.StudyMateContractor;
+import com.mad.studymate.validation.QuizValidation;
 
 public class AddQuizActivity extends AppCompatActivity {
 
@@ -26,6 +27,9 @@ public class AddQuizActivity extends AppCompatActivity {
 
     String title, tag, type;
     int noOfQuestions;
+
+    //to validate notes
+    QuizValidation validator;
 
     //db helper
     QuizDbHelper mDbHelper;
@@ -41,17 +45,23 @@ public class AddQuizActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle("New Quiz");
 
+        //initialize editTexts and spinner
         titleET = findViewById(R.id.quizTitleET);
         tagET = findViewById(R.id.idQuizTagET);
         typeSpinner = findViewById(R.id.idQuizTypeSpinner);
         noOfQestionsET = findViewById(R.id.idNoOfquestionsET);
 
+
+        //initialize to validate
+        validator = new QuizValidation(this);
+
         nextButton = findViewById(R.id.idNextButton);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (insertQuiz() == true) {
+                if (insertQuiz()) {
                     Intent intent = new Intent(AddQuizActivity.this, QnCAsActivity.class);
+                    intent.putExtra("quiz", titleET.getText().toString());
                     startActivity(intent);
                 } else {
                     Snackbar.make(view, "Failed to load", Snackbar.LENGTH_SHORT).show();
@@ -71,12 +81,20 @@ public class AddQuizActivity extends AppCompatActivity {
 
     public boolean insertQuiz() {
 
+        //set editTexts values to variables for future use
         title = titleET.getText().toString();
         tag = tagET.getText().toString();
         type = typeSpinner.getSelectedItem().toString();
+
+        //validate if edit texts are empty dont try to insert to db
+        if (validator.isFieldsEmpty(title, tag, type, noOfQestionsET.getText().toString())) {
+            return false;
+        }
+
+        //before trying to convert to integer ensure field is not empty otherwise have handle the err
         noOfQuestions = Integer.parseInt(noOfQestionsET.getText().toString());
 
-        //database
+        //get writable access to database
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();

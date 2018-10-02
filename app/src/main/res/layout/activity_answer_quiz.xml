@@ -11,7 +11,7 @@
 
 
     <TextView
-        android:id="@+id/idQuestionET"
+        android:id="@+id/idQuestionTV"
         android:layout_width="0dp"
         android:layout_height="39dp"
         android:layout_marginEnd="8dp"
@@ -35,8 +35,8 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.066"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idQuestionET">
+        app:layout_constraintStart_toStartOf="@id/idQuestionTV"
+        app:layout_constraintTop_toBottomOf="@id/idQuestionTV">
 
         <RadioButton
             android:id="@+id/idTrueRadio"
@@ -52,7 +52,7 @@
     </RadioGroup>
 
     <TextView
-        android:id="@+id/idQuestionET2"
+        android:id="@+id/idQuestionTV2"
         android:layout_width="0dp"
         android:layout_height="66dp"
         android:layout_marginEnd="8dp"
@@ -63,7 +63,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idTrueFalseGroup" />
+        app:layout_constraintTop_toBottomOf="@id/idTrueFalseGroup" />
 
     <RadioGroup
         android:id="@+id/idTrueFalseGroup2"
@@ -77,7 +77,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.066"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idQuestionET2">
+        app:layout_constraintTop_toBottomOf="@id/idQuestionTV2">
 
         <RadioButton
             android:id="@+id/idTrueRadio2"
