@@ -14,10 +14,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.mad.studymate.R;
-import com.mad.studymate.db.AttemptedQuizDbHelper;
-import com.mad.studymate.db.NoteDbHelper;
-import com.mad.studymate.db.QuizDbHelper;
-import com.mad.studymate.db.TaskDbHelper;
 import com.mad.studymate.fragment.AttemptedQuizesFragment;
 import com.mad.studymate.fragment.HomeFragment;
 import com.mad.studymate.fragment.NotesFragment;
@@ -33,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnFr
     private android.support.v7.app.ActionBar actionbar;
     private DrawerLayout mDrawerLayout;
     private NavigationView navigationView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

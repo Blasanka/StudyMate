@@ -1,9 +1,8 @@
 package com.mad.studymate.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -14,7 +13,8 @@ import com.mad.studymate.R;
 import com.mad.studymate.fragment.AttemptedQuizesFragment;
 import com.mad.studymate.fragment.QuizFragment;
 
-public class ScoreBoardActivity extends AppCompatActivity {
+public class ScoreBoardActivity extends AppCompatActivity implements QuizFragment.OnFragmentInteractionListener,
+        AttemptedQuizesFragment.OnFragmentInteractionListener {
 
     ActionBar actionBar;
 
@@ -38,17 +38,12 @@ public class ScoreBoardActivity extends AppCompatActivity {
             quizScoresTv.setText(String.valueOf(extras.getDouble("scores")));
         }
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-
         checkAnswersButton = findViewById(R.id.idCheckAnswersBt);
         checkAnswersButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fragmentTransaction.replace(R.id.content_frame, new AttemptedQuizesFragment()).commit();
-                actionBar.setTitle(R.string.nav_attempted);
-                finish();
+                //TODO: button is not workin
+//                finish();
             }
         });
 
@@ -56,9 +51,8 @@ public class ScoreBoardActivity extends AppCompatActivity {
         relatedQuizButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fragmentTransaction.replace(R.id.content_frame, new QuizFragment()).commit();
-                actionBar.setTitle(R.string.nav_quizes);
-                finish();
+                //TODO: button is not workin
+//                finish();
             }
         });
 
@@ -83,5 +77,10 @@ public class ScoreBoardActivity extends AppCompatActivity {
 //        } else {
 //            super.onBackPressed();
 //        }
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }

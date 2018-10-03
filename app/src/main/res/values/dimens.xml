@@ -3,4 +3,10 @@
     <dimen name="not_completed_task_dimension">465dp</dimen>
     <dimen name="days_tv_height">73dp</dimen>
     <dimen name="days_tv_text_size">20sp</dimen>
+    <dimen name="square_item_height">300dp</dimen>
+    <dimen name="grid_card_padding">20dp</dimen>
+    <dimen name="vertical_spacing_grid">50dp</dimen>
+    <dimen name="horizonta_spacing_grid">15dp</dimen>
+    <dimen name="grid_cpl_width">130dp</dimen>
+    <dimen name="grid_padding">30dp</dimen>
 </resources>
