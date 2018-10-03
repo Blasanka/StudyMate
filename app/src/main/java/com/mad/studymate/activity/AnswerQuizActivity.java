@@ -14,7 +14,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-import com.mad.jsons.JsonHandler;
+import com.mad.studymate.jsons.JsonHandler;
 import com.mad.studymate.R;
 import com.mad.studymate.db.QuizDbHelper;
 import com.mad.studymate.db.StudyMateContractor;
@@ -72,8 +72,9 @@ public class AnswerQuizActivity extends AppCompatActivity {
         quizObjects = new ArrayList();
         JsonHandler json = new JsonHandler(getApplicationContext());
         try {
-            JSONObject obj = new JSONObject(json.readJsonFile());
-            JSONArray qustionArray = obj.getJSONArray(quizTitle);
+            if(json.readJsonFile() != null) {
+                JSONObject obj = new JSONObject(json.readJsonFile());
+                JSONArray qustionArray = obj.getJSONArray(quizTitle);
 
             for (int a = 0; a < qustionArray.length(); a++) {
                 quizObjects.add((JSONObject) qustionArray.get(a));
@@ -81,6 +82,7 @@ public class AnswerQuizActivity extends AppCompatActivity {
 
             idQuestionTV.setText(quizObjects.get(0).get("question").toString());
             idQuestionTV2.setText(quizObjects.get(1).get("question").toString());
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }

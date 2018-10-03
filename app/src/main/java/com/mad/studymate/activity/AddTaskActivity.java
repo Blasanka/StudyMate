@@ -12,8 +12,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.mad.studymate.R;
-import com.mad.studymate.db.NoteDbHelper;
 import com.mad.studymate.db.StudyMateContractor;
+import com.mad.studymate.db.TaskDbHelper;
 import com.mad.studymate.validation.TaskValidation;
 
 public class AddTaskActivity extends AppCompatActivity {
@@ -29,7 +29,7 @@ public class AddTaskActivity extends AppCompatActivity {
     int priorityNo;
 
     //db helper
-    NoteDbHelper mDbHelper;
+    TaskDbHelper mDbHelper;
 
     //to validate tasks
     TaskValidation taskValidate;
@@ -44,7 +44,7 @@ public class AddTaskActivity extends AppCompatActivity {
         actionBar.setTitle("New Task");
 
         //initialize database helper
-        mDbHelper = new NoteDbHelper(this);
+        mDbHelper = new TaskDbHelper(this);
 
         //initialize validate class
         taskValidate = new TaskValidation(this);
@@ -78,11 +78,13 @@ public class AddTaskActivity extends AppCompatActivity {
                     //to prevent number format exception if value not typed in edit text
                     priorityNo = Integer.parseInt(priorityET.getText().toString());
 
-                    //insert to database
-                    if (insertTask() == true) {
-                        Toast.makeText(getApplicationContext(), "Task Inserted!", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Insert failed!", Toast.LENGTH_SHORT).show();
+                    if(taskValidate.validatePriorityNo(priorityNo)) {
+                        //insert to database
+                        if (insertTask() == true) {
+                            Toast.makeText(getApplicationContext(), "Task Inserted!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Insert failed!", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
             }

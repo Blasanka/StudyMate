@@ -1,4 +1,4 @@
-package com.mad.jsons;
+package com.mad.studymate.jsons;
 
 import android.content.Context;
 

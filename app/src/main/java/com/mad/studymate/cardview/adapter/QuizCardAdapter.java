@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.mad.jsons.JsonHandler;
+import com.mad.studymate.jsons.JsonHandler;
 import com.mad.studymate.R;
 import com.mad.studymate.cardview.model.Quiz;
 import com.mad.studymate.db.QuizDbHelper;

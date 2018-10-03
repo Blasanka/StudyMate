@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
-import com.mad.jsons.JsonHandler;
+import com.mad.studymate.jsons.JsonHandler;
 import com.mad.studymate.R;
 
 import org.json.JSONArray;
