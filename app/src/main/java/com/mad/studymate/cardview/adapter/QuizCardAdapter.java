@@ -18,6 +18,7 @@ import com.mad.studymate.cardview.model.Quiz;
 import com.mad.studymate.db.QuizDbHelper;
 import com.mad.studymate.db.StudyMateContractor;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -174,5 +175,23 @@ public class QuizCardAdapter extends RecyclerView.Adapter<QuizCardAdapter.QuizVi
         } else {
             Snackbar.make(view, "failed to delete!", Snackbar.LENGTH_SHORT).show();
         }
+    }
+
+    //TODO: not functioning properly when no values in the search box -> best way to fetch from db
+    public void filter(String text) {
+        List<Quiz> tempList = new ArrayList();
+        tempList.addAll(quizItemList);
+        quizItemList.clear();
+        if(text.isEmpty()) {
+            quizItemList.addAll(tempList);
+        } else {
+            text = text.toLowerCase();
+            for(Quiz item: tempList){
+                if(item.getTitle().toLowerCase().contains(text) || item.getQuizTag().toLowerCase().contains(text)){
+                    quizItemList.add(item);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 }

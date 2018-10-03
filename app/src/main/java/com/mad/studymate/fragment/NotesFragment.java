@@ -9,9 +9,15 @@ import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -27,6 +33,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NotesFragment extends Fragment {
+
+    private Menu menu;
+    private SearchView mSearchView;
 
     //add notes fab
     FloatingActionButton fab;
@@ -71,7 +80,9 @@ public class NotesFragment extends Fragment {
         //set adapter to recyclerview
         mAdapter = new NoteCardAdapter(noteList, getActivity());
         mRecyclerView.setAdapter(mAdapter);
-//        mAdapter.notifyDataSetChanged();
+        mAdapter.notifyDataSetChanged();
+
+        setHasOptionsMenu(true);
 
         //card clicked event with sending necessary data to the view activity.
         mAdapter.setOnItemClickListener(new NoteCardAdapter.OnItemClickListener() {
@@ -157,5 +168,28 @@ public class NotesFragment extends Fragment {
 
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_search, menu);
+        super.onCreateOptionsMenu(menu,inflater);
+
+        final MenuItem searchItem = menu.findItem(R.id.action_search);
+        mSearchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+
+        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                mAdapter.filter(query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                mAdapter.filter(newText);
+                return true;
+            }
+        });
     }
 }

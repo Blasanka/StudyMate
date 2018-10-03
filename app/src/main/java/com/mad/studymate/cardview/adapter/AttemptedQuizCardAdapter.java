@@ -9,9 +9,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mad.studymate.R;
+import com.mad.studymate.cardview.model.Note;
 import com.mad.studymate.cardview.model.Quiz;
 import com.mad.studymate.db.AttemptedQuizDbHelper;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -102,5 +104,23 @@ public class AttemptedQuizCardAdapter extends RecyclerView.Adapter<AttemptedQuiz
                 }
             });
         }
+    }
+
+    //TODO: not functioning properly when no values in the search box -> best way to fetch from db
+    public void filter(String text) {
+        List<Quiz> tempList = new ArrayList();
+        tempList.addAll(attemtedQuizItemList);
+        attemtedQuizItemList.clear();
+        if(text.isEmpty()) {
+            attemtedQuizItemList.addAll(tempList);
+        } else {
+            text = text.toLowerCase();
+            for(Quiz item: tempList){
+                if(item.getTitle().toLowerCase().contains(text) || item.getQuizTag().toLowerCase().contains(text)){
+                    attemtedQuizItemList.add(item);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 }

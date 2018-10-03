@@ -8,9 +8,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -25,8 +30,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AttemptedQuizesFragment extends Fragment {
+
     //database helper to get each and every quiz
     QuizDbHelper mDbHelper;
+
+    private Menu menu;
+    private SearchView mSearchView;
+
     int attemptedCount;
     private RecyclerView mRecyclerView;
     private QuizCardAdapter mAdapter;
@@ -71,6 +81,8 @@ public class AttemptedQuizesFragment extends Fragment {
         //set adapter to recyclerview
         mAdapter = new QuizCardAdapter(quizList, getActivity());
         mRecyclerView.setAdapter(mAdapter);
+
+        setHasOptionsMenu(true);
 
         //card clicked event with sending necessary data to the answering activity.
         mAdapter.setOnItemClickListener(new QuizCardAdapter.OnItemClickListener() {
@@ -155,5 +167,28 @@ public class AttemptedQuizesFragment extends Fragment {
 
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_search, menu);
+        super.onCreateOptionsMenu(menu,inflater);
+
+        final MenuItem searchItem = menu.findItem(R.id.action_search);
+        mSearchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+
+        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                mAdapter.filter(query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                mAdapter.filter(newText);
+                return true;
+            }
+        });
     }
 }

@@ -19,6 +19,7 @@ import com.mad.studymate.cardview.model.Note;
 import com.mad.studymate.db.NoteDbHelper;
 import com.mad.studymate.db.StudyMateContractor;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -168,5 +169,23 @@ public class NoteCardAdapter extends RecyclerView.Adapter<NoteCardAdapter.NoteVi
         });
 
         popup.show();
+    }
+
+    //TODO: not functioning properly when no values in the search box -> best way to fetch from db
+    public void filter(String text) {
+        List<Note> tempList = new ArrayList();
+        tempList.addAll(noteItemList);
+        noteItemList.clear();
+        if(text.isEmpty()) {
+            noteItemList.addAll(tempList);
+        } else {
+            text = text.toLowerCase();
+            for(Note item: tempList){
+                if(item.getNoteTitle().toLowerCase().contains(text) || item.getNoteTag().toLowerCase().contains(text)){
+                    noteItemList.add(item);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 }

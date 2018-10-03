@@ -18,10 +18,12 @@ import android.widget.Toast;
 
 import com.mad.studymate.R;
 import com.mad.studymate.activity.UpdateTaskActivity;
+import com.mad.studymate.cardview.model.Note;
 import com.mad.studymate.cardview.model.Task;
 import com.mad.studymate.db.StudyMateContractor;
 import com.mad.studymate.db.TaskDbHelper;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -223,5 +225,23 @@ public class TaskCardAdapter extends RecyclerView.Adapter<TaskCardAdapter.TaskVi
                 }
             });
         }
+    }
+
+    //TODO: not functioning properly when no values in the search box -> best way to fetch from db
+    public void filter(String text) {
+        List<Task> tempList = new ArrayList();
+        tempList.addAll(taskItemList);
+        taskItemList.clear();
+        if(text.isEmpty()) {
+            taskItemList.addAll(tempList);
+        } else {
+            text = text.toLowerCase();
+            for(Task item: tempList){
+                if(item.getTaskTitle().toLowerCase().contains(text) || String.valueOf(item.getPriorityNo()).contains(text)){
+                    taskItemList.add(item);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 }
