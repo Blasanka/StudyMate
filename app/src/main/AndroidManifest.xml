@@ -39,6 +39,10 @@
         <activity android:name=".activity.SaturdaySessionActivity" />
         <activity android:name=".activity.SundaySessionActivity" />
         <activity android:name=".activity.AttemptsActivity"></activity>
+
+        <activity android:name=".activity.AddSessionActivity" />
+        <activity android:name=".activity.ViewSessionActivity" />
+        <activity android:name=".activity.UpdateSessionActivity"></activity>
     </application>
 
 </manifest>

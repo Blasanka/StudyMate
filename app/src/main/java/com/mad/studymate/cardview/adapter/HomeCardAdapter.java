@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.mad.studymate.R;
 import com.mad.studymate.db.NoteDbHelper;
 import com.mad.studymate.db.QuizDbHelper;
+import com.mad.studymate.db.SessionDbHelper;
 import com.mad.studymate.db.TaskDbHelper;
 
 import java.util.ArrayList;
@@ -98,9 +99,10 @@ public class HomeCardAdapter extends BaseAdapter {
         countList.add(taskDbHelper.getTasksCount());
         taskDbHelper.close();
 
-        //TODO: study session still not
+        SessionDbHelper sessionDbHelper = new SessionDbHelper(context);
         //study session count
-        countList.add(new Long(3));
+        countList.add(sessionDbHelper.getSessionsCount());
+        sessionDbHelper.close();
 
         //high priority
         countList.add(new Long(2));

@@ -50,4 +50,15 @@ public class StudyMateContractor {
         public static final String COLUMN_NAME_ATTEMPT_COUNT = "attempt_count";
         public static final String COLUMN_NAME_QUIZ_SCORES = "quiz_scores";
     }
+
+    public static class SessionEntry implements BaseColumns {
+        public static final String TABLE_NAME = "study_session";
+        public static final String Col_1 = "Lesson_Name";
+        public static final String Col_2 = "Description";
+        public static final String Col_3 = "wFrom";
+        public static final String Col_4 = "wTo";
+        public static final String Col_5 = "Complete";
+        public static final String Col_6 = "Day";
+
+    }
 }

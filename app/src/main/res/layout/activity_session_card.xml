@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp">
+
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        card_view:cardCornerRadius="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+
+            >
+
+            <LinearLayout
+                android:id="@+id/idFirstSessionLayout"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@color/card_first_portion"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="From" />
+
+                <TextView
+                    android:id="@+id/tfrom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="10:00 AM"
+                    android:textSize="20dp"
+
+                    />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="To" />
+
+                <TextView
+                    android:id="@+id/tto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="12:00 PM"
+                    android:textSize="20dp"
+
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/idFirstSessionLayout"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tTile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Title"
+                    android:textSize="30dp" />
+
+                <ProgressBar
+
+                    android:id="@+id/comp"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="240dp"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:progress="25"
+
+                    />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/info_text"
+            android:layout_width="443dp"
+            android:layout_height="match_parent" />
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
