@@ -8,67 +8,67 @@
 
     <TextView
         android:id="@+id/idViewPriority"
-        android:layout_width="126dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="@dimen/task_priority_view_width"
+        android:layout_height="@dimen/task_priority_view_height"
+        android:layout_marginStart="@dimen/header_pad_all"
+        android:layout_marginTop="@dimen/task_priority_view_margin_top"
         android:gravity="center_vertical"
         android:text="Priority Number"
         android:textColor="@android:color/black"
         android:textSize="@dimen/header_pad_all"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timePeriodView" />
+        app:layout_constraintTop_toBottomOf="@id/timePeriodView" />
 
     <TextView
         android:id="@+id/idViewPriorityNo"
-        android:layout_width="204dp"
-        android:layout_height="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="@dimen/task_priority_no_view_width"
+        android:layout_height="@dimen/task_add_end_time_margin_top"
+        android:layout_marginEnd="@dimen/note_title_margin_end"
+        android:layout_marginStart="@dimen/note_title_margin_end"
+        android:layout_marginTop="@dimen/task_add_desc_margin_top"
         android:gravity="center_vertical"
         android:hint="@string/priority_no"
-        android:textSize="18sp"
+        android:textSize="@dimen/view_task_18sp_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.636"
-        app:layout_constraintStart_toEndOf="@+id/idViewPriority"
-        app:layout_constraintTop_toBottomOf="@+id/idViewTimePeriod" />
+        app:layout_constraintStart_toEndOf="@id/idViewPriority"
+        app:layout_constraintTop_toBottomOf="@id/idViewTimePeriod" />
 
     <TextView
         android:id="@+id/idViewTimePeriod"
-        android:layout_width="205dp"
-        android:layout_height="35dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="@dimen/task_view_time_period_width"
+        android:layout_height="@dimen/task_view_time_period_height"
+        android:layout_marginEnd="@dimen/task_view_time_period_margin_end"
+        android:layout_marginStart="@dimen/note_title_margin_end"
+        android:layout_marginTop="@dimen/update_task_layout_margin"
         android:gravity="center_vertical"
         android:text="@string/time_period"
-        android:textSize="18sp"
+        android:textSize="@dimen/view_task_18sp_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.928"
-        app:layout_constraintStart_toEndOf="@+id/timePeriodView"
+        app:layout_constraintStart_toEndOf="@id/timePeriodView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/idViewDescription"
-        android:layout_width="331dp"
-        android:layout_height="170dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="@dimen/task_view_desc_width"
+        android:layout_height="@dimen/task_view_desc_height"
+        android:layout_marginEnd="@dimen/note_title_margin_end"
+        android:layout_marginStart="@dimen/note_title_margin_end"
+        android:layout_marginTop="@dimen/task_priority_view_margin_top"
         android:hint="@string/no_description_added"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idViewDesc" />
+        app:layout_constraintTop_toBottomOf="@id/idViewDesc" />
 
     <TextView
         android:id="@+id/idViewDesc"
-        android:layout_width="168dp"
-        android:layout_height="30dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="@dimen/task_view_iddesc_width"
+        android:layout_height="@dimen/task_view_iddesc_height"
+        android:layout_marginEnd="@dimen/note_title_margin_end"
+        android:layout_marginStart="@dimen/task_view_time_period_margin_end"
+        android:layout_marginTop="@dimen/task_view_desc_margin_top"
         android:gravity="center_vertical"
         android:text="@string/descripton_view"
         android:textColor="@android:color/black"
@@ -76,18 +76,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idViewPriority" />
+        app:layout_constraintTop_toBottomOf="@id/idViewPriority" />
 
     <TextView
         android:id="@+id/timePeriodView"
         android:layout_width="wrap_content"
-        android:layout_height="44dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="@dimen/task_view_time_period_view_height"
+        android:layout_marginStart="@dimen/task_view_time_period_margin_end"
+        android:layout_marginTop="@dimen/task_view_time_period_margin_end"
         android:gravity="center_vertical"
         android:text="Time Period"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="@dimen/view_task_18sp_text_size"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

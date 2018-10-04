@@ -28,9 +28,26 @@
     <dimen name="view_note_para_one_margin_top">16dp</dimen>
     <dimen name="note_view_para_one_id_width">333dp</dimen>
     <dimen name="note_view_para_one_id_height">145dp</dimen>
+
+    <!--Task function dimensions-->
+    <dimen name="update_task_layout_margin">20dp</dimen>
     <dimen name="add_task_title_width">321dp</dimen>
     <dimen name="task_add_end_time_width">151dp</dimen>
     <dimen name="task_add_end_time_margin_top">32dp</dimen>
     <dimen name="task_add_start_time_width">140dp</dimen>
     <dimen name="task_add_desc_margin_top">36dp</dimen>
+    <dimen name="task_priority_view_width">126dp</dimen>
+    <dimen name="task_priority_view_height">46dp</dimen>
+    <dimen name="task_priority_view_margin_top">24dp</dimen>
+    <dimen name="task_priority_no_view_width">204dp</dimen>
+    <dimen name="view_task_18sp_text_size">18sp</dimen>
+    <dimen name="task_view_time_period_width">205dp</dimen>
+    <dimen name="task_view_time_period_height">35dp</dimen>
+    <dimen name="task_view_time_period_margin_end">16dp</dimen>
+    <dimen name="task_view_desc_width">331dp</dimen>
+    <dimen name="task_view_desc_height">170dp</dimen>
+    <dimen name="task_view_iddesc_width">168dp</dimen>
+    <dimen name="task_view_iddesc_height">30dp</dimen>
+    <dimen name="task_view_desc_margin_top">28dp</dimen>
+    <dimen name="task_view_time_period_view_height">44dp</dimen>
 </resources>

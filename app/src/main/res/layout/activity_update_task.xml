@@ -40,11 +40,11 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/noteTitleUpdateET"
-        android:layout_width="321dp"
+        android:id="@+id/taskTitleUpdateET"
+        android:layout_width="@dimen/add_task_title_width"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="@dimen/margin_end"
+        android:layout_marginStart="@dimen/margin_end"
         android:layout_marginTop="@dimen/margin_top"
         android:ems="10"
         android:hint="@string/task_text"
@@ -55,33 +55,33 @@
 
     <EditText
         android:id="@+id/endTimeUpdateET"
-        android:layout_width="151dp"
+        android:layout_width="@dimen/task_add_end_time_width"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="@dimen/margin_end"
+        android:layout_marginEnd="@dimen/margin_end"
+        android:layout_marginTop="@dimen/task_add_end_time_margin_top"
         android:ems="10"
         android:hint="@string/end_time"
         android:inputType="time"
-        app:layout_constraintBottom_toTopOf="@+id/descriptionET"
+        app:layout_constraintBottom_toTopOf="@id/descriptionET"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/noteTitleUpdateET"
+        app:layout_constraintTop_toBottomOf="@id/taskTitleUpdateET"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/startTimeUpdateET"
-        android:layout_width="140dp"
+        android:layout_width="@dimen/task_add_start_time_width"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginEnd="@dimen/update_task_layout_margin"
+        android:layout_marginStart="@dimen/margin_end"
+        android:layout_marginTop="@dimen/task_add_end_time_margin_top"
         android:ems="10"
         android:hint="@string/start_time"
         android:inputType="time"
-        app:layout_constraintEnd_toStartOf="@+id/endTimeUpdateET"
+        app:layout_constraintEnd_toStartOf="@id/endTimeUpdateET"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/noteTitleUpdateET" />
+        app:layout_constraintTop_toBottomOf="@id/taskTitleUpdateET" />
 
     <EditText
         android:id="@+id/descriptionUpdateET"
@@ -89,7 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/margin_end"
         android:layout_marginStart="@dimen/margin_end"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="@dimen/task_add_desc_margin_top"
         android:ems="10"
         android:hint="@string/descr_text"
         android:inputType="textMultiLine"
@@ -98,7 +98,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startTimeUpdateET" />
+        app:layout_constraintTop_toBottomOf="@id/startTimeUpdateET" />
 
     <Button
         android:id="@+id/updateTaskBt"
@@ -106,13 +106,13 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/margin_end"
         android:layout_marginStart="@dimen/margin_end"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/margin_end"
         android:text="@string/update_task_bt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionUpdateET"
+        app:layout_constraintTop_toBottomOf="@id/descriptionUpdateET"
         app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>
