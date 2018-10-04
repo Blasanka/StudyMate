@@ -28,4 +28,9 @@
     <dimen name="view_note_para_one_margin_top">16dp</dimen>
     <dimen name="note_view_para_one_id_width">333dp</dimen>
     <dimen name="note_view_para_one_id_height">145dp</dimen>
+    <dimen name="add_task_title_width">321dp</dimen>
+    <dimen name="task_add_end_time_width">151dp</dimen>
+    <dimen name="task_add_end_time_margin_top">32dp</dimen>
+    <dimen name="task_add_start_time_width">140dp</dimen>
+    <dimen name="task_add_desc_margin_top">36dp</dimen>
 </resources>
