@@ -5,6 +5,7 @@ public class Note {
     private String noteTag;
     private int paragraphCount;
     private String paragraphOne;
+    private String paragraphTwo;
 
     public Note(String noteTitle, String noteTag, int paragraphCount) {
         this.noteTitle = noteTitle;
@@ -12,11 +13,12 @@ public class Note {
         this.paragraphCount = paragraphCount;
     }
 
-    public Note(String noteTitle, String noteTag, int paragraphCount, String paragraphOne) {
+    public Note(String noteTitle, String noteTag, int paragraphCount, String paragraphOne, String paragraphTwo) {
         this.noteTitle = noteTitle;
         this.noteTag = noteTag;
         this.paragraphCount = paragraphCount;
         this.paragraphOne = paragraphOne;
+        this.paragraphTwo = paragraphTwo;
     }
 
     public String getNoteTitle() {
@@ -49,5 +51,9 @@ public class Note {
 
     public void setParagraphOne(String paragraphOne) {
         this.paragraphOne = paragraphOne;
+    }
+
+    public String getParagraphTwo() {
+        return paragraphTwo;
     }
 }

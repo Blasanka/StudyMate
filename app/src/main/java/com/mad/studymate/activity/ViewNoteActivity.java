@@ -13,9 +13,9 @@ public class ViewNoteActivity extends AppCompatActivity {
 
     ActionBar actionBar;
 
-    TextView viewTitleTV, viewTagTV, viewParaOneTV, vieweParaTwoTV, viewParaThreeTV, viewParaFourTV, viewParaFiveTV;
+    TextView viewTagTV, viewParaOneTV, vieweParaTwoTV;
 
-    String noteTitle = "", tag = "", paraOne = "", paraTwo, paraThree, paraFour, paraFive;
+    String noteTitle = "";
     int paraCount;
 
     @Override
@@ -29,12 +29,14 @@ public class ViewNoteActivity extends AppCompatActivity {
         //viewTitleTV = findViewById(R.id.viewNoteTagId);
         viewTagTV = findViewById(R.id.viewNoteTagId);
         viewParaOneTV = findViewById(R.id.viewParagraphOneId);
+        vieweParaTwoTV = findViewById(R.id.viewParagraphTwoId);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             noteTitle = extras.getString("title");
             viewTagTV.setText(extras.getString("noteTag"));
             viewParaOneTV.setText(extras.getString("noteParaOne"));
+            vieweParaTwoTV.setText(extras.getString("noteParaTwo"));
 
             paraCount = extras.getInt("noteParaCount", 1);
 

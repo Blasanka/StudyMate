@@ -8,38 +8,25 @@
 
     <TextView
         android:id="@+id/viewNoteTagId"
-        android:layout_width="303dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="@dimen/activity_view_note_tag_width"
+        android:layout_height="@dimen/activity_view_note_tag_height"
+        android:layout_marginEnd="@dimen/activity_view_note_tag_margin_end"
+        android:layout_marginStart="@dimen/note_title_margin_end"
+        android:layout_marginTop="@dimen/note_title_margin_end"
         android:gravity="center_vertical"
         android:text="@string/view_note_tag"
         android:textSize="@dimen/header_pad_all"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/viewTag"
+        app:layout_constraintStart_toEndOf="@id/viewTag"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/viewParagraphOneId"
-        android:layout_width="333dp"
-        android:layout_height="145dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:hint="@string/paragraph_one"
-        android:textSize="@dimen/header_pad_all"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/paraOne" />
-
-    <TextView
         android:id="@+id/viewTag"
-        android:layout_width="37dp"
-        android:layout_height="39dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="@dimen/view_note_tag_width"
+        android:layout_height="@dimen/view_note_tag_height"
+        android:layout_marginEnd="@dimen/note_title_margin_end"
+        android:layout_marginStart="@dimen/note_title_margin_end"
+        android:layout_marginTop="@dimen/note_title_margin_end"
         android:gravity="center_vertical"
         android:text="Tag"
         android:textColor="@android:color/black"
@@ -51,11 +38,11 @@
 
     <TextView
         android:id="@+id/paraOne"
-        android:layout_width="118dp"
-        android:layout_height="21dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="@dimen/note_para_one_width"
+        android:layout_height="@dimen/note_para_one_height"
+        android:layout_marginEnd="@dimen/note_title_margin_end"
+        android:layout_marginStart="@dimen/note_title_margin_end"
+        android:layout_marginTop="@dimen/view_note_para_one_margin_top"
         android:gravity="center_vertical"
         android:text="@string/paragraph_one_view"
         android:textColor="@android:color/black"
@@ -63,5 +50,47 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.032"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewTag" />
+        app:layout_constraintTop_toBottomOf="@id/viewTag" />
+
+    <TextView
+        android:id="@+id/viewParagraphOneId"
+        android:layout_width="@dimen/note_view_para_one_id_width"
+        android:layout_height="@dimen/note_view_para_one_id_height"
+        android:layout_marginEnd="@dimen/note_title_margin_end"
+        android:layout_marginStart="@dimen/note_title_margin_end"
+        android:layout_marginTop="@dimen/update_note_layout_margin"
+        android:hint="@string/paragraph_one"
+        android:textSize="@dimen/header_pad_all"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/paraOne" />
+
+    <TextView
+        android:id="@+id/paraTwo"
+        android:layout_width="@dimen/note_para_one_width"
+        android:layout_height="@dimen/note_para_one_height"
+        android:layout_marginEnd="@dimen/note_title_margin_end"
+        android:layout_marginStart="@dimen/note_title_margin_end"
+        android:layout_marginTop="@dimen/view_note_para_one_margin_top"
+        android:gravity="center_vertical"
+        android:text="@string/paragraph_two_view"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/header_pad_all"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.032"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewParagraphOneId" />
+
+    <TextView
+        android:id="@+id/viewParagraphTwoId"
+        android:layout_width="@dimen/note_view_para_one_id_width"
+        android:layout_height="@dimen/note_view_para_one_id_height"
+        android:layout_marginEnd="@dimen/note_title_margin_end"
+        android:layout_marginStart="@dimen/note_title_margin_end"
+        android:layout_marginTop="@dimen/update_note_layout_margin"
+        android:hint="@string/paragraph_two"
+        android:textSize="@dimen/header_pad_all"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/paraTwo" />
 </android.support.constraint.ConstraintLayout>

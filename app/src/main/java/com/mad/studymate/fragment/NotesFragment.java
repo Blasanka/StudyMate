@@ -73,7 +73,7 @@ public class NotesFragment extends Fragment {
         //get notes from database
         Cursor cursor = retrieveAllNotes();
         while(cursor.moveToNext()) {
-            noteList.add(new Note(cursor.getString(1), cursor.getString(2), cursor.getInt(3), cursor.getString(4)));
+            noteList.add(new Note(cursor.getString(1), cursor.getString(2), cursor.getInt(3), cursor.getString(4), cursor.getString(5)));
         }
         cursor.close();
 
@@ -94,6 +94,7 @@ public class NotesFragment extends Fragment {
                 intent.putExtra("noteTag", note.getNoteTag());
                 intent.putExtra("noteParaCount", note.getParagraphCount());
                 intent.putExtra("noteParaOne", note.getParagraphOne());
+                intent.putExtra("noteParaTwo", note.getParagraphTwo());
                 startActivity(intent);
             }
         });
@@ -124,7 +125,8 @@ public class NotesFragment extends Fragment {
                 StudyMateContractor.NoteEntry.COLUMN_NAME_TITLE,
                 StudyMateContractor.NoteEntry.COLUMN_NAME_TAG,
                 StudyMateContractor.NoteEntry.COLUMN_NAME_PARAGRAPH_COUNT,
-                StudyMateContractor.NoteEntry.COLUMN_NAME_PARAGRAPH_1
+                StudyMateContractor.NoteEntry.COLUMN_NAME_PARAGRAPH_1,
+                StudyMateContractor.NoteEntry.COLUMN_NAME_PARAGRAPH_2
         };
 
         // Filter results WHERE "title" = 'My Title'

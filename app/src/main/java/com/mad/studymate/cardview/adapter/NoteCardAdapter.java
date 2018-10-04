@@ -138,6 +138,7 @@ public class NoteCardAdapter extends RecyclerView.Adapter<NoteCardAdapter.NoteVi
                         intent.putExtra("noteTag", note.getNoteTag());
                         intent.putExtra("noteParaCount", note.getParagraphCount());
                         intent.putExtra("noteParaOne", note.getParagraphOne());
+                        intent.putExtra("noteParaTwo", note.getParagraphTwo());
                         context.startActivity(intent);
                         break;
                     case R.id.delete_item_option:

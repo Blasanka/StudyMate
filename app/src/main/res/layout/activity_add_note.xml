@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,91 +8,86 @@
     tools:context=".activity.AddNoteActivity"
     android:layout_margin="20dp">
 
-    <EditText
-        android:id="@+id/noteTitleET"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:hint="@string/note_title_text"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/noteTagET"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:hint="@string/note_tag_text"
-        android:inputType="text"
-        android:isScrollContainer="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/noteTitleET" />
-
-    <EditText
-        android:id="@+id/noteParagraphOneET"
-        android:layout_width="match_parent"
-        android:minHeight="140dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:hint="@string/note_para_text"
-        android:inputType="textMultiLine"
-        android:isScrollContainer="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/noteTagET" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/noteParagraphOneET">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:text="@string/add_new_text"
-            android:textSize="@dimen/count_text_size" />
-
-        <ImageButton
-            android:id="@+id/idAddImg"
+        <EditText
+            android:id="@+id/noteTitleET"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimaryDark"
-            android:contentDescription="@string/addbtimg"
-            android:src="@drawable/add_icon" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/note_title_margin_end"
+            android:layout_marginStart="@dimen/note_title_margin_end"
+            android:layout_marginTop="@dimen/add_note_title_margin_top"
+            android:ems="10"
+            android:hint="@string/note_title_text"
+            android:inputType="textMultiLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/idNoteCreateBt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/new_note_bt"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.888" />
-</android.support.constraint.ConstraintLayout>
+        <EditText
+            android:id="@+id/noteTagET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/note_title_margin_end"
+            android:layout_marginStart="@dimen/note_title_margin_end"
+            android:layout_marginTop="@dimen/add_note_title_margin_top"
+            android:ems="10"
+            android:hint="@string/note_tag_text"
+            android:inputType="text"
+            android:isScrollContainer="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/noteTitleET" />
+
+        <EditText
+            android:id="@+id/noteParagraphOneET"
+            android:layout_width="match_parent"
+            android:minHeight="140dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/note_title_margin_end"
+            android:layout_marginStart="@dimen/note_title_margin_end"
+            android:layout_marginTop="@dimen/add_note_title_margin_top"
+            android:ems="10"
+            android:hint="@string/note_para_text"
+            android:inputType="textMultiLine"
+            android:isScrollContainer="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/noteTagET" />
+
+        <EditText
+            android:id="@+id/noteParagraphTwoET"
+            android:layout_width="match_parent"
+            android:minHeight="140dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/note_title_margin_end"
+            android:layout_marginStart="@dimen/note_title_margin_end"
+            android:layout_marginTop="@dimen/add_note_title_margin_top"
+            android:ems="10"
+            android:hint="@string/note_para2_text"
+            android:inputType="textMultiLine"
+            android:isScrollContainer="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/noteParagraphOneET" />
+
+        <Button
+            android:id="@+id/idNoteCreateBt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="44dp"
+            android:layout_marginEnd="@dimen/note_title_margin_end"
+            android:layout_marginStart="@dimen/note_title_margin_end"
+            android:layout_marginTop="@dimen/note_title_margin_end"
+            android:text="@string/new_note_bt"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/noteParagraphTwoET"
+            app:layout_constraintVertical_bias="0.888" />
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

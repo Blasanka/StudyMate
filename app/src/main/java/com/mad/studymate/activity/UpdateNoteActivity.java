@@ -19,9 +19,9 @@ public class UpdateNoteActivity extends AppCompatActivity {
     ActionBar actionBar;
     Spinner paraCountDropDown;
     Button updateNoteBt;
-    EditText updateTitleET, updateTagET, updateParaOneET, updateParaTwoET, updateParaThreeET, updateParaFourET, updateParaFiveET;
+    EditText updateTitleET, updateTagET, updateParaOneET, updateParaTwoET;
 
-    String title, tag, paraOne, paraTwo, paraThree, paraFour, paraFive;
+    String title, tag, paraOne, paraTwo;
     int paraCount;
 
     //db helper
@@ -46,12 +46,14 @@ public class UpdateNoteActivity extends AppCompatActivity {
         updateTitleET = findViewById(R.id.updateNoteTitleET);
         updateTagET = findViewById(R.id.updateNoteTagET);
         updateParaOneET = findViewById(R.id.updateNoteParagraphOneET);
+        updateParaTwoET = findViewById(R.id.updateNoteParagraphTwoET);
 
         //set database values to relevant EditText to update
         oldTitle = extras.getString("noteTitle");
         updateTitleET.setText(oldTitle);
         updateTagET.setText(extras.getString("noteTag"));
         updateParaOneET.setText(extras.getString("noteParaOne"));
+        updateParaTwoET.setText(extras.getString("noteParaTwo"));
         paraCount = extras.getInt("noteParaCount", 1);
 
         updateNoteBt = findViewById(R.id.idNoteUpdateBt);
@@ -78,6 +80,7 @@ public class UpdateNoteActivity extends AppCompatActivity {
         title = updateTitleET.getText().toString();
         tag = updateTagET.getText().toString();
         paraOne = updateParaOneET.getText().toString();
+        paraTwo = updateParaTwoET.getText().toString();
 
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
@@ -85,6 +88,7 @@ public class UpdateNoteActivity extends AppCompatActivity {
         values.put(StudyMateContractor.NoteEntry.COLUMN_NAME_TITLE, title);
         values.put(StudyMateContractor.NoteEntry.COLUMN_NAME_TAG, tag);
         values.put(StudyMateContractor.NoteEntry.COLUMN_NAME_PARAGRAPH_1, paraOne);
+        values.put(StudyMateContractor.NoteEntry.COLUMN_NAME_PARAGRAPH_2, paraTwo);
 
         // Which row to update, based on the title
         String selection = StudyMateContractor.NoteEntry.COLUMN_NAME_TITLE + " = ?";

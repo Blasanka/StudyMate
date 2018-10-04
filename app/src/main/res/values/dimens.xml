@@ -9,4 +9,23 @@
     <dimen name="horizonta_spacing_grid">15dp</dimen>
     <dimen name="grid_cpl_width">130dp</dimen>
     <dimen name="grid_padding">30dp</dimen>
+
+    <!--Note function dimensions-->
+    <dimen name="update_note_layout_margin">20dp</dimen>
+    <dimen name="note_title_margin_end">8dp</dimen>
+    <dimen name="update_note_title_margin_top">40dp</dimen>
+    <dimen name="update_note_tag_margin_top">36dp</dimen>
+    <dimen name="note_para_one_min_height">140dp</dimen>
+    <dimen name="note_bt_update_margin_bottom">44dp</dimen>
+    <dimen name="add_note_title_margin_top">28dp</dimen>
+    <dimen name="activity_view_note_tag_width">303dp</dimen>
+    <dimen name="activity_view_note_tag_height">40dp</dimen>
+    <dimen name="activity_view_note_tag_margin_end">16dp</dimen>
+    <dimen name="view_note_tag_width">37dp</dimen>
+    <dimen name="view_note_tag_height">39dp</dimen>
+    <dimen name="note_para_one_width">118dp</dimen>
+    <dimen name="note_para_one_height">21dp</dimen>
+    <dimen name="view_note_para_one_margin_top">16dp</dimen>
+    <dimen name="note_view_para_one_id_width">333dp</dimen>
+    <dimen name="note_view_para_one_id_height">145dp</dimen>
 </resources>

@@ -87,6 +87,7 @@
     <string name="note_title_text">Title</string>
     <string name="note_tag_text">Tag</string>
     <string name="note_para_text">Paragraph 1</string>
+    <string name="note_para2_text">Paragraph 2</string>
     <string name="add_new_text">Add one more paragraph</string>
 
     <!--update note activity-->
@@ -110,11 +111,14 @@
     <string name="addbtimg">addBTImg</string>
     <string name="update_note_bt">Update</string>
     <string name="update_note_para_text">Update Paragraph 1</string>
+    <string name="update_note_para2_text">Update Paragraph 2</string>
     <string name="update_note_tag_text">Update Note Tag</string>
     <string name="update_note_title_text">Update Note Title</string>
     <string name="view_note_tag">Tag</string>
     <string name="paragraph_one">Paragraph One</string>
+    <string name="paragraph_two">Paragraph Two</string>
     <string name="paragraph_one_view">Paragraph One</string>
+    <string name="paragraph_two_view">Paragraph Two</string>
     <string name="priority_no">Priority No</string>
     <string name="time_period">Time Period</string>
     <string name="no_description_added">No description added</string>

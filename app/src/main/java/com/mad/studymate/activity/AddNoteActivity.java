@@ -5,10 +5,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.mad.studymate.R;
@@ -20,12 +24,11 @@ public class AddNoteActivity extends AppCompatActivity {
 
     //Declare
     ActionBar actionBar;
-    //    Spinner paraCountDropDown;
     Button addNoteBt;
-    EditText titleET, tagET, paraOneET, paraTwoET, paraThreeET, paraFourET, paraFiveET;
+    EditText titleET, tagET, paraOneET, paraTwoET;
 
     //to assign editText values for reuse
-    String title, tag, paraOne, paraTwo, paraThree, paraFour, paraFive;
+    String title, tag, paraOne, paraTwo, paraThree = "", paraFour = "", paraFive = "";
     int paraCount;
 
     //db helper
@@ -52,6 +55,7 @@ public class AddNoteActivity extends AppCompatActivity {
         titleET = findViewById(R.id.noteTitleET);
         tagET = findViewById(R.id.noteTagET);
         paraOneET = findViewById(R.id.noteParagraphOneET);
+        paraTwoET = findViewById(R.id.noteParagraphTwoET);
 
         addNoteBt = findViewById(R.id.idNoteCreateBt);
 
@@ -101,31 +105,10 @@ public class AddNoteActivity extends AppCompatActivity {
 
     //generate paragraph count based on EditTexts for paras
     private void getParaCount() {
-        if (paraTwoET == null) {
+        if (paraTwoET.getText().toString().isEmpty()) {
             paraCount = 1;
             paraTwo = "";
         } else {
-            if (paraThreeET == null) {
-                paraCount = 2;
-                paraThree = "";
-            } else {
-                if (paraFourET == null) {
-                    paraCount = 3;
-                    paraFour = "";
-                } else {
-                    if (paraFiveET == null) {
-                        paraCount = 4;
-                        paraFive = "";
-                    } else {
-                        paraCount = 5;
-                        paraFive = paraFiveET.getText().toString();
-                    }
-                    paraCount = 4;
-                    paraFour = paraFourET.getText().toString();
-                }
-                paraCount = 3;
-                paraThree = paraThreeET.getText().toString();
-            }
             paraCount = 2;
             paraTwo = paraTwoET.getText().toString();
         }
