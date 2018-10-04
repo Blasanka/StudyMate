@@ -89,9 +89,19 @@
     <string name="note_para_text">Paragraph 1</string>
     <string name="note_para2_text">Paragraph 2</string>
     <string name="add_new_text">Add one more paragraph</string>
+    <string name="view_note_tag">Tag</string>
+    <string name="paragraph_one">Paragraph One</string>
+    <string name="paragraph_two">Paragraph Two</string>
+    <string name="paragraph_one_view">Paragraph One</string>
+    <string name="paragraph_two_view">Paragraph Two</string>
 
     <!--update note activity-->
     <string name="update_task_bt">Update Task</string>
+    <string name="update_note_bt">Update</string>
+    <string name="update_note_para_text">Update Paragraph 1</string>
+    <string name="update_note_para2_text">Update Paragraph 2</string>
+    <string name="update_note_tag_text">Update Note Tag</string>
+    <string name="update_note_title_text">Update Note Title</string>
 
     <!--add task activity-->
     <string name="descr_text">Description</string>
@@ -99,6 +109,10 @@
     <string name="priority_no_text">Priority Number</string>
     <string name="start_time">Start Time</string>
     <string name="end_time">End Time</string>
+    <string name="priority_no">Priority No</string>
+    <string name="time_period">Time Period</string>
+    <string name="no_description_added">No description added</string>
+    <string name="descripton_view">Descripton</string>
 
     <!--add quiz-->
     <string name="quiz_title_text">Title</string>
@@ -109,20 +123,17 @@
     <string name="clear_quiz_bt">Clear</string>
     <string name="add_quiz_text">Add Quiz</string>
     <string name="addbtimg">addBTImg</string>
-    <string name="update_note_bt">Update</string>
-    <string name="update_note_para_text">Update Paragraph 1</string>
-    <string name="update_note_para2_text">Update Paragraph 2</string>
-    <string name="update_note_tag_text">Update Note Tag</string>
-    <string name="update_note_title_text">Update Note Title</string>
-    <string name="view_note_tag">Tag</string>
-    <string name="paragraph_one">Paragraph One</string>
-    <string name="paragraph_two">Paragraph Two</string>
-    <string name="paragraph_one_view">Paragraph One</string>
-    <string name="paragraph_two_view">Paragraph Two</string>
-    <string name="priority_no">Priority No</string>
-    <string name="time_period">Time Period</string>
-    <string name="no_description_added">No description added</string>
-    <string name="descripton_view">Descripton</string>
+    <string name="question_1_qna">Question 1:</string>
+    <string name="question_et">Question</string>
+    <string name="correct_answers_qna">Correct Answers</string>
+    <string name="radio_true">True</string>
+    <string name="radio_false">False</string>
+    <string name="all_scores_tv">All Scores: 23</string>
+    <string name="quiz_scoore">Quiz Scores: 2/2</string>
+    <string name="check_answers_bt">Check Answers</string>
+    <string name="related_quiz_bt">Related Quiz</string>
+    <string name="home_bt_scoreboard">Home</string>
+    <string name="txt_count_hardcode">2</string>
     <string-array name="quiz_type_spinner_items">
         <item>Single Answer</item>
         <item>Multiple Answer</item>

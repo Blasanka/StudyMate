@@ -50,4 +50,62 @@
     <dimen name="task_view_iddesc_height">30dp</dimen>
     <dimen name="task_view_desc_margin_top">28dp</dimen>
     <dimen name="task_view_time_period_view_height">44dp</dimen>
+
+    <!--Quiz function dimensions-->
+    <dimen name="quiz_type_spinner_height">44dp</dimen>
+    <dimen name="id_quiz_tv_width">0dp</dimen>
+    <dimen name="quiz_layout_absolute_y">89dp</dimen>
+    <dimen name="id_quiz_tv_text_size">20sp</dimen>
+    <dimen name="id_question_tv_2_height">66dp</dimen>
+    <dimen name="true_radio_quiz_margin_top">12dp</dimen>
+    <dimen name="finish_quiz_button_height">54dp</dimen>
+    <dimen name="id_c_answer_text_size">18sp</dimen>
+    <dimen name="quiz_et_height">39dp</dimen>
+
+    <!--scoreboard dimensions-->
+    <dimen name="scoreboard_margin">8dp</dimen>
+    <dimen name="score_board_bt_margin">30dp</dimen>
+    <dimen name="scoreboard_bt_height">48dp</dimen>
+    <dimen name="scoreboard_bt_width">169dp</dimen>
+    <dimen name="scoreboard_text_size">30sp</dimen>
+    <dimen name="all_score_tv_margin_top">12dp</dimen>
+    <dimen name="all_scores_tv_width">257dp</dimen>
+    <dimen name="all_scores_tv_height">103dp</dimen>
+    <dimen name="quiz_score_tv_width">257dp</dimen>
+    <dimen name="quiz_score_tv_height">57dp</dimen>
+    <dimen name="quiz_score_tv_margin_top">60dp</dimen>
+
+    <!--login screen-->
+    <dimen name="login_username_tv_width">193dp</dimen>
+    <dimen name="login_24_sp">24sp</dimen>
+    <dimen name="login_16_sp">16sp</dimen>
+    <dimen name="login_et_width">267dp</dimen>
+    <dimen name="login_et_height">52dp</dimen>
+    <dimen name="login_pass_tv_width">193dp</dimen>
+    <dimen name="pass_et_margin_top">32dp</dimen>
+    <dimen name="uname_et_margin_top">28dp</dimen>
+    <dimen name="pass_field_margin_top">20dp</dimen>
+    <dimen name="signin_bt_height">60dp</dimen>
+
+    <!--signup dimensions-->
+    <dimen name="signup_18_sp">18sp</dimen>
+    <dimen name="signup_bt_width">287dp</dimen>
+    <dimen name="signup_bt_height">59dp</dimen>
+    <dimen name="signup_bt_margin_bottom">60dp</dimen>
+    <dimen name="usernmae_signup_margin_top">24dp</dimen>
+    <dimen name="email_sign_margin_top">16dp</dimen>
+    <dimen name="pass_signup_tf_width">289dp</dimen>
+    <dimen name="pass_signup_tf_height">55dp</dimen>
+    <dimen name="pass_signup_tf_margin_top">20dp</dimen>
+    <dimen name="signup_username_et_width">289dp</dimen>
+    <dimen name="signup_username_et_height">55dp</dimen>
+    <dimen name="signup_username_et_margin_top">20dp</dimen>
+    <dimen name="emailSign_tf_width">289dp</dimen>
+    <dimen name="emailSign_tf_height">55dp</dimen>
+    <dimen name="emailSign_tf_margin_top">17dp</dimen>
+    <dimen name="signup_label_tf_width">118dp</dimen>
+    <dimen name="signup_label_tf_height">36dp</dimen>
+    <dimen name="signup_label_tf_margin_top">20dp</dimen>
+    <dimen name="splash_image_width">340dp</dimen>
+    <dimen name="splash_image_height">430dp</dimen>
 </resources>

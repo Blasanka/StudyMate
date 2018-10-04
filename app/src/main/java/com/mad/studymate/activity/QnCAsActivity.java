@@ -10,8 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
-import com.mad.studymate.jsons.JsonHandler;
 import com.mad.studymate.R;
+import com.mad.studymate.jsons.JsonHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,11 +46,11 @@ public class QnCAsActivity extends AppCompatActivity {
             title = extras.getString("quiz");
         }
 
-        questionEt1 = findViewById(R.id.questionTV);
+        questionEt1 = findViewById(R.id.idQuestionET);
         radioButtonTrue1 = findViewById(R.id.idTrueRadio);
         radioButtonFalse1 = findViewById(R.id.idFalseRadio);
 
-        questionEt2 = findViewById(R.id.questionTV2);
+        questionEt2 = findViewById(R.id.idQuestionET2);
         radioButtonTrue2 = findViewById(R.id.idTrueRadio2);
         radioButtonFalse2 = findViewById(R.id.idFalseRadio2);
 

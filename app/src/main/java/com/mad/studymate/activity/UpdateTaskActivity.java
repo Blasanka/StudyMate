@@ -42,7 +42,7 @@ public class UpdateTaskActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle("Update Task");
 
-        updateTitleET = findViewById(R.id.noteTitleUpdateET);
+        updateTitleET = findViewById(R.id.taskTitleUpdateET);
         updatePriorityET = findViewById(R.id.idUpdatePriorityET);
         updateStartTimeET = findViewById(R.id.startTimeUpdateET);
         updateEndTimeET = findViewById(R.id.endTimeUpdateET);

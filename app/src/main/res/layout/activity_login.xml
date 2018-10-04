@@ -4,18 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    tools:context=".activity.LoginActivity">
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".LoginActivity">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/usernameText"
-            android:layout_width="193dp"
+            android:layout_width="@dimen/login_username_tv_width"
             android:layout_height="wrap_content"
             android:text="@string/login_nameLabel"
-            android:textSize="24sp"
+            android:textSize="@dimen/login_24_sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.308"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -25,79 +26,79 @@
 
         <TextView
             android:id="@+id/passwordText"
-            android:layout_width="193dp"
+            android:layout_width="@dimen/login_pass_tv_width"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginEnd="@dimen/margin_end"
+            android:layout_marginStart="@dimen/margin_end"
+            android:layout_marginTop="@dimen/pass_et_margin_top"
             android:text="@string/login_passLabel"
-            android:textSize="24sp"
+            android:textSize="@dimen/login_24_sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.291"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/usernameField" />
+            app:layout_constraintTop_toBottomOf="@id/usernameField" />
 
         <EditText
             android:id="@+id/usernameField"
-            android:layout_width="267dp"
-            android:layout_height="52dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="28dp"
+            android:layout_width="@dimen/login_et_width"
+            android:layout_height="@dimen/login_et_height"
+            android:layout_marginEnd="@dimen/margin_end"
+            android:layout_marginStart="@dimen/margin_end"
+            android:layout_marginTop="@dimen/uname_et_margin_top"
             android:ems="10"
             android:hint="@string/login_nameLabel"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/usernameText" />
+            app:layout_constraintTop_toBottomOf="@id/usernameText" />
 
         <EditText
             android:id="@+id/passwordField"
-            android:layout_width="267dp"
-            android:layout_height="51dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
+            android:layout_width="@dimen/login_et_width"
+            android:layout_height="@dimen/login_et_height"
+            android:layout_marginEnd="@dimen/margin_end"
+            android:layout_marginStart="@dimen/margin_end"
+            android:layout_marginTop="@dimen/pass_field_margin_top"
             android:ems="10"
             android:hint="@string/login_passLabel"
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordText" />
+            app:layout_constraintTop_toBottomOf="@id/passwordText" />
 
         <Button
             android:id="@+id/signinBt"
-            android:layout_width="267dp"
-            android:layout_height="60dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="@dimen/login_et_width"
+            android:layout_height="@dimen/signin_bt_height"
+            android:layout_marginBottom="@dimen/margin_end"
+            android:layout_marginEnd="@dimen/margin_end"
+            android:layout_marginStart="@dimen/margin_end"
+            android:layout_marginTop="@dimen/margin_end"
             android:text="@string/login_buttonText"
-            android:textSize="16sp"
+            android:textSize="@dimen/login_16_sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.504"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordField"
+            app:layout_constraintTop_toBottomOf="@id/passwordField"
             app:layout_constraintVertical_bias="0.153" />
 
         <TextView
             android:id="@+id/signUpLabelBt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginBottom="@dimen/margin_end"
+            android:layout_marginEnd="@dimen/margin_end"
+            android:layout_marginStart="@dimen/margin_end"
+            android:layout_marginTop="@dimen/margin_end"
             android:text="@string/signup_text"
-            android:textSize="24sp"
+            android:textSize="@dimen/login_24_sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signinBt" />
+            app:layout_constraintTop_toBottomOf="@id/signinBt" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

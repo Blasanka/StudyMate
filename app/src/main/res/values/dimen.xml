@@ -51,4 +51,6 @@
 
     <!--add quiz-->
     <dimen name="margin_top_bt">10dp</dimen>
+    <dimen name="absolute_y_spinner">147dp</dimen>
+    <dimen name="absolute_y_et">220dp</dimen>
 </resources>

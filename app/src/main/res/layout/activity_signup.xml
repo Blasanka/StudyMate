@@ -4,127 +4,129 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    tools:context=".activity.SignupActivity">
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".SignupActivity">
-
-        <Button
-            android:id="@+id/signupBt"
-            android:layout_width="287dp"
-            android:layout_height="59dp"
-            android:layout_marginBottom="60dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/signup_button"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.506"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordSignlTF"
-            app:layout_constraintVertical_bias="0.666" />
-
-        <TextView
-            android:id="@+id/usernameSign"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
-            android:text="@string/login_nameLabel"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.142"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailSignTF" />
-
-        <TextView
-            android:id="@+id/passwordSign"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
-            android:text="@string/login_passLabel"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.142"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/usernameSignTF" />
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/emailSign"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginEnd="@dimen/margin_end"
+            android:layout_marginStart="@dimen/margin_end"
+            android:layout_marginTop="@dimen/email_sign_margin_top"
             android:text="@string/email_text"
-            android:textSize="18sp"
+            android:textSize="@dimen/signup_18_sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.126"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/passwordSignlTF"
-            android:layout_width="289dp"
-            android:layout_height="55dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
-            android:ems="10"
-            android:hint="@string/login_passLabel"
-            android:inputType="textPassword"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.506"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordSign" />
-
-        <EditText
-            android:id="@+id/usernameSignTF"
-            android:layout_width="289dp"
-            android:layout_height="55dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
-            android:ems="10"
-            android:hint="@string/login_nameLabel"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.506"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/usernameSign" />
-
-        <EditText
             android:id="@+id/emailSignTF"
-            android:layout_width="289dp"
-            android:layout_height="55dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="17dp"
+            android:layout_width="@dimen/emailSign_tf_width"
+            android:layout_height="@dimen/emailSign_tf_height"
+            android:layout_marginEnd="@dimen/margin_end"
+            android:layout_marginStart="@dimen/margin_end"
+            android:layout_marginTop="@dimen/emailSign_tf_margin_top"
             android:ems="10"
             android:hint="@string/email_text"
             android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.506"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailSign" />
+            app:layout_constraintTop_toBottomOf="@id/emailSign" />
+
+        <TextView
+            android:id="@+id/usernameSign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_end"
+            android:layout_marginStart="@dimen/margin_end"
+            android:layout_marginTop="@dimen/usernmae_signup_margin_top"
+            android:text="@string/login_nameLabel"
+            android:textSize="@dimen/signup_18_sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.142"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/emailSignTF" />
+
+
+        <EditText
+            android:id="@+id/usernameSignTF"
+            android:layout_width="@dimen/signup_username_et_width"
+            android:layout_height="@dimen/signup_username_et_height"
+            android:layout_marginEnd="@dimen/margin_end"
+            android:layout_marginStart="@dimen/margin_end"
+            android:layout_marginTop="@dimen/signup_username_et_margin_top"
+            android:ems="10"
+            android:hint="@string/login_nameLabel"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/usernameSign" />
+
+        <TextView
+            android:id="@+id/passwordSign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_end"
+            android:layout_marginStart="@dimen/margin_end"
+            android:layout_marginTop="@dimen/usernmae_signup_margin_top"
+            android:text="@string/login_passLabel"
+            android:textSize="@dimen/signup_18_sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.142"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/usernameSignTF" />
+
+        <EditText
+            android:id="@+id/passwordSignlTF"
+            android:layout_width="@dimen/pass_signup_tf_width"
+            android:layout_height="@dimen/pass_signup_tf_height"
+            android:layout_marginEnd="@dimen/margin_end"
+            android:layout_marginStart="@dimen/margin_end"
+            android:layout_marginTop="@dimen/pass_signup_tf_margin_top"
+            android:ems="10"
+            android:hint="@string/login_passLabel"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/passwordSign" />
+
+        <Button
+            android:id="@+id/signupBt"
+            android:layout_width="@dimen/signup_bt_width"
+            android:layout_height="@dimen/signup_bt_height"
+            android:layout_marginBottom="@dimen/signup_bt_margin_bottom"
+            android:layout_marginEnd="@dimen/margin_end"
+            android:layout_marginStart="@dimen/margin_end"
+            android:layout_marginTop="@dimen/margin_end"
+            android:text="@string/signup_button"
+            android:textSize="@dimen/signup_18_sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/passwordSignlTF"
+            app:layout_constraintVertical_bias="0.666" />
 
         <TextView
             android:id="@+id/signupLabelBt"
-            android:layout_width="118dp"
-            android:layout_height="36dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
+            android:layout_width="@dimen/signup_label_tf_width"
+            android:layout_height="@dimen/signup_label_tf_height"
+            android:layout_marginEnd="@dimen/margin_end"
+            android:layout_marginStart="@dimen/margin_end"
+            android:layout_marginTop="@dimen/signup_label_tf_margin_top"
             android:text="@string/login_text"
-            android:textSize="24sp"
+            android:textSize="@dimen/login_24_sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signupBt" />
+            app:layout_constraintTop_toBottomOf="@id/signupBt" />
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
