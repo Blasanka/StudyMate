@@ -3,16 +3,16 @@ package com.mad.studymate.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.mad.studymate.R;
+import com.mad.studymate.validation.Authentication;
+import com.mad.studymate.validation.LoginValidation;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -20,6 +20,9 @@ public class LoginActivity extends AppCompatActivity {
     EditText passwordET;
     Button loginBt;
     TextView signupTV;
+
+    //authenticate login user
+    Authentication auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +43,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    //validate
-                    validate(usernameET.getText().toString(), passwordET.getText().toString());
+                    validate();
                 }
                 return false;
             }
@@ -51,8 +53,7 @@ public class LoginActivity extends AppCompatActivity {
         loginBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //validate
-                validate(usernameET.getText().toString(), passwordET.getText().toString());
+                validate();
             }
         });
 
@@ -66,31 +67,14 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void validate(String username, String password) {
-        if (username.equals("") || password.equals("")) {
-            generateError("Type username and password");
-        } else if (username.equals("username") || password.equals("password")) {
-            generateError("You should try strong username and password");
-        } else if (username.equals(password)) {
-            generateError("Username cannot be equal to password");
-        } else if (password.equals("12345678")) {
-            generateError("You should try strong password");
-        } else {
-            if (password.length() < 8) {
-                generateError("Password must contain more than 7 character");
-            } else {
-                if (TextUtils.isDigitsOnly(password)) {
-                    generateError("Password should contain characters too");
-                } else {
-                    Intent homeIntent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(homeIntent);
-                    finish();
-                }
-            }
+    private void validate() {
+        auth = new LoginValidation(this);
+        //validate and show home screen
+        if (auth.validate(usernameET.getText().toString(), passwordET.getText().toString())) {
+            //to open up home activity
+            Intent homeIntent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(homeIntent);
+            finish();
         }
-    }
-
-    private void generateError(String message) {
-        Toast.makeText(LoginActivity.this, message, Toast.LENGTH_LONG).show();
     }
 }

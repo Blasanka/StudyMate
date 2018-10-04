@@ -29,5 +29,10 @@
             android:id="@+id/action_tasks"
             android:icon="@drawable/ic_today_black_24dp"
             android:title="@string/nav_tasks" />
+
+        <item
+            android:id="@+id/action_logout"
+            android:icon="@drawable/ic_lock_open_black_24dp"
+            android:title="@string/nav_logout" />
     </group>
 </menu>

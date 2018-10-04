@@ -24,6 +24,7 @@
     <string name="nav_study">Study Sessions</string>
     <string name="nav_notes">Notes</string>
     <string name="nav_tasks">Tasks</string>
+    <string name="nav_logout">Logout</string>
 
     <string name="activity_title_about_us">About Us</string>
     <string name="activity_title_privacy_policy">Privacy Policy</string>

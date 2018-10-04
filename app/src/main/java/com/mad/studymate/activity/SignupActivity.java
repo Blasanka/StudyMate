@@ -3,16 +3,16 @@ package com.mad.studymate.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.mad.studymate.R;
+import com.mad.studymate.validation.Authentication;
+import com.mad.studymate.validation.SignupValidation;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -21,6 +21,9 @@ public class SignupActivity extends AppCompatActivity {
     EditText passwordET;
     Button signupBt;
     TextView signTV;
+
+    //authenticate login user
+    Authentication auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +55,7 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    //validate
-                    validate(usernameET.getText().toString(), passwordET.getText().toString(), emailET.getText().toString());
+                    validate();
                 }
                 return false;
             }
@@ -63,39 +65,24 @@ public class SignupActivity extends AppCompatActivity {
         signupBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //validate
-                validate(usernameET.getText().toString(), passwordET.getText().toString(), emailET.getText().toString());
+                //validate signup user, if keyboard done button
+                validate();
             }
         });
     }
 
-    private void validate(String username, String password, String email) {
-        if (username.equals("") || password.equals("") || email.equals("")) {
-            generateError("All fields must be filled");
-        } else if (username.equals("username") || password.equals("password") || email.equals("email")) {
-            generateError("hoo hoooo anyone can guess your details, use valid details");
-        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            generateError("Not an email address");
-        } else if (username.equals(password)) {
-            generateError("Username cannot be equal to password");
-        } else if (password.equals("12345678")) {
-            generateError("You should try strong password");
-        } else {
-            if (password.length() < 8) {
-                generateError("Password must contain more than 7 character");
-            } else {
-                if (TextUtils.isDigitsOnly(password)) {
-                    generateError("Password should contain characters too");
-                } else {
-                    Intent homeIntent = new Intent(SignupActivity.this, MainActivity.class);
-                    startActivity(homeIntent);
-                    finish();
-                }
-            }
-        }
-    }
+    private void validate() {
 
-    private void generateError(String message) {
-        Toast.makeText(SignupActivity.this, message, Toast.LENGTH_LONG).show();
+        auth = new SignupValidation(this);
+
+        //validate signup user
+        if (auth.validate(usernameET.getText().toString(),
+                passwordET.getText().toString(),
+                emailET.getText().toString())) {
+
+            Intent homeIntent = new Intent(SignupActivity.this, MainActivity.class);
+            startActivity(homeIntent);
+            finish();
+        }
     }
 }

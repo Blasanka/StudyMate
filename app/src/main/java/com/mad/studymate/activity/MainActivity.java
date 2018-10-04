@@ -6,11 +6,8 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SearchView;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import com.mad.studymate.R;
@@ -91,6 +88,9 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnFr
                                 fragmentTransaction.replace(R.id.content_frame, new TasksFragment()).commit();
                                 actionbar.setTitle(R.string.nav_tasks);
                                 break;
+                            case R.id.action_logout:
+                                finish();
+                                break;
                         }
                         // Add code here to update the UI based on the item selected
                         // For example, swap UI fragments here
@@ -112,6 +112,7 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnFr
         }
         return super.onOptionsItemSelected(item);
     }
+
 //
 //    //search icon functioning
 //    @Override
