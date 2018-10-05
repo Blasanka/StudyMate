@@ -3,10 +3,8 @@ package com.mad.studymate.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.BaseColumns;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
@@ -25,8 +23,7 @@ import com.mad.studymate.activity.AddQuizActivity;
 import com.mad.studymate.activity.AnswerQuizActivity;
 import com.mad.studymate.cardview.adapter.QuizCardAdapter;
 import com.mad.studymate.cardview.model.Quiz;
-import com.mad.studymate.db.QuizDbHelper;
-import com.mad.studymate.db.StudyMateContractor;
+import com.mad.studymate.db.QuizTableController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,8 +36,9 @@ public class QuizFragment extends Fragment {
     //add notes fab
     FloatingActionButton fab;
 
-    //database helper to get each and every quiz
-    QuizDbHelper mDbHelper;
+    //to manage quiz table(insert)
+    QuizTableController quizTableController;
+
     private RecyclerView mRecyclerView;
     private QuizCardAdapter mAdapter;
     private List<Quiz> quizList;
@@ -72,12 +70,15 @@ public class QuizFragment extends Fragment {
         quizList.add(new Quiz("Software Engineering","SE", "Single Answer", 100, 1, 100));
         quizList.add(new Quiz("Hacking Advance","hacking", "True or False", 5, 2, 34));
 
+        //to retrieve quizes from db table
+        quizTableController = new QuizTableController(getContext());
         //get quiz from database
-        Cursor cursor = retrieveAllQuizes();
+        Cursor cursor = quizTableController.retrieveAllQuizes();
         while (cursor.moveToNext()) {
             quizList.add(new Quiz(cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getInt(4), cursor.getInt(5), cursor.getDouble(6)));
         }
         cursor.close();
+        quizTableController.close();
 
         //set adapter to recyclerview
         mAdapter = new QuizCardAdapter(quizList, getActivity());
@@ -131,40 +132,6 @@ public class QuizFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }
-
-    private Cursor retrieveAllQuizes() {
-        //get quiz from database
-        mDbHelper = new QuizDbHelper(getContext());
-        SQLiteDatabase db = mDbHelper.getReadableDatabase();
-
-        // Define a projection that specifies which columns from the database
-        // you will actually use after this query.
-        String[] projection = {
-                BaseColumns._ID,
-                StudyMateContractor.QuizEntry.COLUMN_NAME_TITLE,
-                StudyMateContractor.QuizEntry.COLUMN_NAME_TAG,
-                StudyMateContractor.QuizEntry.COLUMN_NAME_TYPE,
-                StudyMateContractor.QuizEntry.COLUMN_NAME_QUESTIONS_COUNT,
-                StudyMateContractor.QuizEntry.COLUMN_NAME_ATTEMPT_COUNT,
-                StudyMateContractor.QuizEntry.COLUMN_NAME_QUIZ_SCORES
-        };
-
-        // How you want the results sorted in the resulting Cursor
-        String sortOrder =
-                StudyMateContractor.QuizEntry._ID + " DESC";
-
-        Cursor cursor = db.query(
-                StudyMateContractor.QuizEntry.TABLE_NAME,   // The table to query
-                projection,             // The array of columns to return (pass null to get all)
-                null,              // The columns for the WHERE clause
-                null,          // The values for the WHERE clause
-                null,                   // don't group the rows
-                null,                   // don't filter by row groups
-                sortOrder               // The sort order
-        );
-
-        return cursor;
     }
 
     public interface OnFragmentInteractionListener {

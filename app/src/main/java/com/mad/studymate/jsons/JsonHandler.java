@@ -51,7 +51,7 @@ public class JsonHandler {
             String line = "";
 
             while ((line = bufferedReader.readLine()) != null) {
-                output.append(line + "\n");
+                output.append(line);
             }
 
             response = output.toString();

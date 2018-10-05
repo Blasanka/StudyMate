@@ -9,9 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mad.studymate.R;
-import com.mad.studymate.cardview.model.Note;
 import com.mad.studymate.cardview.model.Quiz;
-import com.mad.studymate.db.AttemptedQuizDbHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +18,6 @@ import java.util.Random;
 public class AttemptedQuizCardAdapter extends RecyclerView.Adapter<AttemptedQuizCardAdapter.AttemptedQuizViewHolder> {
     Context context;
 
-    //database helper to get every notes
-    AttemptedQuizDbHelper mDbHelper;
     //to different color for each card set color
     Random random = new Random(20);
     //card view clickable
@@ -39,8 +35,6 @@ public class AttemptedQuizCardAdapter extends RecyclerView.Adapter<AttemptedQuiz
 
     @Override
     public AttemptedQuizCardAdapter.AttemptedQuizViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        //get notes from database
-        mDbHelper = new AttemptedQuizDbHelper(parent.getContext());
 
         //inflate the layout file
         View quizView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_quiz_card, parent, false);

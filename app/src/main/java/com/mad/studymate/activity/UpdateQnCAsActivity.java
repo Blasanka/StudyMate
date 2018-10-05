@@ -4,20 +4,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
 import com.mad.studymate.R;
-import com.mad.studymate.db.QuizTableController;
 import com.mad.studymate.jsons.JsonCrud;
 import com.mad.studymate.validation.QAValidation;
 
-public class QnCAsActivity extends AppCompatActivity {
+import java.util.List;
+
+public class UpdateQnCAsActivity extends AppCompatActivity {
+
 
     ActionBar actionBar;
-    Button addQuizButton, deleteQuizBt;
+    Button updateQuizButton;
 
     String title;
 
@@ -32,10 +35,11 @@ public class QnCAsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_qn_cas);
+        setContentView(R.layout.activity_update_qn_cas);
 
         actionBar = getSupportActionBar();
-        actionBar.setTitle("Add Questions and Correct Answers");
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle("Update Questions and Correct Answers");
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -50,8 +54,16 @@ public class QnCAsActivity extends AppCompatActivity {
         radioButtonTrue2 = findViewById(R.id.idTrueRadio2);
         radioButtonFalse2 = findViewById(R.id.idFalseRadio2);
 
-        addQuizButton = findViewById(R.id.idAddQuizButton);
-        addQuizButton.setOnClickListener(new View.OnClickListener() {
+        //to read json file and place in editText and update
+        final JsonCrud jsonCrud = new JsonCrud(getApplicationContext());
+
+        //TODO: hardcoded json values should fetch all question and answers to update activity
+        List<String> questionsList = jsonCrud.read(title);
+        questionEt1.setText(questionsList.get(0));
+        questionEt2.setText(questionsList.get(1));
+
+        updateQuizButton = findViewById(R.id.idUpdateQuizButton);
+        updateQuizButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -67,29 +79,21 @@ public class QnCAsActivity extends AppCompatActivity {
                     return;
                 }
 
-                JsonCrud jsonCrud = new JsonCrud(getApplicationContext());
                 jsonCrud.insert(title, questionEt1, questionEt2,
                         radioButtonTrue1, radioButtonTrue2, radioButtonFalse1, radioButtonFalse2);
-                Intent intent = new Intent(QnCAsActivity.this, MainActivity.class);
+                Intent intent = new Intent(UpdateQnCAsActivity.this, MainActivity.class);
                 startActivity(intent);
-                finish();
-            }
-        });
-
-        deleteQuizBt = findViewById(R.id.idCloseQuizButton);
-        deleteQuizBt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                QuizTableController quizController = new QuizTableController(getApplicationContext());
-                quizController.deleteQuiz(title, v);
-                quizController.close();
                 finish();
             }
         });
     }
 
-    //to disable os back button
-    @Override
-    public void onBackPressed() {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+
+        return false;
     }
 }

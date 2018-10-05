@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.QnCAsActivity">
+    tools:context=".activity.UpdateQnCAsActivity">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -152,31 +152,18 @@
         </RadioGroup>
 
         <Button
-            android:id="@+id/idAddQuizButton"
-            android:layout_width="151dp"
+            android:id="@+id/idUpdateQuizButton"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/qn_cas_bt_height"
             android:layout_marginBottom="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/add_quiz_text"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/idTrueFalseGroup2"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <Button
-            android:id="@+id/idCloseQuizButton"
-            android:layout_width="147dp"
-            android:layout_height="@dimen/qn_cas_bt_height"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="@string/delete_quiz_text"
+            android:text="@string/update_quiz_text"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/idAddQuizButton"
-            app:layout_constraintHorizontal_bias="0.266"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/idTrueFalseGroup2"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/idTrueFalseGroup2" />
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

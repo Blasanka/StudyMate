@@ -212,4 +212,11 @@ public class CompletedTaskFragment extends Fragment {
             }
         });
     }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+        mDbHelper.close();
+    }
 }

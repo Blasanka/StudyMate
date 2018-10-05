@@ -108,4 +108,5 @@
     <dimen name="signup_label_tf_margin_top">20dp</dimen>
     <dimen name="splash_image_width">340dp</dimen>
     <dimen name="splash_image_height">430dp</dimen>
+    <dimen name="qn_cas_bt_height">54dp</dimen>
 </resources>

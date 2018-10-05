@@ -21,6 +21,7 @@ import com.mad.studymate.cardview.model.Session;
 import com.mad.studymate.db.SessionDbHelper;
 import com.mad.studymate.db.StudyMateContractor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SessionCardAdapter extends RecyclerView.Adapter<SessionCardAdapter.SessionViewHolder> {
@@ -113,6 +114,24 @@ public class SessionCardAdapter extends RecyclerView.Adapter<SessionCardAdapter.
 
     public interface OnItemClickListener {
         void onItemClick(int position);
+    }
+
+    //TODO: not functioning properly when no values in the search box -> best way to fetch from db
+    public void filter(String text) {
+        List<Session> tempList = new ArrayList();
+        tempList.addAll(SessionItemList);
+        SessionItemList.clear();
+        if (text.isEmpty()) {
+            SessionItemList.addAll(tempList);
+        } else {
+            text = text.toLowerCase();
+            for (Session item : tempList) {
+                if (item.getName().toLowerCase().contains(text) || item.getFrom().toLowerCase().contains(text)) {
+                    SessionItemList.add(item);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 
     public class SessionViewHolder extends RecyclerView.ViewHolder {

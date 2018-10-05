@@ -1,7 +1,7 @@
 package com.mad.studymate.cardview.adapter;
 
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
+import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
@@ -12,11 +12,11 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.mad.studymate.jsons.JsonHandler;
 import com.mad.studymate.R;
+import com.mad.studymate.activity.UpdateQuizActivity;
 import com.mad.studymate.cardview.model.Quiz;
-import com.mad.studymate.db.QuizDbHelper;
-import com.mad.studymate.db.StudyMateContractor;
+import com.mad.studymate.db.QuizTableController;
+import com.mad.studymate.jsons.JsonHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +25,8 @@ import java.util.Random;
 public class QuizCardAdapter extends RecyclerView.Adapter<QuizCardAdapter.QuizViewHolder>{
     Context context;
 
-    //database helper to get every notes
-    QuizDbHelper mDbHelper;
+    //to manage quiz table(update, delete)
+    QuizTableController quizTableController;
 
     //card view clickable
     private OnItemClickListener mListener;
@@ -52,7 +52,7 @@ public class QuizCardAdapter extends RecyclerView.Adapter<QuizCardAdapter.QuizVi
     @Override
     public QuizCardAdapter.QuizViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //get notes from database
-        mDbHelper = new QuizDbHelper(parent.getContext());
+        quizTableController = new QuizTableController(parent.getContext());
 
         //inflate the layout file
         View quizView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_quiz_card, parent, false);
@@ -138,14 +138,21 @@ public class QuizCardAdapter extends RecyclerView.Adapter<QuizCardAdapter.QuizVi
                 Quiz quiz = quizItemList.get(position);
                 switch (item.getItemId()){
                     case R.id.update_item_option:
-                        Snackbar.make(view, "update pressed", Snackbar.LENGTH_SHORT).show();
+                        Intent intent = new Intent(context, UpdateQuizActivity.class);
+                        intent.putExtra("quizTitle", quiz.getTitle());
+                        intent.putExtra("quizTag", quiz.getQuizTag());
+                        intent.putExtra("quizType", quiz.getQuizType());
+                        intent.putExtra("noOfQuestion", quiz.getQuestionCount());
+                        context.startActivity(intent);
                         break;
                     case R.id.delete_item_option:
 
-                        JsonHandler deleteFile = new JsonHandler(context.getApplicationContext());
-                        deleteFile.deleteFile();
+                        //to delete the quiz related json file
+                        JsonHandler file = new JsonHandler(context.getApplicationContext());
+                        file.deleteFile();
 
-                        deleteQuiz(quiz.getTitle(), view);
+                        quizTableController.deleteQuiz(quiz.getTitle(), view);
+                        quizTableController.close();
                         quizItemList.remove(position);
                         notifyItemRemoved(position);
                         break;
@@ -158,23 +165,6 @@ public class QuizCardAdapter extends RecyclerView.Adapter<QuizCardAdapter.QuizVi
         });
 
         popup.show();
-    }
-
-    private void deleteQuiz(String quizTitle, View view) {
-        SQLiteDatabase db = mDbHelper.getReadableDatabase();
-        // Define 'where' part of query.
-        String selection = StudyMateContractor.QuizEntry.COLUMN_NAME_TITLE + " = ?";
-        // Specify arguments in placeholder order.
-        String[] selectionArgs = {quizTitle};
-        // Issue SQL statement.
-        int deletedRow = db.delete(StudyMateContractor.QuizEntry.TABLE_NAME, selection, selectionArgs);
-
-        //delete from db
-        if (deletedRow != 0) {
-            Snackbar.make(view, "Successfully deleted!", Snackbar.LENGTH_SHORT).show();
-        } else {
-            Snackbar.make(view, "failed to delete!", Snackbar.LENGTH_SHORT).show();
-        }
     }
 
     //TODO: not functioning properly when no values in the search box -> best way to fetch from db

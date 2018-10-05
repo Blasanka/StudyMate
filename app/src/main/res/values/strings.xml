@@ -123,8 +123,10 @@
     <string name="new_quiz_bt">Next</string>
     <string name="clear_quiz_bt">Clear</string>
     <string name="add_quiz_text">Add Quiz</string>
+    <string name="update_quiz_text">Update Quiz</string>
     <string name="addbtimg">addBTImg</string>
     <string name="question_1_qna">Question 1:</string>
+    <string name="question_2_qna">Question 2:</string>
     <string name="question_et">Question</string>
     <string name="correct_answers_qna">Correct Answers</string>
     <string name="radio_true">True</string>
@@ -135,6 +137,7 @@
     <string name="related_quiz_bt">Related Quiz</string>
     <string name="home_bt_scoreboard">Home</string>
     <string name="txt_count_hardcode">2</string>
+    <string name="delete_quiz_text">Delete Quiz</string>
     <string-array name="quiz_type_spinner_items">
         <item>Single Answer</item>
         <item>Multiple Answer</item>

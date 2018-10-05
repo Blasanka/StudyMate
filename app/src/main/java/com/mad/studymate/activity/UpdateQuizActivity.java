@@ -13,15 +13,16 @@ import android.widget.Spinner;
 
 import com.mad.studymate.R;
 import com.mad.studymate.db.QuizTableController;
+import com.mad.studymate.validation.QuizValidation;
 
-public class AddQuizActivity extends AppCompatActivity {
+public class UpdateQuizActivity extends AppCompatActivity {
 
     ActionBar actionBar;
     Button nextButton;
     EditText titleET, tagET, noOfQestionsET;
     Spinner typeSpinner;
 
-    String title, tag, type;
+    String title, oldTitle, tag, type;
     String noOfQuestions;
 
     //to manage quiz table(insert)
@@ -30,17 +31,38 @@ public class AddQuizActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_quiz);
+        setContentView(R.layout.activity_update_quiz);
+
+        Bundle extras = getIntent().getExtras();
 
         actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setTitle("New Quiz");
+        actionBar.setTitle("Update Quiz");
 
         //initialize editTexts and spinner
         titleET = findViewById(R.id.quizTitleET);
         tagET = findViewById(R.id.idQuizTagET);
         typeSpinner = findViewById(R.id.idQuizTypeSpinner);
         noOfQestionsET = findViewById(R.id.idNoOfquestionsET);
+
+        oldTitle = extras.getString("quizTitle");
+        titleET.setText(oldTitle);
+        tagET.setText(extras.getString("quizTag") + "");
+        type = extras.getString("quizType");
+        noOfQestionsET.setText(String.valueOf(extras.getInt("noOfQuestion")));
+
+        switch (type) {
+            case "Single Answer":
+                typeSpinner.setSelection(0);
+                break;
+            case "Multiple Answer":
+                typeSpinner.setSelection(1);
+                break;
+            case "True or False":
+                typeSpinner.setSelection(2);
+                break;
+
+        }
 
         //to insert new quiz to db
         quizTableController = new QuizTableController(this);
@@ -56,8 +78,14 @@ public class AddQuizActivity extends AppCompatActivity {
                 type = typeSpinner.getSelectedItem().toString();
                 noOfQuestions = noOfQestionsET.getText().toString();
 
-                if (quizTableController.insertQuiz(title, tag, type, noOfQuestions)) {
-                    Intent intent = new Intent(AddQuizActivity.this, QnCAsActivity.class);
+                //validate if fields empty before upate
+                QuizValidation validator = new QuizValidation(getApplicationContext());
+                if (validator.isFieldsEmpty(title, tag, type, noOfQuestions)) {
+                    return;
+                }
+
+                if (quizTableController.updateQuiz(oldTitle, title, tag, type, noOfQuestions) != -1) {
+                    Intent intent = new Intent(UpdateQuizActivity.this, UpdateQnCAsActivity.class);
                     intent.putExtra("quiz", titleET.getText().toString());
                     startActivity(intent);
                 } else {
@@ -68,7 +96,7 @@ public class AddQuizActivity extends AppCompatActivity {
         });
     }
 
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             finish();
             return true;

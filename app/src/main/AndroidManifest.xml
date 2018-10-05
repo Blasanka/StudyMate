@@ -18,19 +18,31 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.LoginActivity"></activity>
-        <activity android:name=".activity.SignupActivity"></activity>
-        <activity android:name=".activity.MainActivity"></activity>
-        <activity android:name=".activity.AddQuizActivity" android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".activity.AnswerQuizActivity" android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.SignupActivity" />
+        <activity android:name=".activity.MainActivity" />
+        <activity
+            android:name=".activity.AddQuizActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.AnswerQuizActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.ViewNoteActivity" />
-        <activity android:name=".activity.AddNoteActivity" android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".activity.AddTaskActivity" android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.AddNoteActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.AddTaskActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.ViewTaskActivity" />
         <activity android:name=".activity.QnCAsActivity" />
         <activity android:name=".activity.ScoreBoardActivity" />
-        <activity android:name=".activity.UpdateNoteActivity" android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".activity.UpdateTaskActivity" android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.UpdateNoteActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.UpdateTaskActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.MondaySessionActivity" />
         <activity android:name=".activity.TuesdaySessionActivity" />
         <activity android:name=".activity.WendsdaySessionActivity" />
@@ -38,11 +50,12 @@
         <activity android:name=".activity.FridaySessionActivity" />
         <activity android:name=".activity.SaturdaySessionActivity" />
         <activity android:name=".activity.SundaySessionActivity" />
-        <activity android:name=".activity.AttemptsActivity"></activity>
-
+        <activity android:name=".activity.AttemptsActivity" />
         <activity android:name=".activity.AddSessionActivity" />
         <activity android:name=".activity.ViewSessionActivity" />
-        <activity android:name=".activity.UpdateSessionActivity"></activity>
+        <activity android:name=".activity.UpdateSessionActivity" />
+        <activity android:name=".activity.UpdateQuizActivity" />
+        <activity android:name=".activity.UpdateQnCAsActivity"></activity>
     </application>
 
 </manifest>

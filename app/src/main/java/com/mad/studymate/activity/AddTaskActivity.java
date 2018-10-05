@@ -50,7 +50,7 @@ public class AddTaskActivity extends AppCompatActivity {
         taskValidate = new TaskValidation(this);
 
         //get layout components
-        titleET = findViewById(R.id.noteTitleET);
+        titleET = findViewById(R.id.taskTitleET);
         priorityET = findViewById(R.id.idPriorityET);
         startTimeET = findViewById(R.id.startTimeET);
         endTimeET = findViewById(R.id.endTimeET);

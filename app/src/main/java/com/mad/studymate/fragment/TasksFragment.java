@@ -209,6 +209,7 @@ public class TasksFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+        mDbHelper.close();
     }
 
     public interface OnFragmentInteractionListener {
