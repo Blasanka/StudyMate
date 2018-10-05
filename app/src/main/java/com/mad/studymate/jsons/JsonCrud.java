@@ -80,7 +80,7 @@ public class JsonCrud {
 
         JsonHandler json = new JsonHandler(context);
 //                json.writeObject(object, "quiz1");
-        json.writeJsonFile(parent.toString());
+        json.writeJsonFile(parent.toString(), title);
 
     }
 
@@ -90,7 +90,7 @@ public class JsonCrud {
         JsonHandler json = new JsonHandler(context);
         JSONObject parentNode = null;
         try {
-            parentNode = new JSONObject(json.readJsonFile());
+            parentNode = new JSONObject(json.readJsonFile(quizTitle));
             JSONObject jsonObj = parentNode;
             JSONArray jsonArray = jsonObj.getJSONArray(quizTitle);
             JSONObject parentObj = new JSONObject(jsonArray.get(0).toString());

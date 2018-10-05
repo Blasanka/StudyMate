@@ -61,4 +61,14 @@ public class StudyMateContractor {
         public static final String Col_6 = "Day";
 
     }
+
+    public static class UserEntry implements BaseColumns {
+        public static final String TABLE_NAME = "user";
+        public static final String COLUMN_USERNAME = "username";
+        public static final String COLUMN_EMAIL = "email";
+        public static final String COLUMN_PASS = "password";
+        public static final String COLUMN_IS_ACTIVE = "isActive";
+        public static final String COLUMN_ALL_SCORES = "allscores";
+
+    }
 }

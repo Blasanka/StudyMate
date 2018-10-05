@@ -11,6 +11,7 @@ import java.io.IOException;
 
 public class JsonHandler {
 
+    //default file name
     private static final String FILE_NAME = "quiz.json";
     FileReader fileReader = null;
     FileWriter fileWriter = null;
@@ -23,9 +24,9 @@ public class JsonHandler {
         parent = c;
     }
 
-    public void writeJsonFile(String content) {
+    public void writeJsonFile(String content, String fileName) {
 
-        File file = new File(parent.getFilesDir(), FILE_NAME);
+        File file = new File(parent.getFilesDir(), fileName +".json");
         if (!file.exists()) {
             try {
                 file.createNewFile();
@@ -40,9 +41,9 @@ public class JsonHandler {
         }
     }
 
-    public String readJsonFile() {
+    public String readJsonFile(String fileName) {
 
-        File file = new File(parent.getFilesDir(), FILE_NAME);
+        File file = new File(parent.getFilesDir(), fileName +".json");
         StringBuffer output = new StringBuffer();
 
         try {
@@ -63,7 +64,7 @@ public class JsonHandler {
         return response;
     }
 
-    public void deleteFile() {
-        new File(parent.getFilesDir(), FILE_NAME).delete();
+    public void deleteFile(String fileName) {
+        new File(parent.getFilesDir(), fileName +".json").delete();
     }
 }

@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.mad.studymate.db.QuizTableController;
 import com.mad.studymate.jsons.JsonHandler;
 import com.mad.studymate.R;
 import com.mad.studymate.db.QuizDbHelper;
@@ -34,8 +35,9 @@ public class AnswerQuizActivity extends AppCompatActivity {
     TextView idQuestionTV2;
     RadioButton idTrueRadio, idFalseRadio, idTrueRadio2, idFalseRadio2;
 
-    //db helper
-    QuizDbHelper mDbHelper;
+
+    //to manage quiz table(insert)
+    QuizTableController quizTableController;
 
     List<JSONObject> quizObjects;
     String quizTitle = "";
@@ -51,7 +53,8 @@ public class AnswerQuizActivity extends AppCompatActivity {
         actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        mDbHelper = new QuizDbHelper(this);
+        //to insert new quiz to db
+        quizTableController = new QuizTableController(this);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -72,8 +75,8 @@ public class AnswerQuizActivity extends AppCompatActivity {
         quizObjects = new ArrayList();
         JsonHandler json = new JsonHandler(getApplicationContext());
         try {
-            if(json.readJsonFile() != null) {
-                JSONObject obj = new JSONObject(json.readJsonFile());
+            if(json.readJsonFile(quizTitle) != null) {
+                JSONObject obj = new JSONObject(json.readJsonFile(quizTitle));
                 JSONArray qustionArray = obj.getJSONArray(quizTitle);
 
             for (int a = 0; a < qustionArray.length(); a++) {
@@ -107,7 +110,7 @@ public class AnswerQuizActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                updateQuiz();
+                quizTableController.updateAttemptQuiz(quizTitle, scores);
                 intent.putExtra("scores", scores);
                 startActivity(intent);
             }
@@ -122,61 +125,5 @@ public class AnswerQuizActivity extends AppCompatActivity {
         }
 
         return false;
-    }
-
-    //TODO: where is OOP
-    public int updateQuiz() {
-
-        SQLiteDatabase db = mDbHelper.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(StudyMateContractor.QuizEntry.COLUMN_NAME_ATTEMPT_COUNT, retrieveAttemptCount() + 1);
-        values.put(StudyMateContractor.QuizEntry.COLUMN_NAME_QUIZ_SCORES, scores);
-
-        // Which row to update, based on the title
-        String selection = StudyMateContractor.QuizEntry.COLUMN_NAME_TITLE + " = ?";
-        String[] selectionArgs = {quizTitle};
-
-        int count = db.update(
-                StudyMateContractor.QuizEntry.TABLE_NAME,
-                values,
-                selection,
-                selectionArgs);
-
-        return count;
-    }
-
-    public int retrieveAttemptCount() {
-        //get notes from database
-        mDbHelper = new QuizDbHelper(this);
-        SQLiteDatabase db = mDbHelper.getReadableDatabase();
-
-        String[] projection = {
-                BaseColumns._ID,
-                StudyMateContractor.QuizEntry.COLUMN_NAME_ATTEMPT_COUNT,
-        };
-
-        String selection = StudyMateContractor.QuizEntry.COLUMN_NAME_TITLE + " = ?";
-        String[] selectionArgs = {quizTitle};
-
-        String sortOrder =
-                StudyMateContractor.QuizEntry._ID + " DESC";
-
-        Cursor cursor = db.query(
-                StudyMateContractor.QuizEntry.TABLE_NAME,
-                projection,
-                selection,
-                selectionArgs,
-                null,
-                null,
-                sortOrder
-        );
-
-        int attempts = 0;
-        if (null != cursor && cursor.moveToFirst()) {
-            attempts = cursor.getInt(1);
-        }
-
-        return attempts;
     }
 }

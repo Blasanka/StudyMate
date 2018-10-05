@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.mad.studymate.R;
+import com.mad.studymate.db.UserDbHelper;
+import com.mad.studymate.db.UserTableController;
 import com.mad.studymate.validation.Authentication;
 import com.mad.studymate.validation.SignupValidation;
 
@@ -73,6 +75,12 @@ public class SignupActivity extends AppCompatActivity {
 
     private void validate() {
 
+        String username = usernameET.getText().toString();
+        String email = usernameET.getText().toString();
+        String password = usernameET.getText().toString();
+        int isActive = 1;
+        double allScore = 0;
+
         auth = new SignupValidation(this);
 
         //validate signup user
@@ -80,9 +88,14 @@ public class SignupActivity extends AppCompatActivity {
                 passwordET.getText().toString(),
                 emailET.getText().toString())) {
 
-            Intent homeIntent = new Intent(SignupActivity.this, MainActivity.class);
-            startActivity(homeIntent);
-            finish();
+
+            //TODO: check for duplicate email before insert
+            UserTableController newUser = new UserTableController(this);
+            if (newUser.insertUser(username, email, password, isActive, allScore)) {
+                Intent homeIntent = new Intent(SignupActivity.this, MainActivity.class);
+                startActivity(homeIntent);
+                finish();
+            }
         }
     }
 }

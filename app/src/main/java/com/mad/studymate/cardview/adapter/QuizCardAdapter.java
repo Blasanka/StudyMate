@@ -149,7 +149,7 @@ public class QuizCardAdapter extends RecyclerView.Adapter<QuizCardAdapter.QuizVi
 
                         //to delete the quiz related json file
                         JsonHandler file = new JsonHandler(context.getApplicationContext());
-                        file.deleteFile();
+                        file.deleteFile(quizItemList.get(position).getTitle());
 
                         quizTableController.deleteQuiz(quiz.getTitle(), view);
                         quizTableController.close();

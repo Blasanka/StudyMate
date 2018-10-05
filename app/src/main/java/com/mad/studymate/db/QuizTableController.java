@@ -152,4 +152,59 @@ public class QuizTableController extends QuizDbHelper {
 
         return count;
     }
+
+
+    //TODO: where is OOP
+    public int updateAttemptQuiz(String quizTitle, double scores) {
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(StudyMateContractor.QuizEntry.COLUMN_NAME_ATTEMPT_COUNT, retrieveAttemptCount(quizTitle) + 1);
+        values.put(StudyMateContractor.QuizEntry.COLUMN_NAME_QUIZ_SCORES, scores);
+
+        // Which row to update, based on the title
+        String selection = StudyMateContractor.QuizEntry.COLUMN_NAME_TITLE + " = ?";
+        String[] selectionArgs = {quizTitle};
+
+        int count = db.update(
+                StudyMateContractor.QuizEntry.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+
+        return count;
+    }
+
+    public int retrieveAttemptCount(String quizTitle) {
+        SQLiteDatabase db = getReadableDatabase();
+
+        String[] projection = {
+                BaseColumns._ID,
+                StudyMateContractor.QuizEntry.COLUMN_NAME_ATTEMPT_COUNT,
+        };
+
+        String selection = StudyMateContractor.QuizEntry.COLUMN_NAME_TITLE + " = ?";
+        String[] selectionArgs = {quizTitle};
+
+        String sortOrder =
+                StudyMateContractor.QuizEntry._ID + " DESC";
+
+        Cursor cursor = db.query(
+                StudyMateContractor.QuizEntry.TABLE_NAME,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                sortOrder
+        );
+
+        int attempts = 0;
+        if (null != cursor && cursor.moveToFirst()) {
+            attempts = cursor.getInt(1);
+        }
+
+        return attempts;
+    }
 }
