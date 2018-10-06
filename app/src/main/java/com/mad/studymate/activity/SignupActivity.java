@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.mad.studymate.R;
-import com.mad.studymate.db.UserDbHelper;
 import com.mad.studymate.db.UserTableController;
 import com.mad.studymate.validation.Authentication;
 import com.mad.studymate.validation.SignupValidation;
@@ -76,8 +75,8 @@ public class SignupActivity extends AppCompatActivity {
     private void validate() {
 
         String username = usernameET.getText().toString();
-        String email = usernameET.getText().toString();
-        String password = usernameET.getText().toString();
+        String email = emailET.getText().toString();
+        String password = passwordET.getText().toString();
         int isActive = 1;
         double allScore = 0;
 

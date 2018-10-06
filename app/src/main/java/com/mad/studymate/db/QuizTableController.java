@@ -12,7 +12,7 @@ import com.mad.studymate.validation.QuizValidation;
 
 public class QuizTableController extends QuizDbHelper {
 
-    //to validate notes
+    //to validate quizes
     QuizValidation validator;
 
     public QuizTableController(Context context) {
@@ -154,7 +154,6 @@ public class QuizTableController extends QuizDbHelper {
     }
 
 
-    //TODO: where is OOP
     public int updateAttemptQuiz(String quizTitle, double scores) {
 
         SQLiteDatabase db = getWritableDatabase();

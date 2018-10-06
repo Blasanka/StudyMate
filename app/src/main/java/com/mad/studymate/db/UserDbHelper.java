@@ -41,7 +41,7 @@ public class UserDbHelper extends SQLiteOpenHelper {
         onUpgrade(db, oldVersion, newVersion);
     }
 
-    public long getNotesCount() {
+    public long getUserCount() {
         SQLiteDatabase db = this.getReadableDatabase();
         long count = DatabaseUtils.queryNumEntries(db, StudyMateContractor.UserEntry.TABLE_NAME);
         db.close();
