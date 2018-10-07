@@ -138,6 +138,11 @@
     <string name="home_bt_scoreboard">Home</string>
     <string name="txt_count_hardcode">2</string>
     <string name="delete_quiz_text">Delete Quiz</string>
+    <string name="from_time_session_card">From</string>
+    <string name="default_start_time_session">10:00 AM</string>
+    <string name="end_time_session">To</string>
+    <string name="session_end_dumy_time">12:00 PM</string>
+    <string name="session_title_label">Title</string>
     <string-array name="quiz_type_spinner_items">
         <item>Single Answer</item>
         <item>Multiple Answer</item>

@@ -23,15 +23,18 @@ import com.mad.studymate.db.StudyMateContractor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class SessionCardAdapter extends RecyclerView.Adapter<SessionCardAdapter.SessionViewHolder> {
     Context context;
     SessionDbHelper sessionDbHelper;
     private OnItemClickListener onItemClickListener;
-    private List<Session> SessionItemList;
+    //to different color for each card set color
+    Random random = new Random(20);
+    private List<Session> sessionItemList;
 
-    public SessionCardAdapter(List<Session> SessionItemList, Context context) {
-        this.SessionItemList = SessionItemList;
+    public SessionCardAdapter(List<Session> sessionItemList, Context context) {
+        this.sessionItemList = sessionItemList;
         this.context = context;
     }
 
@@ -51,16 +54,16 @@ public class SessionCardAdapter extends RecyclerView.Adapter<SessionCardAdapter.
     @Override
     public void onBindViewHolder(@NonNull SessionCardAdapter.SessionViewHolder sessionViewHolder, final int i) {
 
-        sessionViewHolder.txtName.setText(SessionItemList.get(i).getName() + "");
-        sessionViewHolder.txtFrom.setText(SessionItemList.get(i).getFrom() + "");
-        sessionViewHolder.txtto.setText(SessionItemList.get(i).getTo() + "");
-        sessionViewHolder.progressBar.setProgress(SessionItemList.get(i).getComplete());
+        sessionViewHolder.sessionTitleTv.setText(sessionItemList.get(i).getName() + "");
+        sessionViewHolder.fromTimeTv.setText(sessionItemList.get(i).getFrom() + "");
+        sessionViewHolder.toTimeTv.setText(sessionItemList.get(i).getTo() + "");
+        sessionViewHolder.progressBar.setProgress(sessionItemList.get(i).getComplete());
 
     }
 
     @Override
     public int getItemCount() {
-        return SessionItemList.size();
+        return sessionItemList.size();
     }
 
     public void openOptionMenu(final View view, final int position) {
@@ -69,7 +72,7 @@ public class SessionCardAdapter extends RecyclerView.Adapter<SessionCardAdapter.
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                Session session = SessionItemList.get(position);
+                Session session = sessionItemList.get(position);
                 switch (item.getItemId()) {
                     case R.id.update_item_option:
                         Intent intent = new Intent(context, UpdateSessionActivity.class);
@@ -90,7 +93,7 @@ public class SessionCardAdapter extends RecyclerView.Adapter<SessionCardAdapter.
                         // Issue SQL statement.
                         int deletedRow = db.delete(StudyMateContractor.SessionEntry.TABLE_NAME, selection, selectionArgs);
                         //delete item from list
-                        SessionItemList.remove(position);
+                        sessionItemList.remove(position);
                         //update recycleview
                         notifyItemRemoved(position);
 
@@ -119,15 +122,15 @@ public class SessionCardAdapter extends RecyclerView.Adapter<SessionCardAdapter.
     //TODO: not functioning properly when no values in the search box -> best way to fetch from db
     public void filter(String text) {
         List<Session> tempList = new ArrayList();
-        tempList.addAll(SessionItemList);
-        SessionItemList.clear();
+        tempList.addAll(sessionItemList);
+        sessionItemList.clear();
         if (text.isEmpty()) {
-            SessionItemList.addAll(tempList);
+            sessionItemList.addAll(tempList);
         } else {
             text = text.toLowerCase();
             for (Session item : tempList) {
                 if (item.getName().toLowerCase().contains(text) || item.getFrom().toLowerCase().contains(text)) {
-                    SessionItemList.add(item);
+                    sessionItemList.add(item);
                 }
             }
         }
@@ -135,17 +138,22 @@ public class SessionCardAdapter extends RecyclerView.Adapter<SessionCardAdapter.
     }
 
     public class SessionViewHolder extends RecyclerView.ViewHolder {
-        TextView txtName, txtFrom, txtto;
+        TextView sessionTitleTv, fromTimeTv, toTimeTv;
         ProgressBar progressBar;
 
+        //to different color for each card set color
         LinearLayout layout;
 
         public SessionViewHolder(@NonNull View itemView, final SessionCardAdapter.OnItemClickListener listener) {
             super(itemView);
-            txtName = itemView.findViewById(R.id.tTile);
-            txtFrom = itemView.findViewById(R.id.tfrom);
-            txtto = itemView.findViewById(R.id.tto);
-            progressBar = itemView.findViewById(R.id.comp);
+            sessionTitleTv = itemView.findViewById(R.id.idSessionTitle);
+            fromTimeTv = itemView.findViewById(R.id.idFromTime);
+            toTimeTv = itemView.findViewById(R.id.idToTime);
+            progressBar = itemView.findViewById(R.id.idSessionProgress);
+
+            //to different color for each card set color
+            layout = itemView.findViewById(R.id.idFirstPortionLayout);
+            layout.setBackgroundColor(random.nextInt());
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

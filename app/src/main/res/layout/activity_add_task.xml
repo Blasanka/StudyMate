@@ -6,14 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".activity.AddTaskActivity"
     android:orientation="vertical"
+    android:paddingHorizontal="@dimen/margin_end"
     android:layout_margin="@dimen/layout_margin">
 
     <LinearLayout
         android:id="@+id/idPriorityLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/margin_end"
-        android:layout_marginStart="@dimen/margin_end"
         android:layout_marginTop="@dimen/margin_end"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,7 +32,7 @@
             android:id="@+id/idPriorityET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_end"
+            android:layout_marginVertical="@dimen/margin_end"
             android:ems="10"
             android:hint="@string/priority_text"
             android:inputType="numberDecimal"
@@ -42,10 +41,8 @@
 
     <EditText
         android:id="@+id/taskTitleET"
-        android:layout_width="@dimen/add_task_title_width"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/layout_margin"
-        android:layout_marginStart="@dimen/layout_margin"
         android:layout_marginTop="@dimen/margin_top"
         android:ems="10"
         android:hint="@string/task_text"
@@ -65,11 +62,23 @@
         app:layout_constraintTop_toBottomOf="@id/taskTitleET">
 
         <EditText
+            android:id="@+id/startTimeET"
+            android:layout_width="@dimen/task_add_end_time_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/task_add_end_time_margin_top"
+            android:ems="10"
+            android:hint="@string/start_time"
+            android:inputType="time"
+            app:layout_constraintEnd_toStartOf="@id/endTimeET"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/noteTitleET" />
+
+        <EditText
             android:id="@+id/endTimeET"
             android:layout_width="@dimen/task_add_end_time_width"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/layout_margin"
-            android:layout_marginEnd="@dimen/layout_margin"
             android:layout_marginTop="@dimen/task_add_end_time_margin_top"
             android:ems="10"
             android:hint="@string/end_time"
@@ -79,28 +88,12 @@
             app:layout_constraintTop_toBottomOf="@id/taskTitleET"
             app:layout_constraintVertical_bias="0.0" />
 
-        <EditText
-            android:id="@+id/startTimeET"
-            android:layout_width="@dimen/task_add_start_time_width"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/layout_margin"
-            android:layout_marginStart="@dimen/layout_margin"
-            android:layout_marginTop="@dimen/task_add_end_time_margin_top"
-            android:ems="10"
-            android:hint="@string/start_time"
-            android:inputType="time"
-            app:layout_constraintEnd_toStartOf="@id/endTimeET"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/noteTitleET" />
     </LinearLayout>
 
     <EditText
         android:id="@+id/descriptionET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/margin_end"
-        android:layout_marginStart="@dimen/margin_end"
         android:layout_marginTop="@dimen/task_add_desc_margin_top"
         android:ems="10"
         android:hint="@string/descr_text"
@@ -116,8 +109,6 @@
         android:id="@+id/addTaskBt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/margin_end"
-        android:layout_marginStart="@dimen/margin_end"
         android:layout_marginTop="@dimen/layout_margin"
         android:text="@string/new_note_bt"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -3,97 +3,87 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingBottom="10dp"
-    android:paddingTop="10dp">
+    android:paddingBottom="@dimen/study_session_card_padding_10"
+    android:paddingTop="@dimen/study_session_card_padding_10">
 
     <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="@dimen/study_session_card_height"
         android:layout_gravity="center"
-        card_view:cardCornerRadius="4dp">
+        card_view:cardCornerRadius="@dimen/card_corner_radius_session_card">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:orientation="horizontal"
-
-            >
+            android:orientation="horizontal">
 
             <LinearLayout
-                android:id="@+id/idFirstSessionLayout"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/idFirstPortionLayout"
+                android:layout_width="@dimen/studysession_width"
+                android:layout_height="match_parent"
                 android:background="@color/card_first_portion"
+                android:paddingHorizontal="@dimen/margin_end"
+                android:paddingVertical="@dimen/session_card_first_portion_padding"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="From" />
+                    android:text="@string/from_time_session_card" />
 
                 <TextView
-                    android:id="@+id/tfrom"
+                    android:id="@+id/idFromTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="10:00 AM"
-                    android:textSize="20dp"
-
-                    />
+                    android:text="@string/default_start_time_session"
+                    android:textSize="@dimen/from_session_label_from_size" />
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="To" />
+                    android:text="@string/end_time_session" />
 
                 <TextView
-                    android:id="@+id/tto"
+                    android:id="@+id/idToTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="12:00 PM"
-                    android:textSize="20dp"
-
-                    />
+                    android:text="@string/session_end_dumy_time"
+                    android:textSize="@dimen/from_session_label_to_size" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/idFirstSessionLayout"
+                android:layout_gravity="center"
+                android:layout_toRightOf="@id/idFirstPortionLayout"
+                android:padding="@dimen/margin_end"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tTile"
+                    android:id="@+id/idSessionTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Title"
-                    android:textSize="30dp" />
+                    android:text="@string/session_title_label"
+                    android:textSize="@dimen/session_title_text_size" />
 
                 <ProgressBar
 
-                    android:id="@+id/comp"
+                    android:id="@+id/idSessionProgress"
                     style="@android:style/Widget.ProgressBar.Horizontal"
-                    android:layout_width="240dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:progress="25"
-
-                    />
+                    android:progress="10" />
 
 
             </LinearLayout>
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/info_text"
-            android:layout_width="443dp"
-            android:layout_height="match_parent" />
     </android.support.v7.widget.CardView>
 
 </LinearLayout>

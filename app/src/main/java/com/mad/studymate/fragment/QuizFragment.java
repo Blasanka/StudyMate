@@ -66,9 +66,9 @@ public class QuizFragment extends Fragment {
 
         //Populate the groups
         quizList = new ArrayList<>();
-        quizList.add(new Quiz("Programming basics","programming", "Multiple Answer", 27, 0, 0));
-        quizList.add(new Quiz("Software Engineering","SE", "Single Answer", 100, 1, 100));
-        quizList.add(new Quiz("Hacking Advance","hacking", "True or False", 5, 2, 34));
+//        quizList.add(new Quiz("Programming basics","programming", "Multiple Answer", 27, 0, 0));
+//        quizList.add(new Quiz("Software Engineering","SE", "Single Answer", 100, 1, 100));
+//        quizList.add(new Quiz("Hacking Advance","hacking", "True or False", 5, 2, 34));
 
         //to retrieve quizes from db table
         quizTableController = new QuizTableController(getContext());

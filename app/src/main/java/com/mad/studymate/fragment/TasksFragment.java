@@ -83,7 +83,7 @@ public class TasksFragment extends Fragment {
         //Populate the groups
         taskList = new ArrayList<>();
         taskList.add(new Task("Read JS book", 1, "4:30 to 5:30"));
-        taskList.add(new Task("Write a letter", 2, "5:30 to 6:00"));
+//        taskList.add(new Task("Write a letter", 2, "5:30 to 6:00"));
 
         //get notes from database
         Cursor cursor = retrieveAllTasks();

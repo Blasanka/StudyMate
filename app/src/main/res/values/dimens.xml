@@ -34,6 +34,7 @@
     <dimen name="add_task_title_width">321dp</dimen>
     <dimen name="task_add_end_time_width">151dp</dimen>
     <dimen name="task_add_end_time_margin_top">32dp</dimen>
+    <dimen name="task_add_end_time_margin_start">12dp</dimen>
     <dimen name="task_add_start_time_width">140dp</dimen>
     <dimen name="task_add_desc_margin_top">36dp</dimen>
     <dimen name="task_priority_view_width">126dp</dimen>
@@ -109,4 +110,15 @@
     <dimen name="splash_image_width">340dp</dimen>
     <dimen name="splash_image_height">430dp</dimen>
     <dimen name="qn_cas_bt_height">54dp</dimen>
+
+    <!--study session-->
+    <dimen name="second_portion_margin_end">32dp</dimen>
+    <dimen name="study_session_card_padding_10">10dp</dimen>
+    <dimen name="study_session_card_height">100dp</dimen>
+    <dimen name="card_corner_radius_session_card">4dp</dimen>
+    <dimen name="studysession_width">100dp</dimen>
+    <dimen name="from_session_label_from_size">16sp</dimen>
+    <dimen name="from_session_label_to_size">16sp</dimen>
+    <dimen name="session_title_text_size">20sp</dimen>
+    <dimen name="session_card_first_portion_padding">6dp</dimen>
 </resources>

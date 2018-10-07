@@ -63,7 +63,7 @@ public class AttemptedQuizesFragment extends Fragment {
 
         //Populate the groups
         quizList = new ArrayList<>();
-        quizList.add(new Quiz("Programming basics", "programming", "Multiple Answer", 27, 2, 0));
+//        quizList.add(new Quiz("Programming basics", "programming", "Multiple Answer", 27, 2, 0));
 
         QuizTableController quizTableController = new QuizTableController(getContext());
         //get notes from database

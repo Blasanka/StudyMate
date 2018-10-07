@@ -81,7 +81,7 @@ public class CompletedTaskFragment extends Fragment {
         doneTaskList = new ArrayList<>();
 
         //for now to show layout I'm adding isDone to true
-        doneTaskList.add(new Task("Attend to MAD lecture", 3, "8:30 to 10:30", true));
+//        doneTaskList.add(new Task("Attend to MAD lecture", 3, "8:30 to 10:30", true));
 
         //get notes from database
         Cursor cursor = retrieveAllTasks();

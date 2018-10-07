@@ -50,12 +50,13 @@
 
             <LinearLayout
                 android:id="@+id/idTaskSecondPortionLayout"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_toRightOf="@id/idTaskFirstPortionLayout"
                 android:background="@color/cardview_light_background"
                 android:gravity="center_vertical"
                 android:orientation="vertical"
+                android:layout_marginEnd="@dimen/second_portion_margin_end"
                 android:padding="@dimen/second_portion_padding">
 
                 <LinearLayout
@@ -67,7 +68,7 @@
                     <!--android:layout_toRightOf="@id/idRelativeLayoutQuizeCount"-->
                     <TextView
                         android:id="@+id/idTaskTitle"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/title_text_size"
                         tools:text="@string/task_title_text"

@@ -33,10 +33,11 @@ public class SaturdaySessionActivity extends AppCompatActivity {
 
     //add session fab
     FloatingActionButton fab;
+
     SessionDbHelper sessionDbHelper;
     private RecyclerView recyclerView;
     private SessionCardAdapter sessionCardAdapter;
-    private List<Session> SessionList;
+    private List<Session> sessionList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,21 +51,21 @@ public class SaturdaySessionActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.SessionRecycleView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        SessionList = new ArrayList<>();
-        SessionList.add(new Session("Science Homework", "02:00", "04:00", 54));
+        sessionList = new ArrayList<>();
+//        SessionList.add(new Session("Science Homework", "02:00", "04:00", 54));
 
         Cursor cursor = readSessions();
         while (cursor.moveToNext()) {
-            SessionList.add(new Session(cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getInt(4), cursor.getString(5)));
+            sessionList.add(new Session(cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getInt(4), cursor.getString(5)));
         }
         cursor.close();
-        sessionCardAdapter = new SessionCardAdapter(SessionList, this);
+        sessionCardAdapter = new SessionCardAdapter(sessionList, this);
         recyclerView.setAdapter(sessionCardAdapter);
 
         sessionCardAdapter.setOnItemClickListener(new SessionCardAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Session session = SessionList.get(position);
+                Session session = sessionList.get(position);
                 Intent intent = new Intent(SaturdaySessionActivity.this, ViewSessionActivity.class);
                 intent.putExtra("LessonName", session.getName());
                 intent.putExtra("Desc", session.getDescription());

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,11 +12,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.mad.studymate.R;
+import com.mad.studymate.activity.AddSessionActivity;
 import com.mad.studymate.activity.FridaySessionActivity;
-import com.mad.studymate.activity.MainActivity;
 import com.mad.studymate.activity.MondaySessionActivity;
 import com.mad.studymate.activity.SaturdaySessionActivity;
 import com.mad.studymate.activity.SundaySessionActivity;
@@ -24,8 +24,12 @@ import com.mad.studymate.activity.TuesdaySessionActivity;
 import com.mad.studymate.activity.WendsdaySessionActivity;
 
 public class StudySessionFragment extends Fragment {
+    //add session fab
+    FloatingActionButton fab;
+
     //List view for days of week
     ListView lv;
+
     private OnFragmentInteractionListener mListener;
 
     public StudySessionFragment() {
@@ -44,7 +48,7 @@ public class StudySessionFragment extends Fragment {
 
         String[] daysOfWeek = getResources().getStringArray(R.array.study_session_list_items);
 
-        ListView lv = view.findViewById(R.id.studySessionListVIew);
+        lv = view.findViewById(R.id.studySessionListVIew);
 
         lv.setAdapter(new ArrayAdapter<String>(getActivity(), R.layout.days_textview_listview, daysOfWeek));
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -83,6 +87,16 @@ public class StudySessionFragment extends Fragment {
 
             }
 
+        });
+
+        //fab click listner to open add note activity
+        fab = view.findViewById(R.id.idStudyAddFab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AddSessionActivity.class);
+                startActivity(intent);
+            }
         });
         return view;
     }

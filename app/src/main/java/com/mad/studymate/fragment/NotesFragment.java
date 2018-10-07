@@ -13,7 +13,6 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -66,9 +65,9 @@ public class NotesFragment extends Fragment {
 
         //Populate the groups
         noteList = new ArrayList<>();
-        noteList.add(new Note("How to write good code", "Programming", 5));
-        noteList.add(new Note("Software Development Life Cycle(SDLC)","Software Engineering", 3));
-        noteList.add(new Note("How to learn faster", "Mind", 1));
+//        noteList.add(new Note("How to write good code", "Programming", 5));
+//        noteList.add(new Note("Software Development Life Cycle(SDLC)","Software Engineering", 3));
+//        noteList.add(new Note("How to learn faster", "Mind", 1));
 
         //get notes from database
         Cursor cursor = retrieveAllNotes();
