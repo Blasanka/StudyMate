@@ -105,6 +105,7 @@
     <string name="update_note_title_text">Update Note Title</string>
 
     <!--add task activity-->
+    <string name="add_task_bt">Add Task</string>
     <string name="descr_text">Description</string>
     <string name="task_text">Title</string>
     <string name="priority_no_text">Priority Number</string>

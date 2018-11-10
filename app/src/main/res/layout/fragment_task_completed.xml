@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.mad.studymate.fragment.CompletedTaskFragment">
+    tools:context="com.mad.studymate.fragment.CompletedTaskFragment"
+    android:id="@+id/nav_header">
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -25,25 +26,24 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
             app:backgroundTint="@color/colorPrimaryDark"
-            app:borderWidth="0dp"
-            app:elevation="6dp"
+            app:borderWidth="@dimen/fab_border_width"
+            app:elevation="@dimen/fab_elevation"
             app:fabSize="normal"
             android:src="@drawable/add_icon"
-            android:layout_marginBottom="@dimen/fab_margin_bottom"
+            android:layout_marginBottom="@dimen/bottom_nav_bar_height"
             android:layout_marginRight="@dimen/fab_margin_right"/>
-
     </FrameLayout>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="@dimen/bottom_nav_bar_height"
         android:layout_gravity="bottom"
         android:background="@color/colorPrimaryDark"
         android:foreground="?android:attr/selectableItemBackground"
         app:itemBackground="@color/colorPrimaryDark"
         app:itemIconTint="@android:color/white"
         app:itemTextColor="@android:color/white"
-    app:menu="@menu/my_navigation_items"/>
+        app:menu="@menu/my_navigation_items"/>
 
 </android.support.design.widget.CoordinatorLayout>

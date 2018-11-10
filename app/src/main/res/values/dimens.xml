@@ -112,7 +112,7 @@
     <dimen name="qn_cas_bt_height">54dp</dimen>
 
     <!--study session-->
-    <dimen name="second_portion_margin_end">32dp</dimen>
+    <dimen name="second_portion_margin_end">45dp</dimen>
     <dimen name="study_session_card_padding_10">10dp</dimen>
     <dimen name="study_session_card_height">100dp</dimen>
     <dimen name="card_corner_radius_session_card">4dp</dimen>
@@ -121,4 +121,7 @@
     <dimen name="from_session_label_to_size">16sp</dimen>
     <dimen name="session_title_text_size">20sp</dimen>
     <dimen name="session_card_first_portion_padding">6dp</dimen>
+    <dimen name="bottom_nav_bar_height">56dp</dimen>
+    <dimen name="fab_elevation">6dp</dimen>
+    <dimen name="fab_border_width">0dp</dimen>
 </resources>

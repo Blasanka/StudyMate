@@ -53,20 +53,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/idUpdatePriorityLayout" />
 
-    <EditText
-        android:id="@+id/endTimeUpdateET"
-        android:layout_width="@dimen/task_add_end_time_width"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_end"
-        android:layout_marginEnd="@dimen/margin_end"
-        android:layout_marginTop="@dimen/task_add_end_time_margin_top"
-        android:ems="10"
-        android:hint="@string/end_time"
-        android:inputType="time"
-        app:layout_constraintBottom_toTopOf="@id/descriptionET"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/taskTitleUpdateET"
-        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/startTimeUpdateET"
@@ -84,6 +70,21 @@
         app:layout_constraintTop_toBottomOf="@id/taskTitleUpdateET" />
 
     <EditText
+        android:id="@+id/endTimeUpdateET"
+        android:layout_width="@dimen/task_add_end_time_width"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_end"
+        android:layout_marginEnd="@dimen/margin_end"
+        android:layout_marginTop="@dimen/task_add_end_time_margin_top"
+        android:ems="10"
+        android:hint="@string/end_time"
+        android:inputType="time"
+        app:layout_constraintBottom_toTopOf="@id/descriptionET"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/taskTitleUpdateET"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
         android:id="@+id/descriptionUpdateET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -98,7 +99,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/startTimeUpdateET" />
+        app:layout_constraintTop_toBottomOf="@id/endTimeUpdateET" />
 
     <Button
         android:id="@+id/updateTaskBt"

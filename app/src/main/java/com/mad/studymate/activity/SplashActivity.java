@@ -14,11 +14,6 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
 
         //send to login screen after 3sec when app started
         new Handler().postDelayed(new Runnable() {

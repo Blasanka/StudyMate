@@ -48,6 +48,7 @@
     <dimen name="margin_top">28dp</dimen>
     <dimen name="minHeight_desc">140dp</dimen>
     <dimen name="layout_margin">20dp</dimen>
+    <dimen name="done_bt_padding">6dp</dimen>
 
     <!--add quiz-->
     <dimen name="margin_top_bt">10dp</dimen>

@@ -46,7 +46,7 @@ public class SessionCardAdapter extends RecyclerView.Adapter<SessionCardAdapter.
     @Override
     public SessionCardAdapter.SessionViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         sessionDbHelper = new SessionDbHelper(viewGroup.getContext());
-        View SessionView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.activity_session_card, viewGroup, false);
+        View SessionView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_session_card, viewGroup, false);
         SessionCardAdapter.SessionViewHolder as = new SessionCardAdapter.SessionViewHolder(SessionView, onItemClickListener);
         return as;
     }

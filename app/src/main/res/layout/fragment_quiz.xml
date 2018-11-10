@@ -19,9 +19,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         app:backgroundTint="@color/colorPrimaryDark"
-        app:borderWidth="0dp"
-        app:elevation="6dp"
+        app:borderWidth="@dimen/fab_border_width"
+        app:elevation="@dimen/fab_elevation"
         app:fabSize="normal"
         android:src="@drawable/add_icon"
+        android:layout_marginBottom="@dimen/bottom_nav_bar_height"
         android:layout_margin="@dimen/fab_margin" />
 </FrameLayout>

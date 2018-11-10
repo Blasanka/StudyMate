@@ -1,5 +1,6 @@
 package com.mad.studymate.activity;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -8,7 +9,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import com.mad.studymate.R;
 import com.mad.studymate.fragment.AttemptedQuizesFragment;
@@ -18,6 +23,8 @@ import com.mad.studymate.fragment.QuizFragment;
 import com.mad.studymate.fragment.StudySessionFragment;
 import com.mad.studymate.fragment.TasksFragment;
 
+import java.util.zip.Inflater;
+
 public class MainActivity extends AppCompatActivity implements HomeFragment.OnFragmentInteractionListener,
         NotesFragment.OnFragmentInteractionListener, QuizFragment.OnFragmentInteractionListener,
         TasksFragment.OnFragmentInteractionListener, AttemptedQuizesFragment.OnFragmentInteractionListener,
@@ -26,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnFr
     private android.support.v7.app.ActionBar actionbar;
     private DrawerLayout mDrawerLayout;
     private NavigationView navigationView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
