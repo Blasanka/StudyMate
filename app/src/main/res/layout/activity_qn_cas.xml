@@ -8,6 +8,7 @@
     tools:context=".activity.QnCAsActivity">
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/idQuesLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/margin_end"
@@ -151,6 +152,16 @@
                 android:text="@string/radio_false" />
         </RadioGroup>
 
+        <LinearLayout
+            android:id="@+id/idQueslinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.066"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/idTrueFalseGroup2"></LinearLayout>
+
         <Button
             android:id="@+id/idAddQuizButton"
             android:layout_width="151dp"
@@ -161,7 +172,7 @@
             android:text="@string/add_quiz_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/idTrueFalseGroup2"
+            app:layout_constraintTop_toBottomOf="@id/idQueslinearLayout"
             app:layout_constraintVertical_bias="0.0" />
 
         <Button
@@ -173,10 +184,10 @@
             android:layout_marginTop="8dp"
             android:text="@string/delete_quiz_text"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/idAddQuizButton"
+            app:layout_constraintEnd_toStartOf="@id/idAddQuizButton"
             app:layout_constraintHorizontal_bias="0.266"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/idTrueFalseGroup2"
+            app:layout_constraintTop_toBottomOf="@+id/idQueslinearLayout"
             app:layout_constraintVertical_bias="0.0" />
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

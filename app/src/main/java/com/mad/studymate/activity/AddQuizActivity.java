@@ -58,7 +58,9 @@ public class AddQuizActivity extends AppCompatActivity {
 
                 if (quizTableController.insertQuiz(title, tag, type, noOfQuestions)) {
                     Intent intent = new Intent(AddQuizActivity.this, QnCAsActivity.class);
-                    intent.putExtra("quiz", titleET.getText().toString());
+                    intent.putExtra("quiz", title);
+                    intent.putExtra("noOfQuestions", Integer.parseInt(noOfQuestions));
+                    intent.putExtra("type", type);
                     startActivity(intent);
                 } else {
                     Snackbar.make(view, "Failed to load", Snackbar.LENGTH_SHORT).show();
