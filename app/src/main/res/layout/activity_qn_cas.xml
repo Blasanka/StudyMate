@@ -83,75 +83,6 @@
                 android:text="@string/radio_false" />
         </RadioGroup>
 
-        <TextView
-            android:id="@+id/questionTV2"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/quiz_et_height"
-            android:layout_marginEnd="@dimen/margin_end"
-            android:layout_marginStart="@dimen/margin_end"
-            android:layout_marginTop="@dimen/margin_end"
-            android:text="@string/question_2_qna"
-            android:textSize="@dimen/id_quiz_tv_text_size"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/idTrueFalseGroup"
-            tools:layout_editor_absoluteX="@dimen/margin_end" />
-
-        <EditText
-            android:id="@+id/idQuestionET2"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/quiz_type_spinner_height"
-            android:layout_marginEnd="@dimen/margin_end"
-            android:layout_marginStart="@dimen/margin_end"
-            android:layout_marginTop="@dimen/margin_end"
-            android:hint="@string/question_et"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/questionTV2" />
-
-        <TextView
-            android:id="@+id/idCanswerTV2"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/quiz_type_spinner_height"
-            android:layout_marginEnd="@dimen/margin_end"
-            android:layout_marginStart="@dimen/margin_end"
-            android:layout_marginTop="@dimen/margin_end"
-            android:text="@string/correct_answers_qna"
-            android:textSize="@dimen/id_c_answer_text_size"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/idQuestionET2" />
-
-        <RadioGroup
-            android:id="@+id/idTrueFalseGroup2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginEnd="@dimen/margin_end"
-            android:layout_marginStart="@dimen/margin_end"
-            android:layout_marginTop="@dimen/margin_end"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.066"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/idCanswerTV2">
-
-            <RadioButton
-                android:id="@+id/idTrueRadio2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/radio_true" />
-
-            <RadioButton
-                android:id="@+id/idFalseRadio2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/radio_false" />
-        </RadioGroup>
-
         <LinearLayout
             android:id="@+id/idQueslinearLayout"
             android:layout_width="match_parent"
@@ -160,7 +91,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.066"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/idTrueFalseGroup2"></LinearLayout>
+            app:layout_constraintTop_toBottomOf="@id/idTrueFalseGroup" />
 
         <Button
             android:id="@+id/idAddQuizButton"

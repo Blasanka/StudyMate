@@ -1,8 +1,9 @@
 package com.mad.studymate.jsons;
 
 import android.content.Context;
-import android.widget.EditText;
-import android.widget.RadioButton;
+
+import com.google.gson.Gson;
+import com.mad.studymate.cardview.model.Question;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,61 +19,12 @@ public class JsonCrud {
         this.context = context;
     }
 
-    public void insert(String title, EditText questionEt1, EditText questionEt2,
-                       RadioButton radioButtonTrue1, RadioButton radioButtonTrue2,
-                       RadioButton radioButtonFalse1, RadioButton radioButtonFalse2) {
-        //TODO: fixed size of components and json values are from fixed varables
+    public void insert(String title, List<Question> questionList) {
+
         JSONObject parent = new JSONObject();
-
-        JSONObject question = new JSONObject();
-
-        JSONObject question2 = new JSONObject();
-
-        JSONArray questionsArray = new JSONArray();
-
-        JSONArray answersArray = new JSONArray();
-        JSONArray correctAnswersArray = new JSONArray();
-
-        JSONArray answersArray2 = new JSONArray();
-        JSONArray correctAnswersArray2 = new JSONArray();
         try {
-
-            //question 1
-
-
-            //question
-            question.put("question", questionEt1.getText().toString());
-
-            //All answers to one question
-            answersArray.put(radioButtonTrue1.isChecked());
-            answersArray.put(radioButtonFalse1.isChecked());
-            question.put("answers", answersArray);
-
-            //correct answers to one question
-            correctAnswersArray.put(true);
-            question.put("correctAnswers", correctAnswersArray);
-
-
-            //question 2
-
-            ////question
-            question2.put("question", questionEt2.getText().toString());
-
-            //All answers to one question
-            answersArray2.put(radioButtonTrue2.isChecked());
-            answersArray2.put(radioButtonFalse2.isChecked());
-            question2.put("answers", answersArray2);
-
-            //correct answers to one question
-            correctAnswersArray2.put(radioButtonFalse2.isChecked());
-            question2.put("correctAnswers", correctAnswersArray2);
-
-            //question
-            questionsArray.put(question);
-            questionsArray.put(question2);
-
             //array of questions to parent node
-            parent.put(title, questionsArray);
+            parent.put(title, addQuizData(questionList));
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -82,6 +34,24 @@ public class JsonCrud {
 //                json.writeObject(object, "quiz1");
         json.writeJsonFile(parent.toString(), title);
 
+    }
+
+    private JSONArray addQuizData(List<Question> questionList) {
+        JSONArray questionsArray = new JSONArray();
+
+        for (Question q : questionList) {
+
+            Gson gson = new Gson();
+            String json = gson.toJson(q);
+            try {
+                JSONObject questionObj = new JSONObject(json);
+                //question obj
+                questionsArray.put(questionObj);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return questionsArray;
     }
 
     public List<String> read(String quizTitle) {

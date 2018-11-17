@@ -1,6 +1,5 @@
 package com.mad.studymate.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -73,17 +72,17 @@ public class UpdateQnCAsActivity extends AppCompatActivity {
 
                 //valudate before update QnAs
                 QAValidation validator = new QAValidation(getApplicationContext());
-                if (validator.isFieldsEmpty(questionEt1.getText().toString(),
-                        questionEt2.getText().toString(),
-                        firstRadioGroup, secondRadioGroup)) {
-                    return;
-                }
+//                if (validator.isFieldsEmpty(questionEt1.getText().toString(),
+//                        questionEt2.getText().toString(),
+//                        firstRadioGroup, secondRadioGroup)) {
+//                    return;
+//                }
 
-                jsonCrud.insert(title, questionEt1, questionEt2,
-                        radioButtonTrue1, radioButtonTrue2, radioButtonFalse1, radioButtonFalse2);
-                Intent intent = new Intent(UpdateQnCAsActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
+//                jsonCrud.insert(title, questionEt1, questionEt2,
+//                        radioButtonTrue1, radioButtonTrue2, radioButtonFalse1, radioButtonFalse2);
+//                Intent intent = new Intent(UpdateQnCAsActivity.this, MainActivity.class);
+//                startActivity(intent);
+//                finish();
             }
         });
     }

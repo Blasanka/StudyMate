@@ -1,7 +1,10 @@
 package com.mad.studymate.validation;
 
 import android.content.Context;
-import android.widget.Toast;
+
+import com.mad.studymate.cardview.model.Question;
+
+import java.util.List;
 
 public class QAValidation {
 
@@ -11,25 +14,24 @@ public class QAValidation {
         this.context = context;
     }
 
-    public boolean isFieldsEmpty(String question1, String question2, boolean isSelectedFirstGroup, boolean isSelectedSecGroup) {
-        if (question1.isEmpty() && question2.isEmpty() && isSelectedFirstGroup && isSelectedSecGroup) {
-            Toast.makeText(context, "All questions and answers must be filled", Toast.LENGTH_SHORT).show();
-            return true;
-        } else if (question1.isEmpty()) {
-            Toast.makeText(context, "Question 1 cannot be empty", Toast.LENGTH_SHORT).show();
-            return true;
-        } else if (question2.isEmpty()) {
-            Toast.makeText(context, "Question 2 cannot be empty", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-
-        if (!isSelectedFirstGroup) {
-            Toast.makeText(context, "Correct answer must select", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-
-        if (!isSelectedSecGroup) {
-            Toast.makeText(context, "Correct answer must select", Toast.LENGTH_SHORT).show();
+    public boolean isFieldsEmpty(String type, List<Question> questionsList) {
+        if (!questionsList.isEmpty()) {
+            for (Question question : questionsList) {
+                if (question.getQuestion().equals("")) {
+//                     ((EditText) value).setError("Questions must be typed");
+                    return true;
+                } else if (type.equals("True or False") && question.getCorrectAnswers().isEmpty()) {
+//                    ((RadioButton) value).setError("True or false must selected");
+                    return true;
+                } else if (type.equals("Single Answer") && question.getCorrectAnswers().isEmpty()) {//|| question.getAllAnswers().isEmpty()) {
+//                    ((EditText) value).setError("Correct answer must be typed");
+                    return true;
+                } else if (type.equals("Multiple Answer") && question.getCorrectAnswers().isEmpty()) {//|| question.getAllAnswers().isEmpty()) {
+//                    ((EditText) value).setError("Correct answers must be typed");
+                    return true;
+                }
+            }
+        } else {
             return true;
         }
         return false;
